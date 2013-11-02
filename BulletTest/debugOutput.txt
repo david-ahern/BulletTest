@@ -20,7 +20,7 @@ starting debug output
 				BulletWorld::bulletWorld::constructor
 				BulletWorld::bulletWorld::Create started
 					BulletWorld::bulletWorld::SetGravity
-				BulletWorld::bulletWorld::Create ended. time elapsed: 4.945
+				BulletWorld::bulletWorld::Create ended. time elapsed: 0
 				ObjectManager::AddObject::bulletWorld
 				GameObject::camera::base constructor
 				Camera::camera::constructor
@@ -55,8 +55,8 @@ starting debug output
 					ObjectManager::GetGameObject::bulletWorld
 					ObjectManager::GetGameObject::ballShape
 				BulletRigidBody::ballBody::Create ended. time elapsed: 0
-			FileInput::DefaultInit ended. time elapsed: 68.188
-		FileInput::LoadObjects ended. time elapsed: 74.429
+			FileInput::DefaultInit ended. time elapsed: 0
+		FileInput::LoadObjects ended. time elapsed: 0
 		ObjectManager::InitObjects started
 			GameObject::ballBody::default Init
 			GameObject::ballShape::default Init
@@ -67,6 +67,7 @@ starting debug output
 			GameObject::bulletWorld::default Init
 			Timer::gameTimer::Init
 		ObjectManager::InitObjects ended. time elapsed: 0
-	Game::game::Init ended. time elapsed: 83.289
+	Game::game::Init ended. time elapsed: 0
 	GameEngine::AddScreen
 	GameEngine::SwitchTo::game
+disabling output

@@ -101,7 +101,7 @@ void FileInput::DefaultInit()
 	//create a floor
 	BulletCollisionShape* floorShape = new BulletCollisionShape("floorShape");
 	Dimensions dFloor;
-	dFloor.sHalfExtents = btVector3(20, 1, 20);
+	dFloor.sHalfExtents = btVector3(100, 1, 100);
 	floorShape->Create(BOX_SHAPE_PROXYTYPE, dFloor);
 	mObjectManager->AddObject(floorShape);
 

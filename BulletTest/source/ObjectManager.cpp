@@ -2,17 +2,20 @@
 
 char* ObjectManager::debugClassName = "ObjectManager";
 
+// constructor
 ObjectManager::ObjectManager()
 {
 	debugPrint(debugClassName, "constructor");
 	mObjectList.clear();
 }
 
+// destructor
 ObjectManager::~ObjectManager()
 {
 	debugPrint(debugClassName, "destructor");
 }
 
+// push new object onto list and set the objects manager to this.
 void ObjectManager::AddObject(GameObject* object)
 {
 	debugPrint(debugClassName, "AddObject", object->GetObjectName());
@@ -20,6 +23,7 @@ void ObjectManager::AddObject(GameObject* object)
 	object->SetObjectManager(this);
 }
 
+// remove object from this list
 bool ObjectManager::RemoveObject(GameObject* object)
 {
 	debugPrint(debugClassName, "RemoveObject", object->GetObjectName());
@@ -34,12 +38,14 @@ bool ObjectManager::RemoveObject(GameObject* object)
 	return false;
 }
 
+// clear list
 void ObjectManager::ResetList()
 {
 	debugPrint(debugClassName, "ResetList");
 	mObjectList.clear();
 }
 
+// initialise all objects
 void ObjectManager::InitObjects()
 {
 	debugPrint(debugClassName, "InitObjects", BEGIN);
@@ -50,6 +56,7 @@ void ObjectManager::InitObjects()
 	debugPrint(debugClassName, "InitObjects", END);
 }
 
+// update objects
 void ObjectManager::UpdateObjects(int UPDATE_OBJECT_TYPE, float deltaTime)
 {
 	debugPrint(debugClassName, "UpdateObjects", UPDATE_OBJECT_TYPE, BEGIN);
@@ -57,7 +64,6 @@ void ObjectManager::UpdateObjects(int UPDATE_OBJECT_TYPE, float deltaTime)
 	if (UPDATE_OBJECT_TYPE == ALL_OBJECTS)
 	{
 		bool doNotUpdate;
-		//for each object
 		for (int i = mObjectList.size()-1; i >= 0; --i)
 		{
 			doNotUpdate = false;
@@ -67,7 +73,7 @@ void ObjectManager::UpdateObjects(int UPDATE_OBJECT_TYPE, float deltaTime)
 				if (mObjectList.at(i)->GetObjectType() == mUpdatedObjects.at(j))
 					doNotUpdate = true;
 			}
-			//if hasnt been updated, update
+
 			if (!doNotUpdate)
 				mObjectList.at(i)->Update(deltaTime);
 		}
@@ -75,7 +81,7 @@ void ObjectManager::UpdateObjects(int UPDATE_OBJECT_TYPE, float deltaTime)
 		mUpdatedObjects.clear();
 	}
 	else
-	{
+	{	// update all objects matching the update_object_type
 		for (int i = mObjectList.size()-1; i >= 0; --i)
 		{
 			if (mObjectList.at(i)->GetObjectType() == UPDATE_OBJECT_TYPE)
@@ -87,10 +93,12 @@ void ObjectManager::UpdateObjects(int UPDATE_OBJECT_TYPE, float deltaTime)
 	debugPrint(debugClassName, "UpdateObjects", UPDATE_OBJECT_TYPE, END);
 }
 
+// render all objects
 void ObjectManager::RenderObjects()
 {
 	debugPrint(debugClassName, "RenderObjects", BEGIN);
 
+	// get camera and perform camera transform before starting
 	Camera* camera = (Camera*)GetGameObject("camera");
 	camera->place();
 
