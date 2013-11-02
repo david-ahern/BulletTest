@@ -1,0 +1,16 @@
+<object><Timer>timer
+<end>
+
+<object Camera>camera
+<end>
+
+<object><BulletWorld>bulletWorld
+{
+	<vector3><gravity>0 10 0
+}
+<end>
+
+<object Light>light
+{
+	<vector3 position>
+}
