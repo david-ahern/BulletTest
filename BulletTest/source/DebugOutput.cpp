@@ -25,8 +25,8 @@ bool openDebugOutputFile()
 	timer->Init();
 
 	activeFunctions.clear();
-
-	enableDebugOutput();
+	
+	allowOutput = true;
 
 	return true;
 }
@@ -47,11 +47,13 @@ void closeDebugOutputFile()
 
 void enableDebugOutput()
 {
+	outputFile << "enabling output\n";
 	allowOutput = true;
 }
 
 void disableDebugOutput()
 {
+	outputFile << "disabling output\n";
 	allowOutput = false;
 }
 
