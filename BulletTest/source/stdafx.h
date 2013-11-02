@@ -24,8 +24,6 @@
 
 #include "DebugOutput.h"
 
-extern void closeDebugOutputFile();
-
 // object types
 
 #define NO_OBJECT_TYPE 0

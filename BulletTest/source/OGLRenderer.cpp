@@ -71,6 +71,14 @@ void OGLRenderer::Init()
 
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 
+	//Lights initialization and activation
+	glLightfv (GL_LIGHT1, GL_AMBIENT, light_ambient);
+	glLightfv (GL_LIGHT1, GL_DIFFUSE, light_diffuse);
+	glLightfv (GL_LIGHT1, GL_DIFFUSE, light_specular);
+	glLightfv (GL_LIGHT1, GL_POSITION, light_position);    
+	glEnable (GL_LIGHT1);
+	glEnable (GL_LIGHTING);
+
 	////* Materials initialization and activation*/
 	glMaterialfv (GL_FRONT, GL_DIFFUSE, mat_diffuse);
 	glMaterialfv (GL_FRONT, GL_DIFFUSE, mat_specular);
@@ -82,7 +90,7 @@ void OGLRenderer::Init()
 	glShadeModel(GL_SMOOTH); 
 	glHint (GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
-	glEnable(GL_CULL_FACE); 
+	//glEnable(GL_CULL_FACE); 
 
 	glutInitDisplayMode(GLUT_DEPTH);
  	glEnable(GL_DEPTH_TEST);
@@ -100,7 +108,7 @@ void OGLRenderer::PrepareRendering()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	glColor3f(0.0,1.0,1.0);
+	glColor3f(0.0,1.0,0.0);
 
 	glPushMatrix();
 }

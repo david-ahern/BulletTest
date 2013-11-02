@@ -94,15 +94,15 @@ void FileInput::DefaultInit()
 	camera->Create();
 	mObjectManager->AddObject(camera);
 
-	Light* light = new Light("light");
+	/*Light* light = new Light("light");
 	light->Create(Vector3(10, 10, -10), Vector4(1,1,1,1), Vector4(1,1,1,1), Vector4(1,1,1,1));
-	mObjectManager->AddObject(light);
+	mObjectManager->AddObject(light);*/
 
 	//create a floor
 	BulletCollisionShape* floorShape = new BulletCollisionShape("floorShape");
 	Dimensions dFloor;
-	dFloor.sHalfExtents = btVector3(100, 1, 100);
-	floorShape->Create(BOX_SHAPE_PROXYTYPE, dFloor);
+	dFloor.sUpAxis = btVector3(0, 1, 0);
+	floorShape->Create(STATIC_PLANE_PROXYTYPE, dFloor);
 	mObjectManager->AddObject(floorShape);
 
 	BulletRigidBody* floorBody = new BulletRigidBody("floorBody");
