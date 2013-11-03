@@ -1,0 +1,27 @@
+#ifndef
+#define
+
+USERNAME
+DESCRIPTION
+
+#include "stdafx.h"
+
+
+class CLASSNAME
+{
+private:
+	static char* debugClassName;
+
+
+protected:
+
+
+public:
+	CLASSNAME();
+	CLASSNAME(char* objectName);
+	~CLASSNAME();
+
+
+};
+
+#endif

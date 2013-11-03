@@ -1,0 +1,20 @@
+#include "stdafx.h"
+
+char* CLASSNAME::debugClassName = "CLASSNAME";
+
+CLASSNAME::CLASSNAME()
+{
+	debugPrint(debugClassName, "empty constructor");
+}
+
+CLASSNAME::CLASSNAME(char* name)
+{
+	debugPrint(debugClassName, "constructor");
+}
+
+CLASSNAME::~CLASSNAME()
+{
+	debugPrint(debugClassName, "destructor");
+}
+
+RETURNTYPE CLASSNAME::FUNCTIONNAME(ARGS1ARGS2ARGS3ARGS4ARGS5ARGS6)

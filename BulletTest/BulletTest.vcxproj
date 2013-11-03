@@ -98,10 +98,6 @@
     <ClCompile Include="source\ObjectManager.cpp" />
     <ClCompile Include="source\OGLRenderer.cpp" />
     <ClCompile Include="source\Screen.cpp" />
-    <ClCompile Include="source\ScreenManager.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="source\Timer.cpp" />
     <ClCompile Include="source\Vector3.cpp" />
     <ClCompile Include="source\Vector4.cpp" />
@@ -122,10 +118,6 @@
     <ClInclude Include="source\ObjectManager.h" />
     <ClInclude Include="source\OGLRenderer.h" />
     <ClInclude Include="source\Screen.h" />
-    <ClInclude Include="source\ScreenManager.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="source\stdafx.h" />
     <ClInclude Include="source\Timer.h" />
     <ClInclude Include="source\Vector3.h" />

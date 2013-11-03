@@ -13,7 +13,7 @@ bool allowOutput;
 
 bool openDebugOutputFile()
 {
-	outputFile.open("debugOutput.txt",ios::trunc);
+	outputFile.open("DebugOutput\debugOutput.txt",ios::trunc);
 
 	if (!outputFile.is_open())
 		return false;
