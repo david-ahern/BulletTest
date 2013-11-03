@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.IO;
 
+
 namespace ClassGenerator
 {
     public partial class Form1 : Form
@@ -41,6 +42,7 @@ namespace ClassGenerator
             GenerateButton.Select();
 
             DataTypeList = GetDataTypeList();
+
             SetUpAddFunctionality();
         }
 
@@ -63,32 +65,25 @@ namespace ClassGenerator
 
             //string winDir = System.Environment.GetEnvironmentVariable("windir");
 
-            StreamReader reader = new StreamReader("dataTypes.txt");
-
             try
             {
+                StreamReader reader = new StreamReader("dataTypes.txt");
+
                 do
                 {
                     list.Add(reader.ReadLine());
                 }
                 while (reader.Peek() != -1);
+
+                reader.Close();
+
             }
             catch
             {
-                OpenFileFailed("dataTypes.txt");
-            }
-            finally
-            {
-                reader.Close();
+                MessageBox.Show("Failed to load existing datatypes");
             }
 
             return list;
-        }
-
-
-        private void OpenFileFailed(String filename)
-        {
-
         }
 
         private void GenerateButton_Click(object sender, EventArgs e)
@@ -98,12 +93,34 @@ namespace ClassGenerator
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            // delete all data
+            PrivateVariableList.Clear();
+            PublicVariableList.Clear();
+            ProtectedVariableList.Clear();
+
+            PrivateMethodList.Clear();
+            PublicMethodList.Clear();
+            ProtectedMethodList.Clear();
+
+            ClassNameTextBox.Text = "";
+
+            NoBaseObjectButton.Select();
+            GameObjectSelector.Select();
+
+            UserNameBox.Text = "";
+            DescriptionBox.Text = "";
+
+            PublicVariableDisplay.DataSource = new List<string>(PublicVariableList);
+            PrivateVariableDisplay.DataSource = new List<string>(PrivateVariableList);
+            ProtectedVariableDisplay.DataSource = new List<string>(ProtectedVariableList);
+
+            PrivateMethodDisplay.DataSource = new List<string>(PrivateMethodList);
+            PublicMethodDisplay.DataSource = new List<string>(PublicMethodList);
+            ProtectedMethodDisplay.DataSource = new List<string>(ProtectedMethodList);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            // clear and close
+            this.Close();
         }
 
         private void ScreenSelector_CheckedChanged(object sender, EventArgs e)
@@ -183,14 +200,20 @@ namespace ClassGenerator
             {
                 case "private":
                     PrivateVariableList.Add(VariableDecl);
+                    PrivateVariableDisplay.DataSource = new List<string>(PrivateVariableList);
                     break;
                 case "public":
                     PublicVariableList.Add(VariableDecl);
+                    PublicVariableDisplay.DataSource = new List<string>(PublicVariableList);
                     break;
                 case "protected":
                     ProtectedVariableList.Add(VariableDecl);
+                    ProtectedVariableDisplay.DataSource = new List<string>(ProtectedVariableList);
                     break;
             }
+
+            VariablePointer.Checked = false;
+            VariableNameBox.Text = "";
         }
 
         private void AddMethod_Click(object sender, EventArgs e)
@@ -211,14 +234,25 @@ namespace ClassGenerator
             {
                 case "private":
                     PrivateMethodList.Add(MethodDecl);
+                    PrivateMethodDisplay.DataSource = new List<string>(PrivateMethodList);
                     break;
                 case "public":
                     PublicMethodList.Add(MethodDecl);
+                    PublicMethodDisplay.DataSource = new List<string>(PublicMethodList);
                     break;
                 case "protected":
                     ProtectedMethodList.Add(MethodDecl);
+                    ProtectedMethodDisplay.DataSource = new List<string>(ProtectedMethodList);
                     break;
             }
+
+            MethodNameBox.Text = "";
+            MethodParametersBox.Text = "";
+        }
+
+        private void PrivateVariableDisplay_KeyDown(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show("KeyPressed");
         }
     }
 }

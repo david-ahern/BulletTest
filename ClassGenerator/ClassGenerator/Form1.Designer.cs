@@ -66,14 +66,30 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DescriptionBox = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.PrivateVariableDisplay = new System.Windows.Forms.ListBox();
+            this.ProtectedVariableDisplay = new System.Windows.Forms.ListBox();
+            this.PublicVariableDisplay = new System.Windows.Forms.ListBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.Variables = new System.Windows.Forms.GroupBox();
+            this.Methods = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.ProtectedMethodDisplay = new System.Windows.Forms.ListBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.PrivateMethodDisplay = new System.Windows.Forms.ListBox();
+            this.PublicMethodDisplay = new System.Windows.Forms.ListBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.AddVariableBox.SuspendLayout();
             this.AddMethodBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.Variables.SuspendLayout();
+            this.Methods.SuspendLayout();
             this.SuspendLayout();
             // 
             // GenerateButton
             // 
-            this.GenerateButton.Location = new System.Drawing.Point(481, 591);
+            this.GenerateButton.Location = new System.Drawing.Point(481, 606);
             this.GenerateButton.Name = "GenerateButton";
             this.GenerateButton.Size = new System.Drawing.Size(75, 23);
             this.GenerateButton.TabIndex = 0;
@@ -83,7 +99,7 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(319, 591);
+            this.CancelButton.Location = new System.Drawing.Point(319, 606);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 1;
@@ -94,7 +110,7 @@
             // GameObjectSelector
             // 
             this.GameObjectSelector.AutoSize = true;
-            this.GameObjectSelector.Location = new System.Drawing.Point(294, 9);
+            this.GameObjectSelector.Location = new System.Drawing.Point(350, 12);
             this.GameObjectSelector.Name = "GameObjectSelector";
             this.GameObjectSelector.Size = new System.Drawing.Size(84, 17);
             this.GameObjectSelector.TabIndex = 2;
@@ -106,7 +122,7 @@
             // ScreenSelector
             // 
             this.ScreenSelector.AutoSize = true;
-            this.ScreenSelector.Location = new System.Drawing.Point(384, 9);
+            this.ScreenSelector.Location = new System.Drawing.Point(440, 12);
             this.ScreenSelector.Name = "ScreenSelector";
             this.ScreenSelector.Size = new System.Drawing.Size(59, 17);
             this.ScreenSelector.TabIndex = 3;
@@ -118,7 +134,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(187, 11);
+            this.label1.Location = new System.Drawing.Point(243, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 4;
@@ -127,7 +143,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 13);
+            this.label2.Location = new System.Drawing.Point(12, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 5;
@@ -135,9 +151,9 @@
             // 
             // ClassNameTextBox
             // 
-            this.ClassNameTextBox.Location = new System.Drawing.Point(81, 10);
+            this.ClassNameTextBox.Location = new System.Drawing.Point(81, 11);
             this.ClassNameTextBox.Name = "ClassNameTextBox";
-            this.ClassNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ClassNameTextBox.Size = new System.Drawing.Size(156, 20);
             this.ClassNameTextBox.TabIndex = 6;
             // 
             // CreateCheck
@@ -186,7 +202,7 @@
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(400, 591);
+            this.ClearButton.Location = new System.Drawing.Point(400, 606);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(75, 23);
             this.ClearButton.TabIndex = 12;
@@ -264,7 +280,7 @@
             this.AddVariableBox.Controls.Add(this.label5);
             this.AddVariableBox.Controls.Add(this.VariableDataTypeListBox);
             this.AddVariableBox.Controls.Add(this.VariablePointer);
-            this.AddVariableBox.Location = new System.Drawing.Point(15, 184);
+            this.AddVariableBox.Location = new System.Drawing.Point(15, 166);
             this.AddVariableBox.Name = "AddVariableBox";
             this.AddVariableBox.Size = new System.Drawing.Size(117, 193);
             this.AddVariableBox.TabIndex = 21;
@@ -293,7 +309,7 @@
             this.AddMethodBox.Controls.Add(this.label8);
             this.AddMethodBox.Controls.Add(this.label7);
             this.AddMethodBox.Controls.Add(this.MethodAccessListBox);
-            this.AddMethodBox.Location = new System.Drawing.Point(15, 383);
+            this.AddMethodBox.Location = new System.Drawing.Point(15, 365);
             this.AddMethodBox.Name = "AddMethodBox";
             this.AddMethodBox.Size = new System.Drawing.Size(117, 230);
             this.AddMethodBox.TabIndex = 22;
@@ -389,7 +405,7 @@
             // NoBaseObjectButton
             // 
             this.NoBaseObjectButton.AutoSize = true;
-            this.NoBaseObjectButton.Location = new System.Drawing.Point(449, 9);
+            this.NoBaseObjectButton.Location = new System.Drawing.Point(505, 12);
             this.NoBaseObjectButton.Name = "NoBaseObjectButton";
             this.NoBaseObjectButton.Size = new System.Drawing.Size(51, 17);
             this.NoBaseObjectButton.TabIndex = 23;
@@ -402,7 +418,7 @@
             // 
             this.UserNameBox.Location = new System.Drawing.Point(227, 54);
             this.UserNameBox.Name = "UserNameBox";
-            this.UserNameBox.Size = new System.Drawing.Size(198, 20);
+            this.UserNameBox.Size = new System.Drawing.Size(329, 20);
             this.UserNameBox.TabIndex = 24;
             // 
             // label11
@@ -422,7 +438,7 @@
             this.groupBox1.Controls.Add(this.RenderCheck);
             this.groupBox1.Location = new System.Drawing.Point(15, 47);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(117, 131);
+            this.groupBox1.Size = new System.Drawing.Size(117, 113);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Inherit Methods";
@@ -433,7 +449,7 @@
             this.DescriptionBox.Name = "DescriptionBox";
             this.DescriptionBox.Size = new System.Drawing.Size(394, 75);
             this.DescriptionBox.TabIndex = 27;
-            this.DescriptionBox.Text = "Enter discription of class here.";
+            this.DescriptionBox.Text = "";
             // 
             // label3
             // 
@@ -444,11 +460,146 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "Description:";
             // 
+            // PrivateVariableDisplay
+            // 
+            this.PrivateVariableDisplay.FormattingEnabled = true;
+            this.PrivateVariableDisplay.Location = new System.Drawing.Point(6, 32);
+            this.PrivateVariableDisplay.Name = "PrivateVariableDisplay";
+            this.PrivateVariableDisplay.Size = new System.Drawing.Size(157, 108);
+            this.PrivateVariableDisplay.TabIndex = 29;
+            this.PrivateVariableDisplay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PrivateVariableDisplay_KeyDown);
+            // 
+            // ProtectedVariableDisplay
+            // 
+            this.ProtectedVariableDisplay.FormattingEnabled = true;
+            this.ProtectedVariableDisplay.Location = new System.Drawing.Point(6, 286);
+            this.ProtectedVariableDisplay.Name = "ProtectedVariableDisplay";
+            this.ProtectedVariableDisplay.Size = new System.Drawing.Size(157, 108);
+            this.ProtectedVariableDisplay.TabIndex = 30;
+            // 
+            // PublicVariableDisplay
+            // 
+            this.PublicVariableDisplay.FormattingEnabled = true;
+            this.PublicVariableDisplay.Location = new System.Drawing.Point(6, 159);
+            this.PublicVariableDisplay.Name = "PublicVariableDisplay";
+            this.PublicVariableDisplay.Size = new System.Drawing.Size(157, 108);
+            this.PublicVariableDisplay.TabIndex = 31;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 16);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(43, 13);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Private:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 143);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(39, 13);
+            this.label13.TabIndex = 33;
+            this.label13.Text = "Public:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 270);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(56, 13);
+            this.label14.TabIndex = 34;
+            this.label14.Text = "Protected:";
+            // 
+            // Variables
+            // 
+            this.Variables.Controls.Add(this.label12);
+            this.Variables.Controls.Add(this.ProtectedVariableDisplay);
+            this.Variables.Controls.Add(this.label14);
+            this.Variables.Controls.Add(this.PrivateVariableDisplay);
+            this.Variables.Controls.Add(this.PublicVariableDisplay);
+            this.Variables.Controls.Add(this.label13);
+            this.Variables.Location = new System.Drawing.Point(162, 193);
+            this.Variables.Name = "Variables";
+            this.Variables.Size = new System.Drawing.Size(173, 400);
+            this.Variables.TabIndex = 35;
+            this.Variables.TabStop = false;
+            this.Variables.Text = "Variables";
+            // 
+            // Methods
+            // 
+            this.Methods.Controls.Add(this.label15);
+            this.Methods.Controls.Add(this.ProtectedMethodDisplay);
+            this.Methods.Controls.Add(this.label16);
+            this.Methods.Controls.Add(this.PrivateMethodDisplay);
+            this.Methods.Controls.Add(this.PublicMethodDisplay);
+            this.Methods.Controls.Add(this.label17);
+            this.Methods.Location = new System.Drawing.Point(361, 193);
+            this.Methods.Name = "Methods";
+            this.Methods.Size = new System.Drawing.Size(173, 400);
+            this.Methods.TabIndex = 36;
+            this.Methods.TabStop = false;
+            this.Methods.Text = "Methods";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(43, 13);
+            this.label15.TabIndex = 32;
+            this.label15.Text = "Private:";
+            // 
+            // ProtectedMethodDisplay
+            // 
+            this.ProtectedMethodDisplay.FormattingEnabled = true;
+            this.ProtectedMethodDisplay.Location = new System.Drawing.Point(6, 286);
+            this.ProtectedMethodDisplay.Name = "ProtectedMethodDisplay";
+            this.ProtectedMethodDisplay.Size = new System.Drawing.Size(157, 108);
+            this.ProtectedMethodDisplay.TabIndex = 30;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 270);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 13);
+            this.label16.TabIndex = 34;
+            this.label16.Text = "Protected:";
+            // 
+            // PrivateMethodDisplay
+            // 
+            this.PrivateMethodDisplay.FormattingEnabled = true;
+            this.PrivateMethodDisplay.Location = new System.Drawing.Point(6, 32);
+            this.PrivateMethodDisplay.Name = "PrivateMethodDisplay";
+            this.PrivateMethodDisplay.Size = new System.Drawing.Size(157, 108);
+            this.PrivateMethodDisplay.TabIndex = 29;
+            // 
+            // PublicMethodDisplay
+            // 
+            this.PublicMethodDisplay.FormattingEnabled = true;
+            this.PublicMethodDisplay.Location = new System.Drawing.Point(6, 159);
+            this.PublicMethodDisplay.Name = "PublicMethodDisplay";
+            this.PublicMethodDisplay.Size = new System.Drawing.Size(157, 108);
+            this.PublicMethodDisplay.TabIndex = 31;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 143);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(39, 13);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Public:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 626);
+            this.ClientSize = new System.Drawing.Size(568, 641);
+            this.Controls.Add(this.Methods);
+            this.Controls.Add(this.Variables);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.DescriptionBox);
             this.Controls.Add(this.groupBox1);
@@ -474,6 +625,10 @@
             this.AddMethodBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.Variables.ResumeLayout(false);
+            this.Variables.PerformLayout();
+            this.Methods.ResumeLayout(false);
+            this.Methods.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -519,6 +674,20 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RichTextBox DescriptionBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox PrivateVariableDisplay;
+        private System.Windows.Forms.ListBox ProtectedVariableDisplay;
+        private System.Windows.Forms.ListBox PublicVariableDisplay;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.GroupBox Variables;
+        private System.Windows.Forms.GroupBox Methods;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ListBox ProtectedMethodDisplay;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ListBox PrivateMethodDisplay;
+        private System.Windows.Forms.ListBox PublicMethodDisplay;
+        private System.Windows.Forms.Label label17;
 
     }
 }
