@@ -108,9 +108,9 @@ void OGLRenderer::PrepareRendering()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	glColor3f(0.0,1.0,0.0);
-
 	glPushMatrix();
+
+	glColor3f(0.0,1.0,0.0);
 }
 
 void OGLRenderer::FinishRendering()
