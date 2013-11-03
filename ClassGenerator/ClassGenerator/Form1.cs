@@ -88,7 +88,10 @@ namespace ClassGenerator
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
-            // create class
+            if (GenerateHeader() && GenerateCpp())
+                MessageBox.Show("Class Generated");
+            else
+                MessageBox.Show("Generation failed");
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -252,7 +255,180 @@ namespace ClassGenerator
 
         private void PrivateVariableDisplay_KeyDown(object sender, KeyEventArgs e)
         {
-            MessageBox.Show("KeyPressed");
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (PrivateVariableList.Capacity > 0)
+                {
+                    String selected = PrivateVariableDisplay.SelectedItem.ToString();
+
+                    PrivateVariableList.Remove(selected);
+
+                    PrivateVariableDisplay.DataSource = new List<string>(PrivateVariableList);
+                }
+            }
+        }
+
+        private void PublicVariableDisplay_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (PublicVariableList.Capacity > 0)
+                {
+                    String selected = PublicVariableDisplay.SelectedItem.ToString();
+
+                    PublicVariableList.Remove(selected);
+
+                    PublicVariableDisplay.DataSource = new List<string>(PublicVariableList);
+                }
+            }
+        }
+
+        private void ProtectedVariableDisplay_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (ProtectedVariableList.Capacity > 0)
+                {
+                    String selected = ProtectedVariableDisplay.SelectedItem.ToString();
+
+                    ProtectedVariableList.Remove(selected);
+
+                    ProtectedVariableDisplay.DataSource = new List<string>(ProtectedVariableList);
+                }
+            }
+        }
+
+        private void PrivateMethodDisplay_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (PrivateMethodList.Capacity > 0)
+                {
+                    String selected = PrivateMethodDisplay.SelectedItem.ToString();
+
+                    PrivateMethodList.Remove(selected);
+
+                    PrivateMethodDisplay.DataSource = new List<string>(PrivateMethodList);
+                }
+            }
+        }
+
+        private void PublicMethodDisplay_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (PublicMethodList.Count > 0)
+                {
+                    String selected = PublicMethodDisplay.SelectedItem.ToString();
+
+                    PublicMethodList.Remove(selected);
+
+                    PublicMethodDisplay.DataSource = new List<string>(PublicMethodList);
+                }
+            }
+        }
+
+        private void ProtectedMethodDisplay_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if(ProtectedMethodList.Count > 0)
+                {
+                    String selected = ProtectedMethodDisplay.SelectedItem.ToString();
+
+                    ProtectedMethodList.Remove(selected);
+
+                    ProtectedMethodDisplay.DataSource = new List<string>(ProtectedMethodList);
+                }
+            }
+        }
+
+        private bool GenerateHeader()
+        {
+            List<string> buff = new List<string>();
+
+            try
+            {
+                StreamReader reader = new StreamReader("HTemplate.txt");
+
+                do
+                {
+                    buff.Add(reader.ReadLine());
+                }
+                while (reader.Peek() != -1);
+
+                reader.Close();
+            }
+            catch
+            {
+                return false;
+            }
+
+            for(int i = 0; i < buff.Count; ++i)
+            {
+                buff[i].Replace("CLASSNAME", ClassNameTextBox.Text.ToString());
+
+                if (buff[i] == "private:")
+                {
+                    for (int j = 0; j < PrivateVariableList.Count; ++j)
+                    {
+                        buff.Insert(i + 3, "\t" + PrivateVariableList[j].ToString());
+                        ++i;
+                    }
+
+                    for (int j = 0; j < PrivateMethodList.Count; ++j)
+                    {
+                        buff.Insert(i + 3, "\t" + PrivateMethodList[j].ToString());
+                        ++i;
+                    }
+                }
+
+                if (buff[i] == "protected:")
+                {
+                    for (int j = 0; j < ProtectedVariableList.Count; ++j)
+                    {
+                        buff.Insert(i + 3, "\t" + ProtectedVariableList[j].ToString());
+                        ++i;
+                    }
+
+                    for (int j = 0; j < ProtectedMethodList.Count; ++j)
+                    {
+                        buff.Insert(i + 3, "\t" + ProtectedMethodList[j].ToString());
+                        ++i;
+                    }
+                }
+
+                if (buff[i] == "public:")
+                {
+                    for (int j = 0; j < PublicVariableList.Count; ++j)
+                    {
+                        buff.Insert(i + 3, "\t" + PublicVariableList[j].ToString());
+                        ++i;
+                    }
+
+                    for (int j = 0; j < PublicMethodList.Count; ++j)
+                    {
+                        buff.Insert(i + 3, "\t" + PublicMethodList[j].ToString());
+                        ++i;
+                    }
+                }
+            }
+
+            StreamWriter output = new StreamWriter(ClassNameTextBox.Text.ToString() + ".h");
+
+            for (int i = 0; i < buff.Count; ++i)
+            {
+                output.WriteLine(buff[i]);
+            }
+   
+            output.Close();
+
+            return true;
+        }
+
+        private bool GenerateCpp()
+        {
+            return true;
         }
     }
 }

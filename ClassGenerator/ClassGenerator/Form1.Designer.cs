@@ -476,6 +476,7 @@
             this.ProtectedVariableDisplay.Name = "ProtectedVariableDisplay";
             this.ProtectedVariableDisplay.Size = new System.Drawing.Size(157, 108);
             this.ProtectedVariableDisplay.TabIndex = 30;
+            this.ProtectedVariableDisplay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProtectedVariableDisplay_KeyDown);
             // 
             // PublicVariableDisplay
             // 
@@ -484,6 +485,7 @@
             this.PublicVariableDisplay.Name = "PublicVariableDisplay";
             this.PublicVariableDisplay.Size = new System.Drawing.Size(157, 108);
             this.PublicVariableDisplay.TabIndex = 31;
+            this.PublicVariableDisplay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PublicVariableDisplay_KeyDown);
             // 
             // label12
             // 
@@ -558,6 +560,7 @@
             this.ProtectedMethodDisplay.Name = "ProtectedMethodDisplay";
             this.ProtectedMethodDisplay.Size = new System.Drawing.Size(157, 108);
             this.ProtectedMethodDisplay.TabIndex = 30;
+            this.ProtectedMethodDisplay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProtectedMethodDisplay_KeyDown);
             // 
             // label16
             // 
@@ -575,6 +578,7 @@
             this.PrivateMethodDisplay.Name = "PrivateMethodDisplay";
             this.PrivateMethodDisplay.Size = new System.Drawing.Size(157, 108);
             this.PrivateMethodDisplay.TabIndex = 29;
+            this.PrivateMethodDisplay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PrivateMethodDisplay_KeyDown);
             // 
             // PublicMethodDisplay
             // 
@@ -583,6 +587,7 @@
             this.PublicMethodDisplay.Name = "PublicMethodDisplay";
             this.PublicMethodDisplay.Size = new System.Drawing.Size(157, 108);
             this.PublicMethodDisplay.TabIndex = 31;
+            this.PublicMethodDisplay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PublicMethodDisplay_KeyDown);
             // 
             // label17
             // 
