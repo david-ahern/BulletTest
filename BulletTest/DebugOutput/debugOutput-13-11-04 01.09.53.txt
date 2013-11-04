@@ -1,4 +1,4 @@
-starting debug output
+starting debug output at 01.09.53
 	GameEngine::Init
 	OGLRenderer::constructor
 	OGLRenderer::SetDisplayFunc
@@ -50,14 +50,9 @@ starting debug output
 					ObjectManager::GetGameObject::bulletWorld
 					ObjectManager::GetGameObject::ballShape
 				BulletRigidBody::ballBody::Create ended. time elapsed: 0
-				GameObject::testClass::base constructor
-				MyClass::testClass::constructor
-				ObjectManager::AddObject::testClass
-				MyClass::testClass::Create
 			FileInput::DefaultInit ended. time elapsed: 0
 		FileInput::LoadObjects ended. time elapsed: 0
 		ObjectManager::InitObjects started
-			GameObject::testClass::default Init
 			GameObject::ballBody::default Init
 			GameObject::ballShape::default Init
 			GameObject::floorBody::default Init
@@ -69,4 +64,4 @@ starting debug output
 	Game::game::Init ended. time elapsed: 0
 	GameEngine::AddScreen
 	GameEngine::SwitchTo::game
-disabling output
+disabling output at 01.09.53

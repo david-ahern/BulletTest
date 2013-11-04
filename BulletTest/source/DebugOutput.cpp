@@ -13,12 +13,32 @@ bool allowOutput;
 
 bool openDebugOutputFile()
 {
-	outputFile.open("DebugOutput\\debugOutput.txt",ios::trunc);
+	//get current date and time
+	time_t now = time(0);
+    struct tm tstruct;
+    char buf[20];
+    tstruct = *localtime(&now);
+	strftime(buf, strlen(buf), "%y-%m-%d %H.%M.%S\0", &tstruct);
+
+	//create filename for output using current date and time
+	char buffer[100] = { "\0" };
+	strcat_s(buffer, "DebugOutput\\debugOutput-");
+	strcat_s(buffer, buf);
+	strcat_s(buffer, ".txt");
+	
+	char* filename = buffer;
+
+	//open the output file
+	outputFile.open(filename, ios::trunc);
 
 	if (!outputFile.is_open())
 		return false;
 
-	outputFile << "starting debug output\n";
+	strftime(buf, strlen(buf), "%H.%M.%S", &tstruct);
+
+	char* time = buf;
+
+	outputFile << "starting debug output at " << time << "\n";
 
 	timer = new Timer("debugOutputTimer");
 
@@ -47,13 +67,32 @@ void closeDebugOutputFile()
 
 void enableDebugOutput()
 {
-	outputFile << "enabling output\n";
+	//get current date and time
+	time_t now = time(0);
+    struct tm tstruct;
+    char buf[20];
+    tstruct = *localtime(&now);
+	strftime(buf, strlen(buf), "%H.%M.%S\0", &tstruct);
+
+	char* time = buf;
+
+	outputFile << "enabling output at " << time << "\n";
+
 	allowOutput = true;
 }
 
 void disableDebugOutput()
 {
-	outputFile << "disabling output\n";
+	//get current date and time
+	time_t now = time(0);
+    struct tm tstruct;
+    char buf[20];
+    tstruct = *localtime(&now);
+	strftime(buf, strlen(buf), "%H.%M.%S\0", &tstruct);
+
+	char* time = buf;
+
+	outputFile << "disabling output at " << time << "\n";
 	allowOutput = false;
 }
 

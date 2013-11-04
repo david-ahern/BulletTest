@@ -14,6 +14,7 @@
 #include <list>
 #include <stdlib.h>
 #include <math.h>
+#include <ctime>
 
 #include "glut.h"
 

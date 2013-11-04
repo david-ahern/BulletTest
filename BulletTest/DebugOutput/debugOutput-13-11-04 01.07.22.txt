@@ -1,0 +1,67 @@
+starting debug output at 01.07.22
+	GameEngine::Init
+	OGLRenderer::constructor
+	OGLRenderer::SetDisplayFunc
+	OGLRenderer::SetIdleFunc
+	OGLRenderer::Init
+	Screen::game::base constructor
+	Game::game::constructor
+	Game::game::Init started
+		ObjectManager::constructor
+		FileInput::constructor
+		FileInput::LoadObjects started
+			FileInput::OpenFile
+			Error loading file::USE DEFAULT INIT.txt
+			FileInput::DefaultInit started
+				GameObject::gameTimer::base constructor
+				Timer::gameTimer::constructor
+				ObjectManager::AddObject::gameTimer
+				GameObject::bulletWorld::base constructor
+				BulletWorld::bulletWorld::constructor
+				BulletWorld::bulletWorld::Create started
+					BulletWorld::bulletWorld::SetGravity
+				BulletWorld::bulletWorld::Create ended. time elapsed: 0
+				ObjectManager::AddObject::bulletWorld
+				GameObject::camera::base constructor
+				Camera::camera::constructor
+				GameObject::camera::default Create
+				ObjectManager::AddObject::camera
+				GameObject::floorShape::base constructor
+				BulletCollisionShape::floorShape::constructor
+				BulletCollisionShape::floorShape::Create started
+				BulletCollisionShape::floorShape::Create ended. time elapsed: 0
+				ObjectManager::AddObject::floorShape
+				GameObject::floorBody::base constructor
+				BulletRigidBody::floorBody::constructor
+				ObjectManager::AddObject::floorBody
+				BulletRigidBody::floorBody::Create started
+					ObjectManager::GetGameObject::bulletWorld
+					ObjectManager::GetGameObject::floorShape
+				BulletRigidBody::floorBody::Create ended. time elapsed: 0
+				GameObject::ballShape::base constructor
+				BulletCollisionShape::ballShape::constructor
+				BulletCollisionShape::ballShape::Create started
+				BulletCollisionShape::ballShape::Create ended. time elapsed: 0
+				ObjectManager::AddObject::ballShape
+				GameObject::ballBody::base constructor
+				BulletRigidBody::ballBody::constructor
+				ObjectManager::AddObject::ballBody
+				BulletRigidBody::ballBody::Create started
+					ObjectManager::GetGameObject::bulletWorld
+					ObjectManager::GetGameObject::ballShape
+				BulletRigidBody::ballBody::Create ended. time elapsed: 0
+			FileInput::DefaultInit ended. time elapsed: 0
+		FileInput::LoadObjects ended. time elapsed: 0
+		ObjectManager::InitObjects started
+			GameObject::ballBody::default Init
+			GameObject::ballShape::default Init
+			GameObject::floorBody::default Init
+			GameObject::floorShape::default Init
+			GameObject::camera::default Init
+			GameObject::bulletWorld::default Init
+			Timer::gameTimer::Init
+		ObjectManager::InitObjects ended. time elapsed: 0
+	Game::game::Init ended. time elapsed: 0
+	GameEngine::AddScreen
+	GameEngine::SwitchTo::game
+disabling output
