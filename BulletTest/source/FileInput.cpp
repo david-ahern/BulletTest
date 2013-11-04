@@ -120,5 +120,9 @@ void FileInput::DefaultInit()
 	mObjectManager->AddObject(ballBody);
 	ballBody->Create("ballShape", btVector3(0, 10, 0), 1);
 
+	MyClass* testClass = new MyClass("testClass");
+	mObjectManager->AddObject(testClass);
+	testClass->Create();
+
 	debugPrint(debugClassName, "DefaultInit", END);
 }

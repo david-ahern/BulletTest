@@ -21,3 +21,4 @@ Screen
 Timer
 Vector3
 Vector4
+MyClass

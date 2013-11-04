@@ -85,6 +85,7 @@ namespace ClassGenerator
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Make sure the visual studio project is saved before continuing");
             if (GenerateHeader() &&
                 GenerateCpp() &&
                 AddToProjectIncludes() &&
@@ -571,7 +572,7 @@ namespace ClassGenerator
                 // add the function to the buffer
                 buff.Add(function);
                 buff.Add("{");
-                buff.Add("\tdebugPrint(debugClassName, \"" + functionData[1].ToString() + "\");");
+                buff.Add("\tdebugPrint(debugClassName, mObjectName, \"" + functionData[1].ToString() + "\");");
                 buff.Add("}");
                 buff.Add("");
             }
@@ -604,7 +605,7 @@ namespace ClassGenerator
                 // add the function to the buffer
                 buff.Add(function);
                 buff.Add("{");
-                buff.Add("\tdebugPrint(debugClassName, \"" + functionData[1].ToString() + "\");");
+                buff.Add("\tdebugPrint(debugClassName, mObjectName, \"" + functionData[1].ToString() + "\");");
                 buff.Add("}");
                 buff.Add("");
             }
@@ -637,7 +638,7 @@ namespace ClassGenerator
                 // add the function to the buffer
                 buff.Add(function);
                 buff.Add("{");
-                buff.Add("\tdebugPrint(debugClassName, \"" + functionData[1].ToString() + "\");");
+                buff.Add("\tdebugPrint(debugClassName, mObjectName, \"" + functionData[1].ToString() + "\");");
                 buff.Add("}");
                 buff.Add("");
             }
@@ -661,7 +662,7 @@ namespace ClassGenerator
                 // add the function to the buffer
                 buff.Add(function);
                 buff.Add("{");
-                buff.Add("\tdebugPrint(debugClassName, \"Create\");");
+                buff.Add("\tdebugPrint(debugClassName, mObjectName, \"Create\");");
                 buff.Add("}");
                 buff.Add("");
             }
@@ -685,7 +686,7 @@ namespace ClassGenerator
                 // add the function to the buffer
                 buff.Add(function);
                 buff.Add("{");
-                buff.Add("\tdebugPrint(debugClassName, \"Init\");");
+                buff.Add("\tdebugPrint(debugClassName, mObjectName, \"Init\");");
                 buff.Add("}");
                 buff.Add("");
             }
@@ -710,7 +711,7 @@ namespace ClassGenerator
                 // add the function to the buffer
                 buff.Add(function);
                 buff.Add("{");
-                buff.Add("\tdebugPrint(debugClassName, \"Update\");");
+                buff.Add("\tdebugPrint(debugClassName, mObjectName, \"Update\");");
                 buff.Add("}");
                 buff.Add("");
             }
@@ -735,7 +736,7 @@ namespace ClassGenerator
                 // add the function to the buffer
                 buff.Add(function);
                 buff.Add("{");
-                buff.Add("\tdebugPrint(debugClassName, \"Render\");");
+                buff.Add("\tdebugPrint(debugClassName, mObjectName, \"Render\");");
                 buff.Add("}");
                 buff.Add("");
             }
@@ -852,7 +853,7 @@ namespace ClassGenerator
 
                 if ((count == numItemGroupsH) && (!hAdded))
                 {
-                    buff.Insert(i, "    <ClCompile Include=\"source\\" + ClassNameTextBox.Text.ToString() + ".h\" />");
+                    buff.Insert(i, "    <ClInclude Include=\"source\\" + ClassNameTextBox.Text.ToString() + ".h\" />");
                     ++i;
                     hAdded = true;
                 }
@@ -918,11 +919,11 @@ namespace ClassGenerator
 
                 if ((count == numItemGroupsH) && (!hAdded))
                 {
-                    buff.Insert(i, "    <ClCompile Include=\"source\\" + ClassNameTextBox.Text.ToString() + ".h\">");
+                    buff.Insert(i, "    <ClInclude Include=\"source\\" + ClassNameTextBox.Text.ToString() + ".h\">");
                     ++i;
                     buff.Insert(i, "      <Filter>Header Files</Filter>");
                     ++i;
-                    buff.Insert(i, "    </ClCompile/>");
+                    buff.Insert(i, "    </ClInclude>");
                     ++i;
                     hAdded = true;
                 }

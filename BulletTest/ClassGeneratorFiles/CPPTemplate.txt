@@ -9,12 +9,12 @@ CLASSNAME::CLASSNAME()
 
 CLASSNAME::CLASSNAME(char* name)
 {
-	debugPrint(debugClassName, "constructor");
+	debugPrint(debugClassName, mObjectName, "constructor");
 }
 
 CLASSNAME::~CLASSNAME()
 {
-	debugPrint(debugClassName, "destructor");
+	debugPrint(debugClassName, mObjectName, "destructor");
 }
 
 RETURNTYPE CLASSNAME::FUNCTIONNAME(ARGS1ARGS2ARGS3ARGS4ARGS5ARGS6)
