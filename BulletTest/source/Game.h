@@ -24,6 +24,10 @@ public:
 	void	Init();
 	void	Update();
 	void	Render();
+
+	void	KeyboardRead(unsigned char key, int x, int y);
+	void	MouseRead(int button, int state, int x, int y);
+	void	MouseTrack(int x, int y);
 };
 
 #endif

@@ -28,8 +28,6 @@ public:
 	
 	static		GameEngine* GetInstance();
 
-	void		Init(int argc, char** argv);
-
 	Screen*		GetCurrentScree() { return mCurrentScreen; }
 
 	void		AddScreen(Screen* screen);
@@ -39,9 +37,17 @@ public:
 
 	static void	UpdateCallback();
 	static void RenderCallback();
+	static void KeyboardReadCallback(unsigned char key, int x, int y);
+	static void MouseReadCallback(int button, int state, int x, int y);
+	static void MouseTrackCallback(int x, int y);
 
+	void		Init(int argc, char** argv);
 	void		Update();
 	void		Render();
+
+	void		KeyboardRead(unsigned char key, int x, int y);
+	void		MouseRead(int button, int state, int x, int y);
+	void		MouseTrack(int x, int y);
 
 	void		MainLoop();
 };

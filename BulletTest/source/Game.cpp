@@ -74,3 +74,63 @@ void Game::Render()
 
 	debugPrint(debugClassName, mScreenName, "Render", END);
 }
+
+void Game::KeyboardRead(unsigned char key, int x, int y)
+{
+	if (!mIsInputActive)
+		return;
+
+	debugPrint(debugClassName, mScreenName, "KeyboardRead");
+
+}
+
+void Game::MouseRead(int button, int state, int x, int y)
+{
+	if (!mIsInputActive)
+		return;
+
+	debugPrint(debugClassName, mScreenName, "MouseRead");
+
+	if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+    {
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseRot = true;
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseX = x;
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseY = y;
+	}
+	if(button == GLUT_LEFT_BUTTON && state == GLUT_UP)
+    {
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseRot = false;
+    }
+	if(button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
+	{
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseMove = true;
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseX = x;
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseY = y;
+	}
+	if(button == GLUT_RIGHT_BUTTON && state == GLUT_UP)
+	{
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseMove = false;
+	}
+}
+
+void Game::MouseTrack(int x, int y)
+{
+	if (!mIsInputActive)
+		return;
+
+	debugPrint(debugClassName, mScreenName, "MouseTrack");
+
+	if (((Camera*)mObjectManager->GetGameObject("camera"))->mouseRot)
+	{
+		((Camera*)mObjectManager->GetGameObject("camera"))->rotateY(((float)x - ((Camera*)mObjectManager->GetGameObject("camera"))->mouseX)/4);
+		((Camera*)mObjectManager->GetGameObject("camera"))->rotateX(((float)y - ((Camera*)mObjectManager->GetGameObject("camera"))->mouseY)/4);
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseX = x;
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseY = y;
+	}
+	else if (((Camera*)mObjectManager->GetGameObject("camera"))->mouseMove)
+	{
+		((Camera*)mObjectManager->GetGameObject("camera"))->updatePos(((float)x - ((Camera*)mObjectManager->GetGameObject("camera"))->mouseX)/4,((float)y - ((Camera*)mObjectManager->GetGameObject("camera"))->mouseY)/4);
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseX = x;
+		((Camera*)mObjectManager->GetGameObject("camera"))->mouseY = y;
+	}
+}
