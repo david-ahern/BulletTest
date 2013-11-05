@@ -25,17 +25,6 @@
 
 #include "DebugOutput.h"
 
-// object types
-
-#define NO_OBJECT_TYPE 0
-#define ALL_OBJECTS 1
-#define BULLETWORLD_OBJECT 2
-#define BULLETCOLLISIONSHAPE_OBJECT 3
-#define BULLETRIGIDBODY_OBJECT 4
-#define CAMERA_OBJECT 5
-#define LIGHT_OBJECT 6
-#define TIMER_OBJECT 7
-
 
 #define	SCREEN_WIDTH 1200
 #define SCREEN_HEIGHT 700
@@ -53,5 +42,9 @@ const GLfloat p1ambient[]= { 1.0f, 0.0f, 0.0f, 0.0f };
 const GLfloat mat_diffuse[]= { 0.5f, 0.5f, 0.5f, 0.0f };
 const GLfloat mat_specular[]= { 0.7f, 0.7f, 0.7f, 0.0f };
 const GLfloat mat_shininess[]= { 1.0f };
+
+const float PI = 3.141592654;
+const float DEG_TO_RAD = PI/180;
+const float RAD_TO_DEG = 180/PI;
 
 #endif

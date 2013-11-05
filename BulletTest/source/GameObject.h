@@ -25,10 +25,13 @@ public:
 	GameObject(char* name, int ObjectType);
 	~GameObject();
 
-	int				GetObjectType()		{ return OBJECT_TYPE; }
-	char*			GetObjectName()		{ return mObjectName; }
-	Vector3			GetPosition()		{ return mPosition; }
-	Matrix44		GetTransform()		{ return mTransform; }
+	int				GetObjectType()					{ return OBJECT_TYPE; }
+	char*			GetObjectName()					{ return mObjectName; }
+	Vector3			GetPosition()					{ return mPosition; }
+	Matrix44		GetTransform()					{ return mTransform; }
+
+	void			SetPosition(Vector3 position)	{ mPosition = position; }
+	void			ApplyPosition(Vector3 position) { mPosition += position; }
 
 	void			SetObjectManager(ObjectManager* objManager) { mObjectManager = objManager; }
 

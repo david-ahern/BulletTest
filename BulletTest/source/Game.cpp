@@ -82,21 +82,43 @@ void Game::KeyboardRead(unsigned char key, int x, int y)
 
 	debugPrint(debugClassName, mScreenName, "KeyboardRead");
 
-	CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
+	//move forward
+	if (key == 'w')
+	{
+		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
+		
+		float xrotrad = camera->GetRotation().x * DEG_TO_RAD;
+		float yrotrad = camera->GetRotation().y * DEG_TO_RAD;
 
-	if (key == 'q')
-		camera->ApplyRotation(Vector3(camera->GetRotationSpeed(), 0, 0));
-	
-	if (key == 'z')
-		camera->ApplyRotation(Vector3(-camera->GetRotationSpeed(), 0, 0));
-	
-	if (key == 'e')
-		camera->ApplyRotation(Vector3(0, -camera->GetRotationSpeed(), 0));
+		camera->ApplyPosition(Vector3(sin(yrotrad), -sin(xrotrad), -cos(yrotrad)));
+	}
+	// move back
+	if (key == 's')
+	{
+		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
+		
+		float xrotrad = camera->GetRotation().x * DEG_TO_RAD;
+		float yrotrad = camera->GetRotation().y * DEG_TO_RAD;
 
-	if (key == 'r')
-		camera->ApplyRotation(Vector3(0, camera->GetRotationSpeed(), 0));
+		camera->ApplyPosition(Vector3(-sin(yrotrad), sin(xrotrad), cos(yrotrad)));
+	}
+	// move right
+	if (key == 'd')
+	{
+		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
 
-	
+		float yrotrad = camera->GetRotation().y * DEG_TO_RAD;
+
+		camera->ApplyPosition(Vector3(cos(yrotrad), 0, sin(yrotrad)));
+	}
+	if (key == 'a')
+	{
+		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
+
+		float yrotrad = camera->GetRotation().y * DEG_TO_RAD;
+
+		camera->ApplyPosition(Vector3(-cos(yrotrad), 0, -sin(yrotrad)));
+	}
 }
 
 void Game::MouseRead(int button, int state, int x, int y)
@@ -136,10 +158,8 @@ void Game::MouseTrack(int x, int y)
 {
 	if (!mIsInputActive)
 		return;
-
-	enableDebugOutput();
+	
 	debugPrint(debugClassName, mScreenName, "MouseTrack");
-	disableDebugOutput();
 
 	if ((mMouseClicked) && (mMouseButton == GLUT_LEFT_BUTTON))
 	{
