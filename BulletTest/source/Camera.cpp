@@ -35,13 +35,13 @@ void Camera::create()
 
 void Camera::place()
 {
-	gluLookAt(0, 0, -1, 0, 0, 0, 0, -1, 0);
+	gluLookAt(0, 10, -10, 0, 0, 0, 0, 1, 0);
 
-	glTranslatef(0, 0, zoom);
-	glTranslatef(transX, 0, 0);
-	glRotatef(rotX+180, 1, 0, 0);
-	glRotatef(rotY, 0, 1, 0);
-	glTranslatef(0, 0, transZ);
+	//glTranslatef(0, 0, zoom);
+	//glTranslatef(transX, 0, 0);
+	//glRotatef(rotX+180, 1, 0, 0);
+	//glRotatef(rotY, 0, 1, 0);
+	//glTranslatef(0, 0, transZ);
 }
 
 void Camera::rotateX(float rot)

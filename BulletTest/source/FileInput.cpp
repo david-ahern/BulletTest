@@ -90,8 +90,8 @@ void FileInput::DefaultInit()
 	bulletWorld->Create(Vector3(0, -10, 0));
 	mObjectManager->AddObject(bulletWorld);
 
-	Camera* camera = new Camera("camera");
-	camera->Create();
+	CameraFree* camera = new CameraFree("camera");
+	camera->Create(Vector3(0, 10, 10), Vector3(0, 0, 0), 1, 1);
 	mObjectManager->AddObject(camera);
 
 	/*Light* light = new Light("light");
@@ -119,6 +119,16 @@ void FileInput::DefaultInit()
 	BulletRigidBody* ballBody = new BulletRigidBody("ballBody");
 	mObjectManager->AddObject(ballBody);
 	ballBody->Create("ballShape", btVector3(0, 10, 0), 1);
+
+	BulletCollisionShape* boxShape = new BulletCollisionShape("boxShape");
+	Dimensions dBox;
+	dBox.sHalfExtents = btVector3(1, 1, 1);
+	boxShape->Create(BOX_SHAPE_PROXYTYPE, dBox);
+	mObjectManager->AddObject(boxShape);
+
+	BulletRigidBody* boxBody = new BulletRigidBody("boxBody");
+	mObjectManager->AddObject(boxBody);
+	boxBody->Create("boxShape", btVector3(2, 10, 0), 1);
 
 	debugPrint(debugClassName, "DefaultInit", END);
 }

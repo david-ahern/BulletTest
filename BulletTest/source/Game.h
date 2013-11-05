@@ -16,6 +16,10 @@ private:
 
 	float	mDeltaTime;
 
+	bool	mMouseClicked;
+	int		mMouseButton;
+	Vector3	mMousePosition;
+
 public:
 	Game();
 	Game(char* screenName);

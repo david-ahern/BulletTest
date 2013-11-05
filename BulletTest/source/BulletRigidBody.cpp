@@ -69,7 +69,7 @@ void BulletRigidBody::Render()
 {
 	debugPrint(debugClassName, mObjectName, "Render", BEGIN);
 
-	GLfloat c[] = { 1, 1, 1, 0.0f };
+	GLfloat c[] = { 0, 1, 0, 0.0f };
 	glMaterialfv (GL_FRONT, GL_AMBIENT, c);
 
 	GLUquadricObj* quad = gluNewQuadric();

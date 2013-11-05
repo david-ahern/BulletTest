@@ -25,15 +25,17 @@ public:
 	GameObject(char* name, int ObjectType);
 	~GameObject();
 
+	int				GetObjectType()		{ return OBJECT_TYPE; }
+	char*			GetObjectName()		{ return mObjectName; }
+	Vector3			GetPosition()		{ return mPosition; }
+	Matrix44		GetTransform()		{ return mTransform; }
+
+	void			SetObjectManager(ObjectManager* objManager) { mObjectManager = objManager; }
+
 	virtual void	Create();
 	virtual void	Init();
 	virtual void	Update(float deltaTime);
 	virtual void	Render();
-
-	int				GetObjectType()		{ return OBJECT_TYPE; }
-	char*			GetObjectName()		{ return mObjectName; }
-
-	void			SetObjectManager(ObjectManager* objManager) { mObjectManager = objManager; }
 };
 
 #endif

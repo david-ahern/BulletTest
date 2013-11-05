@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -102,6 +102,8 @@
     <ClCompile Include="source\Timer.cpp" />
     <ClCompile Include="source\Vector3.cpp" />
     <ClCompile Include="source\Vector4.cpp" />
+    <ClCompile Include="source\CameraThirdPerson.cpp" />
+    <ClCompile Include="source\CameraFree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\BulletCollisionShape.h" />
@@ -123,6 +125,8 @@
     <ClInclude Include="source\Timer.h" />
     <ClInclude Include="source\Vector3.h" />
     <ClInclude Include="source\Vector4.h" />
+    <ClInclude Include="source\CameraThirdPerson.h" />
+    <ClInclude Include="source\CameraFree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -37,8 +37,8 @@
 #define TIMER_OBJECT 7
 
 
-#define	SCREEN_WIDTH 500
-#define SCREEN_HEIGHT 500
+#define	SCREEN_WIDTH 1200
+#define SCREEN_HEIGHT 700
 
 static char*	WINDOW_NAME = "Game";
 

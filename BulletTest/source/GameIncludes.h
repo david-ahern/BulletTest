@@ -18,6 +18,8 @@
 #include "BulletCollisionShape.h"
 #include "BulletWorld.h"
 #include "BulletRigidBody.h"
+#include "CameraThirdPerson.h"
+#include "CameraFree.h"
 //insertNewIncludeHere
 
 //ObjectTypes
@@ -29,6 +31,8 @@
 #define CAMERA_OBJECT 5
 #define LIGHT_OBJECT 6
 #define TIMER_OBJECT 7
+#define CAMERATHIRDPERSON_OBJECT 8
+#define CAMERAFREE_OBJECT 9
 //insertNewObjectTypeHere
 
 #endif
