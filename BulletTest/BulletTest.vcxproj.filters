@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -13,135 +13,162 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{61a899e0-cbe4-4724-a71f-ae4d16edd25e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects">
+      <UniqueIdentifier>{3a4720ba-8410-48e1-9167-8aa296a7fd77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Screens">
+      <UniqueIdentifier>{cfc716d1-b9e7-4ccf-a3f0-70fb5a746d2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Screens">
+      <UniqueIdentifier>{f01665a2-3cdb-4c9e-832b-4ec4a0e91656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{29956da8-f4be-4e75-b95c-93d3a36d6941}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Math">
+      <UniqueIdentifier>{a7a7941f-4d1f-44d6-a21f-2e1c2e33b4ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Includes">
+      <UniqueIdentifier>{377a876a-b036-4051-b0ab-7b40ae1c5e01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Others">
+      <UniqueIdentifier>{a7dad100-e478-4ce0-9989-c81215373fa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Others">
+      <UniqueIdentifier>{b47a1e09-82d9-4c8b-9036-0bad110c9305}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\BulletCollisionShape.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\BulletRigidBody.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\BulletTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\BulletWorld.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Light.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Matrix44.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ObjectManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\OGLRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Timer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Vector3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Vector4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\FileInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Screen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\DebugOutput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\GameEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\CameraThirdPerson.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="source\BulletCollisionShape.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BulletRigidBody.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BulletWorld.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Camera.cpp">
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="source\CameraFree.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CameraThirdPerson.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Light.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Timer.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GameObject.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Screen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Vector4.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Vector3.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Matrix44.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="source\OGLRenderer.cpp">
+      <Filter>Source Files\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FileInput.cpp">
+      <Filter>Source Files\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ObjectManager.cpp">
+      <Filter>Source Files\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DebugOutput.cpp">
+      <Filter>Source Files\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\BulletCollisionShape.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Vector4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Vector3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Timer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\OGLRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ObjectManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Matrix44.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Light.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GameIncludes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\BulletWorld.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="source\BulletRigidBody.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="source\FileInput.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="source\BulletWorld.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Camera.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CameraFree.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CameraThirdPerson.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Light.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Timer.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Game.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GameObject.h">
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="source\Screen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="source\DebugOutput.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="source\Vector4.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Vector3.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Matrix44.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GameIncludes.h">
+      <Filter>Header Files\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="source\stdafx.h">
+      <Filter>Header Files\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FileInput.h">
+      <Filter>Header Files\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ObjectManager.h">
+      <Filter>Header Files\Others</Filter>
     </ClInclude>
     <ClInclude Include="source\GameEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\CameraThirdPerson.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="source\DebugOutput.h">
+      <Filter>Header Files\Others</Filter>
     </ClInclude>
-    <ClInclude Include="source\CameraFree.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="source\OGLRenderer.h">
+      <Filter>Header Files\Others</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

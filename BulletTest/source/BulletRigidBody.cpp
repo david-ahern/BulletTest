@@ -19,7 +19,7 @@ BulletRigidBody::~BulletRigidBody()
 	mBody->~btRigidBody();
 }
 
-void BulletRigidBody::Create(char* collisionShapeName, Vector3 position, float mass)
+void BulletRigidBody::Create(char* collisionShapeName, Vector3 position, Vector3 rotation, float mass)
 {
 	debugPrint(debugClassName, mObjectName, "Create", BEGIN);
 
@@ -30,6 +30,7 @@ void BulletRigidBody::Create(char* collisionShapeName, Vector3 position, float m
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(position.x, position.y, position.z));
+	startTransform.setRotation(btQuaternion(rotation.x, rotation.y, rotation.z));
 
 	btVector3 inertia(0,0,0);
 	if (mass != 0)
@@ -61,6 +62,8 @@ void BulletRigidBody::Update(float deltaTime)
 	btVector3 pos = mBody->getCenterOfMassPosition();
 
 	mPosition = Vector3(pos.x(), pos.y(), pos.z());
+
+	btQuaternion rot = mBody->getOrientation();
 
 	debugPrint(debugClassName, mObjectName, "Update", END);
 }

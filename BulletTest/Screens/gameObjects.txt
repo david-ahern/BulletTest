@@ -9,7 +9,7 @@
 <end>
 
 <BulletWorld>bulletWorld
-	<Gravity>0 -10 0
+	<Gravity>0 -20 0
 <end>
 
 <BulletCollisionShape>floorShape
@@ -41,6 +41,7 @@
 
 <BulletRigidBody>boxBody
 	<CollisionShape>boxShape
-	<Position>2 10 0
+	<Position>3 10 0
+	<Rotation>0 0 20
 	<Mass>1
 <end>

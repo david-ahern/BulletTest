@@ -41,6 +41,7 @@ bool FileInput::LoadObjects(char* _fileName)
 		debugPrint("Error loading file", mFileName);
 		DefaultInit();
 	}
+	CloseFile();
 
 	debugPrint(debugClassName, "LoadObjects", END);
 
@@ -92,7 +93,7 @@ void FileInput::DefaultInit()
 
 	BulletRigidBody* floorBody = new BulletRigidBody("floorBody");
 	mObjectManager->AddObject(floorBody);
-	floorBody->Create("floorShape", Vector3(0,0,0), 0);
+	floorBody->Create("floorShape", Vector3(0,0,0), Vector3(0,0,0), 0);
 
 	// create a body
 	BulletCollisionShape* ballShape = new BulletCollisionShape("ballShape");
@@ -103,7 +104,7 @@ void FileInput::DefaultInit()
 
 	BulletRigidBody* ballBody = new BulletRigidBody("ballBody");
 	mObjectManager->AddObject(ballBody);
-	ballBody->Create("ballShape", Vector3(0, 10, 0), 1);
+	ballBody->Create("ballShape", Vector3(0, 10, 0), Vector3(0,0,0), 1);
 
 	BulletCollisionShape* boxShape = new BulletCollisionShape("boxShape");
 	Dimensions dBox;
@@ -113,7 +114,7 @@ void FileInput::DefaultInit()
 
 	BulletRigidBody* boxBody = new BulletRigidBody("boxBody");
 	mObjectManager->AddObject(boxBody);
-	boxBody->Create("boxShape", Vector3(2, 10, 0), 1);
+	boxBody->Create("boxShape", Vector3(2, 10, 0), Vector3(0,0,0), 1);
 
 	debugPrint(debugClassName, "DefaultInit", END);
 }
@@ -345,6 +346,7 @@ void FileInput::LoadBulletRigidBody()
 {
 	char* nCollisionShapeName;
 	Vector3 nPosition = Vector3(0, 0, 0);
+	Vector3 nRotation = Vector3(0, 0, 0);
 	float nMass = 1;
 
 	getline(mFile, buff, '\n');
@@ -365,7 +367,7 @@ void FileInput::LoadBulletRigidBody()
 			nCollisionShapeName = new char[buff.length() + 1];
 			strcpy(nCollisionShapeName, buff.c_str());
 		}
-		if (buff == "Position")
+		else if (buff == "Position")
 		{
 			// get x pos
 			getline(mFile, buff, ' ');
@@ -379,12 +381,26 @@ void FileInput::LoadBulletRigidBody()
 			getline(mFile, buff, '\n');
 			nPosition.z = atoi(buff.c_str());
 		}
-		if (buff == "Mass")
+		else if (buff == "Rotation")
+		{
+			// get x pos
+			getline(mFile, buff, ' ');
+			nRotation.x = atoi(buff.c_str());
+
+			//get y pos
+			getline(mFile, buff, ' ');
+			nRotation.y = atoi(buff.c_str());
+
+			// get z rot
+			getline(mFile, buff, '\n');
+			nRotation.z = atoi(buff.c_str());
+		}
+		else if (buff == "Mass")
 		{
 			getline(mFile, buff, '\n');
 			nMass = atoi(buff.c_str());
 		}
 	}
 	mObjectManager->AddObject(nBulletRigidBody);
-	nBulletRigidBody->Create(nCollisionShapeName, nPosition, nMass);
+	nBulletRigidBody->Create(nCollisionShapeName, nPosition, nRotation, nMass);
 }

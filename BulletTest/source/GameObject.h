@@ -15,6 +15,7 @@ protected:
 	char*			mObjectName;
 
 	Vector3			mPosition;
+	Vector3			mRotation;
 	// use this for rendering
 	Matrix44		mTransform;
 
