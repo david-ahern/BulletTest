@@ -1,4 +1,4 @@
-<Timer>timer
+<Timer>gameTimer
 <end>
 
 <CameraFree>camera
@@ -9,10 +9,10 @@
 <end>
 
 <BulletWorld>bulletWorld
-	<Gravity>0 10 0
+	<Gravity>0 -10 0
 <end>
 
-<BulletCollisionShape04:24 05/11/2013>floorShape
+<BulletCollisionShape>floorShape
 	<Shape>PLANE
 	<UpAxis>0 1 0
 <end>
@@ -41,8 +41,6 @@
 
 <BulletRigidBody>boxBody
 	<CollisionShape>boxShape
-	<Position>-2 10 0
+	<Position>2 10 0
 	<Mass>1
 <end>
-
-<endFile>

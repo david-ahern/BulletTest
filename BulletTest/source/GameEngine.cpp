@@ -162,9 +162,7 @@ void GameEngine::Render()
 
 void GameEngine::KeyboardRead(unsigned char key, int x, int y)
 {
-	enableDebugOutput();
 	debugPrint(debugClassName, "KeyboardRead");
-	disableDebugOutput();
 
 	for (std::list<Screen*>::iterator sc = mScreenList.begin(); sc != mScreenList.end(); ++sc)
 		(*sc)->KeyboardRead(key, x, y);

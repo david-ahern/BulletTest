@@ -134,7 +134,19 @@ GameObject* ObjectManager::GetGameObject(char* gameObjectName)
 
 	for (int i = mObjectList.size()-1; i >= 0; --i)
 	{
-		if (mObjectList.at(i)->GetObjectName() == gameObjectName)
+		if (strcmp(mObjectList.at(i)->GetObjectName(), gameObjectName) == 0)
+			return mObjectList.at(i);
+	}
+	return 0;
+}
+
+GameObject* ObjectManager::GetGameObject(int OBJ_TYPE)
+{
+	debugPrint(debugClassName, "GetGameObject", OBJ_TYPE);
+
+	for (int i = mObjectList.size()-1; i >= 0; --i)
+	{
+		if (mObjectList.at(i)->GetObjectType() == OBJ_TYPE)
 			return mObjectList.at(i);
 	}
 	return 0;

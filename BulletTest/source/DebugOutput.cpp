@@ -177,7 +177,7 @@ void debugPrint(char* className, char* functionName, int beginEnd)
 							outputFile << "::";
 							outputFile << functionName;
 							outputFile << " ended. time elapsed: ";
-							outputFile << (timer->GetTime() - activeFunctions.at(i).startTime)/1000;
+							outputFile << (timer->GetTime() - activeFunctions.at(i).startTime);
 							outputFile << "\n";
 						}
 						activeFunctions.erase(activeFunctions.begin() + i);
@@ -232,7 +232,7 @@ void debugPrint(char* className, char* objectName, char* functionName, int begin
 								outputFile << "::";
 								outputFile << functionName;
 								outputFile << " ended. time elapsed: ";
-								outputFile << (timer->GetTime() - activeFunctions.at(i).startTime)/1000;
+								outputFile << (timer->GetTime() - activeFunctions.at(i).startTime);
 								outputFile << "\n";
 							}
 							activeFunctions.erase(activeFunctions.begin() + i);
@@ -288,7 +288,7 @@ void debugPrint(char* className, char* functionName, int objectType, int beginEn
 								outputFile << ": ";
 								outputFile << objectType;
 								outputFile << " ended. time elapsed: ";
-								outputFile << (timer->GetTime() - activeFunctions.at(i).startTime)/1000;
+								outputFile << (timer->GetTime() - activeFunctions.at(i).startTime);
 								outputFile << "\n";
 							}
 							activeFunctions.erase(activeFunctions.begin() + i);
@@ -351,7 +351,7 @@ void debugPrint(char* className, char* objectName, char* functionName, int objec
 									outputFile << ": ";
 									outputFile << objectType;
 									outputFile << " ended. time elapsed: ";
-									outputFile << (timer->GetTime() - activeFunctions.at(i).startTime)/1000;
+									outputFile << (timer->GetTime() - activeFunctions.at(i).startTime);
 									outputFile << "\n";
 								}
 								activeFunctions.erase(activeFunctions.begin() + i);

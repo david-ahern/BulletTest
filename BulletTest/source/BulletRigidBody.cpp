@@ -23,7 +23,7 @@ void BulletRigidBody::Create(char* collisionShapeName, Vector3 position, float m
 {
 	debugPrint(debugClassName, mObjectName, "Create", BEGIN);
 
-	mBtWorld = ((BulletWorld*)mObjectManager->GetGameObject("bulletWorld"))->GetWorld();
+	mBtWorld = ((BulletWorld*)mObjectManager->GetGameObject(BULLETWORLD_OBJECT))->GetWorld();
 
 	mShape = ((BulletCollisionShape*)mObjectManager->GetGameObject(collisionShapeName))->GetCollisionShape();
 

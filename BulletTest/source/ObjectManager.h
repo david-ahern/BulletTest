@@ -39,6 +39,7 @@ public:
 
 	// returns game object
 	GameObject*		GetGameObject(char* gameObjectName);
+	GameObject*		GetGameObject(int objectType);
 };
 
 #endif

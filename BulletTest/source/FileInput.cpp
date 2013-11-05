@@ -305,13 +305,13 @@ void FileInput::LoadBulletCollisionShape()
 		else if(buff == "UpAxis")
 		{
 			getline(mFile, buff, ' ');
-			nDimensions.sUpAxis.setX(atoi(buff.c_str()));
+			nDimensions.sUpAxis.x = atoi(buff.c_str());
 
 			getline(mFile, buff, ' ');
-			nDimensions.sUpAxis.setY(atoi(buff.c_str()));
+			nDimensions.sUpAxis.y = atoi(buff.c_str());
 
 			getline(mFile, buff, '\n');
-			nDimensions.sUpAxis.setZ(atoi(buff.c_str()));
+			nDimensions.sUpAxis.z = atoi(buff.c_str());
 		}
 		else if(buff == "Radius")
 		{
@@ -321,13 +321,13 @@ void FileInput::LoadBulletCollisionShape()
 		else if(buff == "HalfExtents")
 		{
 			getline(mFile, buff, ' ');
-			nDimensions.sHalfExtents.setX(atoi(buff.c_str()));
+			nDimensions.sHalfExtents.x = atoi(buff.c_str());
 
 			getline(mFile, buff, ' ');
-			nDimensions.sHalfExtents.setY(atoi(buff.c_str()));
+			nDimensions.sHalfExtents.y = atoi(buff.c_str());
 
 			getline(mFile, buff, '\n');
-			nDimensions.sHalfExtents.setZ(atoi(buff.c_str()));
+			nDimensions.sHalfExtents.z = atoi(buff.c_str());
 		}
 		else if(buff == "Height")
 		{

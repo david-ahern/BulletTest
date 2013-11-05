@@ -13,10 +13,10 @@ class GameObject;
 
 typedef struct Dimensions
 {
-	btVector3	sHalfExtents;
+	Vector3		sHalfExtents;
 	float		sRadius;
 	float		sHeight;
-	btVector3	sUpAxis;
+	Vector3		sUpAxis;
 }dimensions;
 
 class BulletCollisionShape : public GameObject

@@ -28,10 +28,14 @@ void BulletCollisionShape::Create(BroadphaseNativeTypes shapeType, Dimensions& d
 		mShape = new btSphereShape(dimensions.sRadius);
 		break;
 	case BOX_SHAPE_PROXYTYPE:
-		mShape = new btBoxShape(dimensions.sHalfExtents);
+		mShape = new btBoxShape(btVector3(dimensions.sHalfExtents.x,
+											dimensions.sHalfExtents.y,
+											dimensions.sHalfExtents.z));
 		break;
 	case CYLINDER_SHAPE_PROXYTYPE:
-		mShape = new btCylinderShape(dimensions.sHalfExtents);
+		mShape = new btCylinderShape(btVector3(dimensions.sHalfExtents.x,
+											dimensions.sHalfExtents.y,
+											dimensions.sHalfExtents.z));
 		break;
 	case CAPSULE_SHAPE_PROXYTYPE:
 		mShape = new btCapsuleShape(dimensions.sRadius, dimensions.sHeight);
@@ -40,7 +44,10 @@ void BulletCollisionShape::Create(BroadphaseNativeTypes shapeType, Dimensions& d
 		mShape = new btConeShape(dimensions.sRadius, dimensions.sHeight);
 		break;
 	case STATIC_PLANE_PROXYTYPE:
-		mShape = new btStaticPlaneShape(dimensions.sUpAxis, btScalar(0));
+		mShape = new btStaticPlaneShape(btVector3(dimensions.sUpAxis.x, 
+													dimensions.sUpAxis.y, 
+													dimensions.sUpAxis.z), 
+										btScalar(0));
 		break;
 	default:
 		printf("invalide shapetype: cannot create collision shape\n");
