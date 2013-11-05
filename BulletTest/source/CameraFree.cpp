@@ -42,16 +42,6 @@ void CameraFree::Create(Vector3 position, Vector3 rotation, float movementSpeed,
 	mRotationSpeed = rotationSpeed;
 }
 
-void CameraFree::Init()
-{
-	debugPrint(debugClassName, mObjectName, "Init");
-}
-
-void CameraFree::Update(float deltaTime)
-{
-	debugPrint(debugClassName, mObjectName, "Update");
-}
-
 void CameraFree::Render()
 {
 	debugPrint(debugClassName, mObjectName, "Render");

@@ -35,8 +35,6 @@ public:
 	void		ApplyRotation(Vector3 rotation);
 
 	void		Create(Vector3 position, Vector3 rotation, float movementSpeed, float rotationSpeed);
-	void		Init();
-	void		Update(float deltaTime);
 	void		Render();
 };
 

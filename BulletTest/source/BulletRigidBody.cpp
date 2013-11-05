@@ -19,7 +19,7 @@ BulletRigidBody::~BulletRigidBody()
 	mBody->~btRigidBody();
 }
 
-void BulletRigidBody::Create(char* collisionShapeName, btVector3& position, float mass)
+void BulletRigidBody::Create(char* collisionShapeName, Vector3 position, float mass)
 {
 	debugPrint(debugClassName, mObjectName, "Create", BEGIN);
 
@@ -29,7 +29,7 @@ void BulletRigidBody::Create(char* collisionShapeName, btVector3& position, floa
 
 	btTransform startTransform;
 	startTransform.setIdentity();
-	startTransform.setOrigin(position);
+	startTransform.setOrigin(btVector3(position.x, position.y, position.z));
 
 	btVector3 inertia(0,0,0);
 	if (mass != 0)

@@ -22,7 +22,7 @@ public:
 	BulletRigidBody(char* objectName);
 	~BulletRigidBody();
 
-	void	Create(char* collisionShapeName, btVector3& position, float mass);
+	void	Create(char* collisionShapeName, Vector3 position, float mass);
 	void	Update(float deltaTime);
 	void	Render();
 

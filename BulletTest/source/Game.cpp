@@ -30,7 +30,7 @@ void Game::Init()
 
 	mFileInput = new FileInput(mObjectManager);
 
-	mFileInput->LoadObjects("USE DEFAULT INIT.txt");
+	mFileInput->LoadObjects("Screens\\gameObjects.txt");
 
 	mObjectManager->InitObjects();
 

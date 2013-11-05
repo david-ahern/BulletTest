@@ -26,11 +26,20 @@ private:
 
 	ifstream	mFile;
 
+	string		buff;
+
 	ObjectManager* mObjectManager;
 
 	bool		OpenFile();
+	void		CloseFile();
 	void		LoadNextObject();
 	void		DefaultInit();
+	
+	void		LoadTimer();
+	void		LoadCameraFree();
+	void		LoadBulletWorld();
+	void		LoadBulletCollisionShape();
+	void		LoadBulletRigidBody();
 
 public:
 	FileInput();

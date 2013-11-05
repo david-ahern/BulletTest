@@ -1,16 +1,48 @@
-<object><Timer>timer
+<Timer>timer
 <end>
 
-<object Camera>camera
+<CameraFree>camera
+	<Position>0 10 10
+	<Rotation>0 0 0
+	<MovementSpeed>1
+	<RotationSpeed>1
 <end>
 
-<object><BulletWorld>bulletWorld
-{
-	<vector3><gravity>0 10 0
-}
+<BulletWorld>bulletWorld
+	<Gravity>0 10 0
 <end>
 
-<object Light>light
-{
-	<vector3 position>
-}
+<BulletCollisionShape04:24 05/11/2013>floorShape
+	<Shape>PLANE
+	<UpAxis>0 1 0
+<end>
+
+<BulletCollisionShape>ballShape
+	<Shape>SPHERE
+	<Radius>1
+<end>
+
+<BulletCollisionShape>boxShape
+	<Shape>BOX
+	<HalfExtents>1 1 1
+<end>
+
+<BulletRigidBody>floorBody
+	<CollisionShape>floorShape
+	<Position>0 0 0
+	<Mass>0
+<end>
+
+<BulletRigidBody>ballBody
+	<CollisionShape>ballShape
+	<Position>0 10 0
+	<Mass>1
+<end>
+
+<BulletRigidBody>boxBody
+	<CollisionShape>boxShape
+	<Position>-2 10 0
+	<Mass>1
+<end>
+
+<endFile>
