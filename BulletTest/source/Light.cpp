@@ -2,6 +2,8 @@
 
 char* Light::debugClassName = "Light";
 
+int Light::sNumberOfLights = 0;
+
 Light::Light()
 {
 	debugPrint(debugClassName, "empty constructor");
@@ -21,6 +23,37 @@ void Light::Create(Vector3 _position, Vector4 _ambient, Vector4 _diffuse, Vector
 {
 	debugPrint(debugClassName, mObjectName, "Create", BEGIN);
 
+	switch(sNumberOfLights)
+	{
+	case 0:
+		mLightNum = GL_LIGHT0;
+		break;
+	case 1:
+		mLightNum = GL_LIGHT1;
+		break;
+	case 2:
+		mLightNum = GL_LIGHT2;
+		break;
+	case 3:
+		mLightNum = GL_LIGHT3;
+		break;
+	case 4:
+		mLightNum = GL_LIGHT4;
+		break;
+	case 5:
+		mLightNum = GL_LIGHT5;
+		break;
+	case 6:
+		mLightNum = GL_LIGHT6;
+		break;
+	case 7:
+		mLightNum = GL_LIGHT7;
+		break;
+	default:
+		debugPrint(debugClassName, mObjectName, "Create", END);
+		return;
+	}
+
 	mPosition = _position;
 	mAmbient = _ambient;
 	mDiffuse = _diffuse;
@@ -36,7 +69,6 @@ void Light::Create(Vector3 _position, Vector4 _ambient, Vector4 _diffuse, Vector
 	glLightfv (GL_LIGHT1, GL_DIFFUSE, GLspecular);
 	glLightfv (GL_LIGHT1, GL_POSITION, GLposition);    
 	glEnable (GL_LIGHT1);
-	glEnable (GL_LIGHTING);
 
 	debugPrint(debugClassName, mObjectName, "Create", END);
 }

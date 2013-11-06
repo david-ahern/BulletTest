@@ -30,7 +30,7 @@ void Game::Init()
 
 	mFileInput = new FileInput(mObjectManager);
 
-	mFileInput->LoadObjects("Screens\\gameObjects.txt");
+	mFileInput->LoadObjects("Screens\\Game.txt");
 
 	mObjectManager->InitObjects();
 

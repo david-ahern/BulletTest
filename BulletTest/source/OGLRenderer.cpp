@@ -72,12 +72,12 @@ void OGLRenderer::Init()
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 
 	//Lights initialization and activation
-	glLightfv (GL_LIGHT1, GL_AMBIENT, light_ambient);
-	glLightfv (GL_LIGHT1, GL_DIFFUSE, light_diffuse);
-	glLightfv (GL_LIGHT1, GL_DIFFUSE, light_specular);
-	glLightfv (GL_LIGHT1, GL_POSITION, light_position);    
-	glEnable (GL_LIGHT1);
-	glEnable (GL_LIGHTING);
+	//glLightfv (GL_LIGHT1, GL_AMBIENT, light_ambient);
+	//glLightfv (GL_LIGHT1, GL_DIFFUSE, light_diffuse);
+	//glLightfv (GL_LIGHT1, GL_DIFFUSE, light_specular);
+	//glLightfv (GL_LIGHT1, GL_POSITION, light_position);    
+	//glEnable (GL_LIGHT1);
+	//glEnable (GL_LIGHTING);
 
 	////* Materials initialization and activation*/
 	glMaterialfv (GL_FRONT, GL_DIFFUSE, mat_diffuse);
@@ -94,6 +94,8 @@ void OGLRenderer::Init()
 
 	glutInitDisplayMode(GLUT_DEPTH);
  	glEnable(GL_DEPTH_TEST);
+
+	glEnable (GL_LIGHTING);
 }
 
 void OGLRenderer::PrepareRendering()

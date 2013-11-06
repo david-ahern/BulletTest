@@ -21,6 +21,7 @@ class FileInput
 {
 private:
 	static char* debugClassName;
+	static char* defaultFilePath;
 
 	char*		mFileName;
 
@@ -40,6 +41,7 @@ private:
 	void		LoadBulletWorld();
 	void		LoadBulletCollisionShape();
 	void		LoadBulletRigidBody();
+	void		LoadLight();
 
 public:
 	FileInput();

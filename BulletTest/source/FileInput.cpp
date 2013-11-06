@@ -3,6 +3,7 @@
 #include <fstream>
 
 char* FileInput::debugClassName = "FileInput";
+char* FileInput::defaultFilePath = "Screens\\";
 
 FileInput::FileInput()
 {
@@ -14,6 +15,8 @@ FileInput::FileInput(ObjectManager* objManager)
 	debugPrint(debugClassName, "constructor");
 
 	mObjectManager = objManager;
+
+	mFileName = "";
 }
 
 FileInput::~FileInput()
@@ -29,6 +32,7 @@ bool FileInput::LoadObjects(char* _fileName)
 	debugPrint(debugClassName, "LoadObjects", BEGIN);
 
 	mFileName = _fileName;
+
 	if (OpenFile())
 	{
 		while (!mFile.eof())
@@ -147,6 +151,10 @@ void FileInput::LoadNextObject()
 	{
 		LoadBulletRigidBody();
 	}
+	else if(buff == "Light")
+	{
+		LoadLight();
+	}
 
 	debugPrint(debugClassName, "LoadNextObject", END);
 }
@@ -193,39 +201,39 @@ void FileInput::LoadCameraFree()
 		{
 			// get x pos
 			getline(mFile, buff, ' ');
-			nPosition.x = atoi(buff.c_str());
+			nPosition.x = atof(buff.c_str());
 
 			//get y pos
 			getline(mFile, buff, ' ');
-			nPosition.y = atoi(buff.c_str());
+			nPosition.y = atof(buff.c_str());
 
 			// get z rot
 			getline(mFile, buff, '\n');
-			nPosition.z = atoi(buff.c_str());
+			nPosition.z = atof(buff.c_str());
 		}
 		else if (buff == "Rotation")
 		{
 			// get x rot
 			getline(mFile, buff, ' ');
-			nRotation.x = atoi(buff.c_str());
+			nRotation.x = atof(buff.c_str());
 
 			//get y rot
 			getline(mFile, buff, ' ');
-			nRotation.y = atoi(buff.c_str());
+			nRotation.y = atof(buff.c_str());
 
 			// get z rot
 			getline(mFile, buff, '\n');
-			nRotation.z = atoi(buff.c_str());
+			nRotation.z = atof(buff.c_str());
 		}
 		else if (buff == "MovementSpeed")
 		{
 			getline(mFile, buff, '\n');
 
-			nMovementSpeed = atoi(buff.c_str());
+			nMovementSpeed = atof(buff.c_str());
 		}
 		else if (buff == "RotationSpeed")
 		{
-			nRotationSpeed = atoi(buff.c_str());
+			nRotationSpeed = atof(buff.c_str());
 		}
 	}
 
@@ -253,15 +261,15 @@ void FileInput::LoadBulletWorld()
 		{
 			// get x grav
 			getline(mFile, buff, ' ');
-			nGravity.x = atoi(buff.c_str());
+			nGravity.x = atof(buff.c_str());
 
 			//get y grav
 			getline(mFile, buff, ' ');
-			nGravity.y = atoi(buff.c_str());
+			nGravity.y = atof(buff.c_str());
 
 			// get z grav
 			getline(mFile, buff, '\n');
-			nGravity.z = atoi(buff.c_str());
+			nGravity.z = atof(buff.c_str());
 		}
 	}
 
@@ -306,35 +314,35 @@ void FileInput::LoadBulletCollisionShape()
 		else if(buff == "UpAxis")
 		{
 			getline(mFile, buff, ' ');
-			nDimensions.sUpAxis.x = atoi(buff.c_str());
+			nDimensions.sUpAxis.x = atof(buff.c_str());
 
 			getline(mFile, buff, ' ');
-			nDimensions.sUpAxis.y = atoi(buff.c_str());
+			nDimensions.sUpAxis.y = atof(buff.c_str());
 
 			getline(mFile, buff, '\n');
-			nDimensions.sUpAxis.z = atoi(buff.c_str());
+			nDimensions.sUpAxis.z = atof(buff.c_str());
 		}
 		else if(buff == "Radius")
 		{
 			getline(mFile, buff, '\n');
-			nDimensions.sRadius = atoi(buff.c_str());
+			nDimensions.sRadius = atof(buff.c_str());
 		}
 		else if(buff == "HalfExtents")
 		{
 			getline(mFile, buff, ' ');
-			nDimensions.sHalfExtents.x = atoi(buff.c_str());
+			nDimensions.sHalfExtents.x = atof(buff.c_str());
 
 			getline(mFile, buff, ' ');
-			nDimensions.sHalfExtents.y = atoi(buff.c_str());
+			nDimensions.sHalfExtents.y = atof(buff.c_str());
 
 			getline(mFile, buff, '\n');
-			nDimensions.sHalfExtents.z = atoi(buff.c_str());
+			nDimensions.sHalfExtents.z = atof(buff.c_str());
 		}
 		else if(buff == "Height")
 		{
 			getline(mFile, buff, '\n');
 
-			nDimensions.sHeight = atoi(buff.c_str());
+			nDimensions.sHeight = atof(buff.c_str());
 		}
 	}
 
@@ -371,36 +379,126 @@ void FileInput::LoadBulletRigidBody()
 		{
 			// get x pos
 			getline(mFile, buff, ' ');
-			nPosition.x = atoi(buff.c_str());
+			nPosition.x = atof(buff.c_str());
 
 			//get y pos
 			getline(mFile, buff, ' ');
-			nPosition.y = atoi(buff.c_str());
+			nPosition.y = atof(buff.c_str());
 
 			// get z rot
 			getline(mFile, buff, '\n');
-			nPosition.z = atoi(buff.c_str());
+			nPosition.z = atof(buff.c_str());
 		}
 		else if (buff == "Rotation")
 		{
 			// get x pos
 			getline(mFile, buff, ' ');
-			nRotation.x = atoi(buff.c_str());
+			nRotation.x = atof(buff.c_str());
 
 			//get y pos
 			getline(mFile, buff, ' ');
-			nRotation.y = atoi(buff.c_str());
+			nRotation.y = atof(buff.c_str());
 
 			// get z rot
 			getline(mFile, buff, '\n');
-			nRotation.z = atoi(buff.c_str());
+			nRotation.z = atof(buff.c_str());
 		}
 		else if (buff == "Mass")
 		{
 			getline(mFile, buff, '\n');
-			nMass = atoi(buff.c_str());
+			nMass = atof(buff.c_str());
 		}
 	}
 	mObjectManager->AddObject(nBulletRigidBody);
 	nBulletRigidBody->Create(nCollisionShapeName, nPosition, nRotation, nMass);
+}
+
+void FileInput::LoadLight()
+{
+	Vector3 nPosition = Vector3(0, 0, 0);
+	Vector4 nAmbient = Vector4(0, 0, 0, 0);
+	Vector4 nDiffuse = Vector4(0, 0, 0, 0);
+	Vector4 nSpecular = Vector4(0, 0, 0, 0);
+	float nMass = 1;
+
+	getline(mFile, buff, '\n');
+
+	char* objectName = new char[buff.length() + 1];
+	strcpy(objectName, buff.c_str());
+
+	Light* nLight = new Light(objectName);
+
+	while (buff != "end")
+	{
+		getline(mFile, buff, '<');
+		getline(mFile, buff, '>');
+
+		if (buff == "Position")
+		{
+			// get x pos
+			getline(mFile, buff, ' ');
+			nPosition.x = atof(buff.c_str());
+
+			//get y pos
+			getline(mFile, buff, ' ');
+			nPosition.y = atof(buff.c_str());
+
+			// get z rot
+			getline(mFile, buff, '\n');
+			nPosition.z = atof(buff.c_str());
+		}
+		else if (buff == "Ambient")
+		{
+			// get x pos
+			getline(mFile, buff, ' ');
+			nAmbient.x = atof(buff.c_str());
+
+			//get y pos
+			getline(mFile, buff, ' ');
+			nAmbient.y = atof(buff.c_str());
+
+			// get z rot
+			getline(mFile, buff, ' ');
+			nAmbient.z = atof(buff.c_str());
+
+			getline(mFile, buff, '\n');
+			nAmbient.w = atof(buff.c_str());
+		}
+		else if (buff == "Diffuse")
+		{
+			// get x pos
+			getline(mFile, buff, ' ');
+			nDiffuse.x = atof(buff.c_str());
+
+			//get y pos
+			getline(mFile, buff, ' ');
+			nDiffuse.y = atof(buff.c_str());
+
+			// get z rot
+			getline(mFile, buff, ' ');
+			nDiffuse.z = atof(buff.c_str());
+
+			getline(mFile, buff, '\n');
+			nDiffuse.w = atof(buff.c_str());
+		}
+		else if (buff == "Specular")
+		{
+			// get x pos
+			getline(mFile, buff, ' ');
+			nSpecular.x = atof(buff.c_str());
+
+			//get y pos
+			getline(mFile, buff, ' ');
+			nSpecular.y = atof(buff.c_str());
+
+			// get z rot
+			getline(mFile, buff, ' ');
+			nSpecular.z = atof(buff.c_str());
+
+			getline(mFile, buff, '\n');
+			nSpecular.w = atof(buff.c_str());
+		}
+	}
+	mObjectManager->AddObject(nLight);
+	nLight->Create(nPosition, nAmbient, nDiffuse, nSpecular);
 }

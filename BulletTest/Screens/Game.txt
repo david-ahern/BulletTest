@@ -3,9 +3,16 @@
 
 <CameraFree>camera
 	<Position>0 10 10
-	<Rotation>0 0 0
+	<Rotation>45 0 0
 	<MovementSpeed>1
 	<RotationSpeed>1
+<end>
+
+<Light>light
+	<Position>10 10 10
+	<Ambient>0.1 0.1 0.1 0.1
+	<Diffuse>0.5 0.5 0.5 0.5
+	<Specular>0.7 0.7 0.7 0.0
 <end>
 
 <BulletWorld>bulletWorld
