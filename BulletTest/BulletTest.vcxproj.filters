@@ -40,6 +40,12 @@
     <Filter Include="Header Files\Others">
       <UniqueIdentifier>{b47a1e09-82d9-4c8b-9036-0bad110c9305}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObjects\PhysicsObjects">
+      <UniqueIdentifier>{991c6f21-82f3-40d7-b2f4-74b29ea20f09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\PhysicsObjects">
+      <UniqueIdentifier>{386c3da0-f4b2-4bce-8aaf-cca5d4216887}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -47,12 +53,6 @@
   <ItemGroup>
     <ClCompile Include="source\GameEngine.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\BulletCollisionShape.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="source\BulletRigidBody.cpp">
-      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="source\BulletWorld.cpp">
       <Filter>Source Files\GameObjects</Filter>
@@ -105,14 +105,35 @@
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\cBox.cpp">
+      <Filter>Source Files\GameObjects\PhysicsObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\cCylinder.cpp">
+      <Filter>Source Files\GameObjects\PhysicsObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\cCapsule.cpp">
+      <Filter>Source Files\GameObjects\PhysicsObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\cCone.cpp">
+      <Filter>Source Files\GameObjects\PhysicsObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\cStaticPlane.cpp">
+      <Filter>Source Files\GameObjects\PhysicsObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\cRigidBody.cpp">
+      <Filter>Source Files\GameObjects\PhysicsObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\iCollisionShape.cpp">
+      <Filter>Source Files\GameObjects\PhysicsObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\cSphere.cpp">
+      <Filter>Source Files\GameObjects\PhysicsObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BulletRigidBody.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\BulletCollisionShape.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="source\BulletRigidBody.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="source\BulletWorld.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
@@ -169,6 +190,33 @@
     </ClInclude>
     <ClInclude Include="source\OGLRenderer.h">
       <Filter>Header Files\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cBox.h">
+      <Filter>Header Files\GameObjects\PhysicsObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cCylinder.h">
+      <Filter>Header Files\GameObjects\PhysicsObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cCapsule.h">
+      <Filter>Header Files\GameObjects\PhysicsObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cCone.h">
+      <Filter>Header Files\GameObjects\PhysicsObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cStaticPlane.h">
+      <Filter>Header Files\GameObjects\PhysicsObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cRigidBody.h">
+      <Filter>Header Files\GameObjects\PhysicsObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\iCollisionShape.h">
+      <Filter>Header Files\GameObjects\PhysicsObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cSphere.h">
+      <Filter>Header Files\GameObjects\PhysicsObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\BulletRigidBody.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

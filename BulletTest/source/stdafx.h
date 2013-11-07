@@ -47,4 +47,6 @@ const float PI = 3.141592654;
 const float DEG_TO_RAD = PI/180;
 const float RAD_TO_DEG = 180/PI;
 
+static GLUquadricObj* quad = gluNewQuadric();
+
 #endif

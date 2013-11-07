@@ -8,11 +8,14 @@ class GameObject;
 class Light: public GameObject
 {
 private:
-	static char* debugClassName;
+	static char*	debugClassName;
+	static int		sNumberOfLights;
 
 	Vector4		mAmbient;
 	Vector4		mDiffuse;
 	Vector4		mSpecular;
+
+	int			mLightNum;
 
 public:
 	Light();

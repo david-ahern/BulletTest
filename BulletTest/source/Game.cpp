@@ -56,7 +56,7 @@ void Game::Update()
 
 	//update bullet world
 	mObjectManager->UpdateObjects(BULLETWORLD_OBJECT, mDeltaTime);
-	mObjectManager->UpdateObjects(BULLETRIGIDBODY_OBJECT, mDeltaTime);
+	mObjectManager->UpdateObjects(CRIGIDBODY_OBJECT, mDeltaTime);
 
 	mObjectManager->UpdateObjects(ALL_OBJECTS, mDeltaTime);
 
@@ -67,12 +67,13 @@ void Game::Render()
 {
 	if(!mIsVisible)
 		return;
-
+	enableDebugOutput();
 	debugPrint(debugClassName, mScreenName, "Render", BEGIN);
 
 	mObjectManager->RenderObjects();
 
 	debugPrint(debugClassName, mScreenName, "Render", END);
+	disableDebugOutput();
 }
 
 void Game::KeyboardRead(unsigned char key, int x, int y)

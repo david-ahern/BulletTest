@@ -34,14 +34,18 @@ private:
 	bool		OpenFile();
 	void		CloseFile();
 	void		LoadNextObject();
-	void		DefaultInit();
 	
 	void		LoadTimer();
 	void		LoadCameraFree();
 	void		LoadBulletWorld();
-	void		LoadBulletCollisionShape();
-	void		LoadBulletRigidBody();
 	void		LoadLight();
+	void		LoadCRigidBody();
+	void		LoadCSphere();
+	void		LoadCBox();
+	void		LoadCCylinder();
+	void		LoadCCapsule();
+	void		LoadCCone();
+	void		LoadCStaticPlane();
 
 public:
 	FileInput();

@@ -84,8 +84,9 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\BulletCollisionShape.cpp" />
-    <ClCompile Include="source\BulletRigidBody.cpp" />
+    <ClCompile Include="source\BulletRigidBody.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\BulletWorld.cpp" />
     <ClCompile Include="source\Camera.cpp" />
@@ -104,10 +105,19 @@
     <ClCompile Include="source\Vector4.cpp" />
     <ClCompile Include="source\CameraThirdPerson.cpp" />
     <ClCompile Include="source\CameraFree.cpp" />
+    <ClCompile Include="source\cSphere.cpp" />
+    <ClCompile Include="source\cBox.cpp" />
+    <ClCompile Include="source\cCylinder.cpp" />
+    <ClCompile Include="source\cCapsule.cpp" />
+    <ClCompile Include="source\cCone.cpp" />
+    <ClCompile Include="source\cStaticPlane.cpp" />
+    <ClCompile Include="source\cRigidBody.cpp" />
+    <ClCompile Include="source\iCollisionShape.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\BulletCollisionShape.h" />
-    <ClInclude Include="source\BulletRigidBody.h" />
+    <ClInclude Include="source\BulletRigidBody.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="source\BulletWorld.h" />
     <ClInclude Include="source\Camera.h" />
     <ClInclude Include="source\DebugOutput.h" />
@@ -127,6 +137,14 @@
     <ClInclude Include="source\Vector4.h" />
     <ClInclude Include="source\CameraThirdPerson.h" />
     <ClInclude Include="source\CameraFree.h" />
+    <ClInclude Include="source\cSphere.h" />
+    <ClInclude Include="source\cBox.h" />
+    <ClInclude Include="source\cCylinder.h" />
+    <ClInclude Include="source\cCapsule.h" />
+    <ClInclude Include="source\cCone.h" />
+    <ClInclude Include="source\cStaticPlane.h" />
+    <ClInclude Include="source\cRigidBody.h" />
+    <ClInclude Include="source\iCollisionShape.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

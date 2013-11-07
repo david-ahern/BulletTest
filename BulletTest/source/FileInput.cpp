@@ -26,32 +26,6 @@ FileInput::~FileInput()
 	delete mFile;
 }
 
-
-bool FileInput::LoadObjects(char* _fileName)
-{
-	debugPrint(debugClassName, "LoadObjects", BEGIN);
-
-	mFileName = _fileName;
-
-	if (OpenFile())
-	{
-		while (!mFile.eof())
-		{
-			LoadNextObject();
-		}
-	}
-	else
-	{
-		debugPrint("Error loading file", mFileName);
-		DefaultInit();
-	}
-	CloseFile();
-
-	debugPrint(debugClassName, "LoadObjects", END);
-
-	return 1;
-}
-
 bool FileInput::OpenFile()
 {
 	debugPrint(debugClassName, "OpenFile");
@@ -69,60 +43,29 @@ void FileInput::CloseFile()
 		mFile.close();
 }
 
-void FileInput::DefaultInit()
+bool FileInput::LoadObjects(char* _fileName)
 {
-	debugPrint(debugClassName, "DefaultInit", BEGIN);
+	debugPrint(debugClassName, "LoadObjects", BEGIN);
 
-	Timer* timer = new Timer("gameTimer");
-	mObjectManager->AddObject(timer);
+	mFileName = _fileName;
 
-	BulletWorld* bulletWorld = new BulletWorld("bulletWorld");
-	bulletWorld->Create(Vector3(0, -10, 0));
-	mObjectManager->AddObject(bulletWorld);
+	if (OpenFile())
+	{
+		while (!mFile.eof())
+		{
+			LoadNextObject();
+		}
+	}
+	else
+	{
+		debugPrint("Error loading file", mFileName);
+	}
+	CloseFile();
 
-	CameraFree* camera = new CameraFree("camera");
-	camera->Create(Vector3(0, 10, 10), Vector3(0, 0, 0), 1, 1);
-	mObjectManager->AddObject(camera);
+	debugPrint(debugClassName, "LoadObjects", END);
 
-	/*Light* light = new Light("light");
-	light->Create(Vector3(10, 10, -10), Vector4(1,1,1,1), Vector4(1,1,1,1), Vector4(1,1,1,1));
-	mObjectManager->AddObject(light);*/
-
-	//create a floor
-	BulletCollisionShape* floorShape = new BulletCollisionShape("floorShape");
-	Dimensions dFloor;
-	dFloor.sUpAxis = btVector3(0, 1, 0);
-	floorShape->Create(STATIC_PLANE_PROXYTYPE, dFloor);
-	mObjectManager->AddObject(floorShape);
-
-	BulletRigidBody* floorBody = new BulletRigidBody("floorBody");
-	mObjectManager->AddObject(floorBody);
-	floorBody->Create("floorShape", Vector3(0,0,0), Vector3(0,0,0), 0);
-
-	// create a body
-	BulletCollisionShape* ballShape = new BulletCollisionShape("ballShape");
-	Dimensions dBall;
-	dBall.sRadius = 1;
-	ballShape->Create(SPHERE_SHAPE_PROXYTYPE, dBall);
-	mObjectManager->AddObject(ballShape);
-
-	BulletRigidBody* ballBody = new BulletRigidBody("ballBody");
-	mObjectManager->AddObject(ballBody);
-	ballBody->Create("ballShape", Vector3(0, 10, 0), Vector3(0,0,0), 1);
-
-	BulletCollisionShape* boxShape = new BulletCollisionShape("boxShape");
-	Dimensions dBox;
-	dBox.sHalfExtents = btVector3(1, 1, 1);
-	boxShape->Create(BOX_SHAPE_PROXYTYPE, dBox);
-	mObjectManager->AddObject(boxShape);
-
-	BulletRigidBody* boxBody = new BulletRigidBody("boxBody");
-	mObjectManager->AddObject(boxBody);
-	boxBody->Create("boxShape", Vector3(2, 10, 0), Vector3(0,0,0), 1);
-
-	debugPrint(debugClassName, "DefaultInit", END);
+	return 1;
 }
-
 
 void FileInput::LoadNextObject()
 {
@@ -139,21 +82,41 @@ void FileInput::LoadNextObject()
 	{
 		LoadCameraFree();
 	}
+	else if(buff == "Light")
+	{
+		LoadLight();
+	}
 	else if(buff == "BulletWorld")
 	{
 		LoadBulletWorld();
 	}
-	else if(buff == "BulletCollisionShape")
+	else if(buff == "cRigidBody")
 	{
-		LoadBulletCollisionShape();
+		LoadCRigidBody();
 	}
-	else if(buff == "BulletRigidBody")
+	else if(buff == "cSphere")
 	{
-		LoadBulletRigidBody();
+		LoadCSphere();
 	}
-	else if(buff == "Light")
+	else if(buff == "cBox")
 	{
-		LoadLight();
+		LoadCBox();
+	}
+	else if(buff == "cCylinder")
+	{
+		LoadCCylinder();
+	}
+	else if(buff == "cCapsule")
+	{
+		LoadCCapsule();
+	}
+	else if(buff == "cCone")
+	{
+		LoadCCone();
+	}
+	else if(buff == "cStaticPlane")
+	{
+		LoadCStaticPlane();
 	}
 
 	debugPrint(debugClassName, "LoadNextObject", END);
@@ -277,142 +240,6 @@ void FileInput::LoadBulletWorld()
 	mObjectManager->AddObject(nBulletWorld);
 }
 
-void FileInput::LoadBulletCollisionShape()
-{
-	BroadphaseNativeTypes nShape = SPHERE_SHAPE_PROXYTYPE;
-	Dimensions nDimensions;
-
-	getline(mFile, buff, '\n');
-
-	char* objectName = new char[buff.length() + 1];
-	strcpy(objectName, buff.c_str());
-
-	BulletCollisionShape* nBulletCollisionShape = new BulletCollisionShape(objectName);
-
-	while (buff != "end")
-	{
-		getline(mFile, buff, '<');
-		getline(mFile, buff, '>');
-
-		if (buff == "Shape")
-		{
-			getline(mFile, buff, '\n');
-
-			if (buff == "PLANE")
-				nShape = STATIC_PLANE_PROXYTYPE;
-			else if(buff == "SPHERE")
-				nShape = SPHERE_SHAPE_PROXYTYPE;
-			else if(buff == "BOX")
-				nShape = BOX_SHAPE_PROXYTYPE;
-			else if(buff == "CAPSULE")
-				nShape = CAPSULE_SHAPE_PROXYTYPE;
-			else if(buff == "CYLINDER")
-				nShape = CYLINDER_SHAPE_PROXYTYPE;
-			else if(buff == "CONE")
-				nShape = CONE_SHAPE_PROXYTYPE;
-		}
-		else if(buff == "UpAxis")
-		{
-			getline(mFile, buff, ' ');
-			nDimensions.sUpAxis.x = atof(buff.c_str());
-
-			getline(mFile, buff, ' ');
-			nDimensions.sUpAxis.y = atof(buff.c_str());
-
-			getline(mFile, buff, '\n');
-			nDimensions.sUpAxis.z = atof(buff.c_str());
-		}
-		else if(buff == "Radius")
-		{
-			getline(mFile, buff, '\n');
-			nDimensions.sRadius = atof(buff.c_str());
-		}
-		else if(buff == "HalfExtents")
-		{
-			getline(mFile, buff, ' ');
-			nDimensions.sHalfExtents.x = atof(buff.c_str());
-
-			getline(mFile, buff, ' ');
-			nDimensions.sHalfExtents.y = atof(buff.c_str());
-
-			getline(mFile, buff, '\n');
-			nDimensions.sHalfExtents.z = atof(buff.c_str());
-		}
-		else if(buff == "Height")
-		{
-			getline(mFile, buff, '\n');
-
-			nDimensions.sHeight = atof(buff.c_str());
-		}
-	}
-
-	nBulletCollisionShape->Create(nShape, nDimensions);
-	mObjectManager->AddObject(nBulletCollisionShape);
-}
-
-void FileInput::LoadBulletRigidBody()
-{
-	char* nCollisionShapeName;
-	Vector3 nPosition = Vector3(0, 0, 0);
-	Vector3 nRotation = Vector3(0, 0, 0);
-	float nMass = 1;
-
-	getline(mFile, buff, '\n');
-
-	char* objectName = new char[buff.length() + 1];
-	strcpy(objectName, buff.c_str());
-
-	BulletRigidBody* nBulletRigidBody = new BulletRigidBody(objectName);
-
-	while (buff != "end")
-	{
-		getline(mFile, buff, '<');
-		getline(mFile, buff, '>');
-
-		if (buff == "CollisionShape")
-		{
-			getline(mFile, buff, '\n');
-			nCollisionShapeName = new char[buff.length() + 1];
-			strcpy(nCollisionShapeName, buff.c_str());
-		}
-		else if (buff == "Position")
-		{
-			// get x pos
-			getline(mFile, buff, ' ');
-			nPosition.x = atof(buff.c_str());
-
-			//get y pos
-			getline(mFile, buff, ' ');
-			nPosition.y = atof(buff.c_str());
-
-			// get z rot
-			getline(mFile, buff, '\n');
-			nPosition.z = atof(buff.c_str());
-		}
-		else if (buff == "Rotation")
-		{
-			// get x pos
-			getline(mFile, buff, ' ');
-			nRotation.x = atof(buff.c_str());
-
-			//get y pos
-			getline(mFile, buff, ' ');
-			nRotation.y = atof(buff.c_str());
-
-			// get z rot
-			getline(mFile, buff, '\n');
-			nRotation.z = atof(buff.c_str());
-		}
-		else if (buff == "Mass")
-		{
-			getline(mFile, buff, '\n');
-			nMass = atof(buff.c_str());
-		}
-	}
-	mObjectManager->AddObject(nBulletRigidBody);
-	nBulletRigidBody->Create(nCollisionShapeName, nPosition, nRotation, nMass);
-}
-
 void FileInput::LoadLight()
 {
 	Vector3 nPosition = Vector3(0, 0, 0);
@@ -501,4 +328,261 @@ void FileInput::LoadLight()
 	}
 	mObjectManager->AddObject(nLight);
 	nLight->Create(nPosition, nAmbient, nDiffuse, nSpecular);
+}
+
+void FileInput::LoadCRigidBody()
+{
+	char* nCollisionShapeName;
+	Vector3 nPosition = Vector3(0, 0, 0);
+	Vector3 nRotation = Vector3(0, 0, 0);
+	float nMass = 1;
+
+	getline(mFile, buff, '\n');
+
+	char* objectName = new char[buff.length() + 1];
+	strcpy(objectName, buff.c_str());
+
+	cRigidBody* nBulletRigidBody = new cRigidBody(objectName);
+
+	while (buff != "end")
+	{
+		getline(mFile, buff, '<');
+		getline(mFile, buff, '>');
+
+		if (buff == "CollisionShape")
+		{
+			getline(mFile, buff, '\n');
+			nCollisionShapeName = new char[buff.length() + 1];
+			strcpy(nCollisionShapeName, buff.c_str());
+		}
+		else if (buff == "Position")
+		{
+			// get x pos
+			getline(mFile, buff, ' ');
+			nPosition.x = atof(buff.c_str());
+
+			//get y pos
+			getline(mFile, buff, ' ');
+			nPosition.y = atof(buff.c_str());
+
+			// get z rot
+			getline(mFile, buff, '\n');
+			nPosition.z = atof(buff.c_str());
+		}
+		else if (buff == "Rotation")
+		{
+			// get x pos
+			getline(mFile, buff, ' ');
+			nRotation.x = atof(buff.c_str());
+
+			//get y pos
+			getline(mFile, buff, ' ');
+			nRotation.y = atof(buff.c_str());
+
+			// get z rot
+			getline(mFile, buff, '\n');
+			nRotation.z = atof(buff.c_str());
+		}
+		else if (buff == "Mass")
+		{
+			getline(mFile, buff, '\n');
+			nMass = atof(buff.c_str());
+		}
+	}
+	mObjectManager->AddObject(nBulletRigidBody);
+	nBulletRigidBody->Create(nCollisionShapeName, nPosition, nRotation, nMass);
+}
+
+void FileInput::LoadCSphere()
+{
+	float radius = 1;
+
+	getline(mFile, buff, '\n');
+
+	char* objectName = new char[buff.length() + 1];
+	strcpy(objectName, buff.c_str());
+
+	cSphere* nCSphere = new cSphere(objectName);
+
+	while (buff != "end")
+	{
+		getline(mFile, buff, '<');
+		getline(mFile, buff, '>');
+
+		if(buff == "Radius")
+		{
+			getline(mFile, buff, '\n');
+			radius = atof(buff.c_str());
+		}
+	}
+
+	nCSphere->Create(radius);
+	mObjectManager->AddObject(nCSphere);
+}
+
+void FileInput::LoadCBox()
+{
+	Vector3 halfExtents = Vector3(1, 1, 1);
+
+	getline(mFile, buff, '\n');
+
+	char* objectName = new char[buff.length() + 1];
+	strcpy(objectName, buff.c_str());
+
+	cBox* nCBox = new cBox(objectName);
+
+	while (buff != "end")
+	{
+		getline(mFile, buff, '<');
+		getline(mFile, buff, '>');
+
+		if(buff == "HalfExtents")
+		{
+			getline(mFile, buff, ' ');
+			halfExtents.x = atof(buff.c_str());
+
+			getline(mFile, buff, ' ');
+			halfExtents.y = atof(buff.c_str());
+
+			getline(mFile, buff, '\n');
+			halfExtents.z = atof(buff.c_str());
+		}
+	}
+
+	nCBox->Create(halfExtents);
+	mObjectManager->AddObject(nCBox);
+}
+
+void FileInput::LoadCCylinder()
+{
+	Vector3 halfExtents = Vector3(1, 1, 1);
+
+	getline(mFile, buff, '\n');
+
+	char* objectName = new char[buff.length() + 1];
+	strcpy(objectName, buff.c_str());
+
+	cCylinder* nCylinder = new cCylinder(objectName);
+
+	while (buff != "end")
+	{
+		getline(mFile, buff, '<');
+		getline(mFile, buff, '>');
+
+		if(buff == "HalfExtents")
+		{
+			getline(mFile, buff, ' ');
+			halfExtents.x = atof(buff.c_str());
+
+			getline(mFile, buff, ' ');
+			halfExtents.y = atof(buff.c_str());
+
+			getline(mFile, buff, '\n');
+			halfExtents.z = atof(buff.c_str());
+		}
+	}
+
+	nCylinder->Create(halfExtents);
+	mObjectManager->AddObject(nCylinder);
+}
+
+void FileInput::LoadCCapsule()
+{
+	float radius = 0;
+	float height = 0;
+
+	getline(mFile, buff, '\n');
+
+	char* objectName = new char[buff.length() + 1];
+	strcpy(objectName, buff.c_str());
+
+	cCapsule* nCCapsule = new cCapsule(objectName);
+
+	while (buff != "end")
+	{
+		getline(mFile, buff, '<');
+		getline(mFile, buff, '>');
+
+		if(buff == "Radius")
+		{
+			getline(mFile, buff, '\n');
+			radius = atof(buff.c_str());
+		}
+		else if(buff == "Height")
+		{
+			getline(mFile, buff, '\n');
+
+			height = atof(buff.c_str());
+		}
+	}
+
+	nCCapsule->Create(radius, height);
+	mObjectManager->AddObject(nCCapsule);
+}
+
+void FileInput::LoadCCone()
+{
+	float radius = 1;
+	float height = 3;
+
+	getline(mFile, buff, '\n');
+
+	char* objectName = new char[buff.length() + 1];
+	strcpy(objectName, buff.c_str());
+
+	cCone* nCCone = new cCone(objectName);
+
+	while (buff != "end")
+	{
+		getline(mFile, buff, '<');
+		getline(mFile, buff, '>');
+
+		if(buff == "Radius")
+		{
+			getline(mFile, buff, '\n');
+			radius = atof(buff.c_str());
+		}
+		else if(buff == "Height")
+		{
+			getline(mFile, buff, '\n');
+
+			height = atof(buff.c_str());
+		}
+	}
+
+	nCCone->Create(radius, height);
+	mObjectManager->AddObject(nCCone);
+}
+
+void FileInput::LoadCStaticPlane()
+{
+	Vector3 upAxis = Vector3(0, 1, 0);
+
+	getline(mFile, buff, '\n');
+
+	char* objectName = new char[buff.length() + 1];
+	strcpy(objectName, buff.c_str());
+
+	cStaticPlane* nCStaticPlane = new cStaticPlane(objectName);
+
+	while (buff != "end")
+	{
+		getline(mFile, buff, '<');
+		getline(mFile, buff, '>');
+
+		if(buff == "UpAxis")
+		{
+			getline(mFile, buff, ' ');
+			upAxis.x = atof(buff.c_str());
+
+			getline(mFile, buff, ' ');
+			upAxis.y = atof(buff.c_str());
+
+			getline(mFile, buff, '\n');
+			upAxis.z = atof(buff.c_str());
+		}
+	}
+
+	nCStaticPlane->Create(upAxis);
+	mObjectManager->AddObject(nCStaticPlane);
 }

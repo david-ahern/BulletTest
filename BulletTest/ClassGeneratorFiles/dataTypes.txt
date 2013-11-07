@@ -24,3 +24,13 @@ Vector4
 MyClass
 CameraThirdPerson
 CameraFree
+cBall
+cBox
+cCylinder
+cCapsule
+cCone
+cStaticPlane
+cRigidBody
+mCollisionShape
+
+iCollisionShape
