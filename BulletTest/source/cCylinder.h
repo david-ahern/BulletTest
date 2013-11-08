@@ -20,7 +20,7 @@ public:
 	~cCylinder();
 
 	void Create(Vector3 halfExtents);
-	void Render();
+	void RenderShape();
 };
 
 #endif

@@ -28,20 +28,20 @@ void cCapsule::Create(float radius, float height)
 	mCollisionShape = new btCapsuleShape(mRadius, mHeight);
 }
 
-void cCapsule::Render()
+void cCapsule::RenderShape()
 {
 	debugPrint(debugClassName, mObjectName, "Render");
 
 	glPushMatrix();
 		glRotatef(90,1,0,0);
-		gluCylinder(quad, mRadius, mRadius, mHeight, 10, 10);
-		glTranslatef(0, 0, mHeight);
+		gluCylinder(quad, mRadius, mRadius, mHeight/2, 10, 10);
+		glTranslatef(0, 0, mHeight/2);
 		glutSolidSphere(mRadius, 10, 10);
 	glPopMatrix();
 	glPushMatrix();
 		glRotatef(90,-1,0,0);
-		gluCylinder(quad, mRadius, mRadius, mHeight, 10, 10);
-		glTranslatef(0, 0, mHeight);
+		gluCylinder(quad, mRadius, mRadius, mHeight/2, 10, 10);
+		glTranslatef(0, 0, mHeight/2);
 		glutSolidSphere(mRadius, 10, 10);
 	glPopMatrix();
 }

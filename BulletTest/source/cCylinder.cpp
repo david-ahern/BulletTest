@@ -29,7 +29,7 @@ void cCylinder::Create(Vector3 halfExtents)
 													mHalfExtents.z));
 }
 
-void cCylinder::Render()
+void cCylinder::RenderShape()
 {
 	debugPrint(debugClassName, mObjectName, "Render");
 

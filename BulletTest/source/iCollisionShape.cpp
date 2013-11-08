@@ -2,6 +2,8 @@
 
 char* iCollisionShape::debugClassName = "iCollisionShape";
 
+GLUquadricObj* iCollisionShape::quad = gluNewQuadric();
+
 iCollisionShape::iCollisionShape()
 {
 	debugPrint(debugClassName, "empty constructor");
@@ -22,8 +24,8 @@ void iCollisionShape::Create()
 	debugPrint(debugClassName, mObjectName, "base Create");
 }
 
-void iCollisionShape::Render()
+void iCollisionShape::RenderShape()
 {
-	debugPrint(debugClassName, mObjectName, "base Render");
+	debugPrint(debugClassName, mObjectName, "base RenderMe");
 }
 

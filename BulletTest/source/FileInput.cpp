@@ -130,7 +130,6 @@ void FileInput::LoadTimer()
 	// convert buff to char*
 	char* objectName = new char[buff.length() + 1];
 	strcpy(objectName, buff.c_str());
-
 	// create new timer and add to object list
 	Timer* nTimer = new Timer(objectName);
 	mObjectManager->AddObject(nTimer);

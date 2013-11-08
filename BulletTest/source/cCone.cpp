@@ -28,7 +28,7 @@ void cCone::Create(float radius, float height)
 	mCollisionShape = new btConeShape(mRadius, mHeight);
 }
 
-void cCone::Render()
+void cCone::RenderShape()
 {
 	debugPrint(debugClassName, mObjectName, "Render");
 

@@ -29,11 +29,12 @@ void cBox::Create(Vector3 halfExtents)
 	mHalfExtents = ((btBoxShape*)mCollisionShape)->getHalfExtentsWithMargin();
 }
 
-void cBox::Render()
+void cBox::RenderShape()
 {
 	debugPrint(debugClassName, mObjectName, "Render");
-
-	glScalef(mHalfExtents.x, mHalfExtents.y, mHalfExtents.z);
-	glutSolidCube(2);
+	glPushMatrix();
+		glScalef(mHalfExtents.x, mHalfExtents.y, mHalfExtents.z);
+		glutSolidCube(2);
+	glPopMatrix();
 }
 

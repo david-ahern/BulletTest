@@ -13,6 +13,7 @@ class iCollisionShape : public GameObject
 {
 protected:
 	static char* debugClassName;
+	static GLUquadricObj* quad;
 
 	btCollisionShape*	mCollisionShape;
 
@@ -23,8 +24,8 @@ public:
 
 	btCollisionShape*	GetCollisionShape() { return mCollisionShape; }
 
-	void Create();
-	void Render();
+	virtual void Create();
+	virtual void RenderShape();
 };
 
 #endif

@@ -27,7 +27,7 @@ void cSphere::Create(float radius)
 	mCollisionShape = new btSphereShape(mRadius);
 }
 
-void cSphere::Render()
+void cSphere::RenderShape()
 {
 	debugPrint(debugClassName, mObjectName, "Render");
 

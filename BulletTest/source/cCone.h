@@ -21,7 +21,7 @@ public:
 	~cCone();
 
 	void Create(float radius, float height);
-	void Render();
+	void RenderShape();
 };
 
 #endif

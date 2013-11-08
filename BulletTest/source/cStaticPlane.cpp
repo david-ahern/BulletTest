@@ -30,7 +30,7 @@ void cStaticPlane::Create(Vector3 upAxis)
 												btScalar(0));
 }
 
-void cStaticPlane::Render()
+void cStaticPlane::RenderShape()
 {
 	debugPrint(debugClassName, mObjectName, "Render");
 

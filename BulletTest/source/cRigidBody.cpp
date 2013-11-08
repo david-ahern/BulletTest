@@ -76,7 +76,7 @@ void cRigidBody::Render()
 
 		glMultMatrixf(mTransform.getMatrix());
 
-		mCollisionShapeObject->Render();
+		mCollisionShapeObject->RenderShape();
 
 	glPopMatrix();
 }

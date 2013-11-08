@@ -20,7 +20,7 @@ public:
 	~cSphere();
 
 	void Create(float radius);
-	void Render();
+	void RenderShape();
 };
 
 #endif

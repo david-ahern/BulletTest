@@ -37,11 +37,11 @@
 
 <cCapsule>capsuleShape
 	<Radius>1
-	<Height>3
+	<Height>4
 <end>
 
 <cCone>coneShape
-	<Radius>2
+	<Radius>1
 	<Height>3
 <end>
 
@@ -60,7 +60,7 @@
 
 <cRigidBody>boxBody
 	<CollisionShape>boxShape
-	<Position>3 10 0
+	<Position>2 10 0
 	<Rotation>0 0 20
 	<Mass>1
 <end>
@@ -75,13 +75,13 @@
 <cRigidBody>capsuleBody
 	<CollisionShape>capsuleShape
 	<Position>0 7 0
-	<Rotation>0 0 20
+	<Rotation>0 0 0
 	<Mass>1
 <end>
 
 <cRigidBody>coneBody
 	<CollisionShape>coneShape
 	<Position>3 4 0
-	<Rotation>0 0 20
+	<Rotation>0 0 0
 	<Mass>1
 <end>

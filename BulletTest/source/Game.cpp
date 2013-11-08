@@ -120,6 +120,10 @@ void Game::KeyboardRead(unsigned char key, int x, int y)
 
 		camera->ApplyPosition(Vector3(-cos(yrotrad), 0, -sin(yrotrad)));
 	}
+	if (key == 'r')
+	{
+		this->Init();
+	}
 }
 
 void Game::MouseRead(int button, int state, int x, int y)
