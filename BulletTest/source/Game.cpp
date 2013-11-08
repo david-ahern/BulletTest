@@ -67,13 +67,12 @@ void Game::Render()
 {
 	if(!mIsVisible)
 		return;
-	enableDebugOutput();
+
 	debugPrint(debugClassName, mScreenName, "Render", BEGIN);
 
 	mObjectManager->RenderObjects();
 
 	debugPrint(debugClassName, mScreenName, "Render", END);
-	disableDebugOutput();
 }
 
 void Game::KeyboardRead(unsigned char key, int x, int y)
@@ -123,6 +122,20 @@ void Game::KeyboardRead(unsigned char key, int x, int y)
 	if (key == 'r')
 	{
 		this->Init();
+	}
+	if (key == ' ')
+	{
+		cSphere* sphere = new cSphere("bulletBody");
+		mObjectManager->AddObject(sphere);
+		sphere->Create(1);
+
+		cRigidBody* bullet = new cRigidBody("bullet");
+		mObjectManager->AddObject(bullet);
+		bullet->Create("bulletBody", Vector3(10, 8, -10),
+										Vector3(0,0,0),
+										2);
+
+		bullet->SetVelocity(Vector3(-10, 0, 10));
 	}
 }
 

@@ -17,6 +17,46 @@ cRigidBody::~cRigidBody()
 	debugPrint(debugClassName, mObjectName, "destructor");
 }
 
+void cRigidBody::SetFriction(float friction)
+{
+	mRigidBody->setFriction(friction);
+	mRigidBody->setRollingFriction(friction);
+}
+
+void cRigidBody::SetRestitution(float restitution)
+{
+	mRigidBody->setRestitution(restitution);
+}
+
+void cRigidBody::SetPosition(Vector3 position)
+{
+	btTransform trans;
+	trans.setIdentity();
+	trans.setOrigin(btVector3(position.x, position.y, position.z));
+
+	mRigidBody->setCenterOfMassTransform(trans);
+}
+
+void cRigidBody::SetRotation(Vector3 rotation)
+{
+	btTransform trans;
+	trans.setIdentity();
+	trans.setRotation(btQuaternion(rotation.x * DEG_TO_RAD, rotation.y * DEG_TO_RAD, rotation.z * DEG_TO_RAD));
+
+	mRigidBody->setWorldTransform(trans);
+}
+
+void cRigidBody::SetVelocity(Vector3 velocity)
+{
+	mRigidBody->setLinearVelocity(btVector3(velocity.x, velocity.y, velocity.z));
+}
+
+void cRigidBody::ApplyForce(Vector3 force)
+{
+	mRigidBody->applyCentralForce(btVector3(force.x, force.y, force.z));
+}
+
+
 void cRigidBody::Create(char* collisionShapeName, Vector3 position, 
 							Vector3 rotation, float mass)
 {
@@ -31,7 +71,7 @@ void cRigidBody::Create(char* collisionShapeName, Vector3 position,
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(position.x, position.y, position.z));
-	startTransform.setRotation(btQuaternion(rotation.x, rotation.y, rotation.z));
+	startTransform.setRotation(btQuaternion(rotation.x * DEG_TO_RAD, rotation.y * DEG_TO_RAD, rotation.z * DEG_TO_RAD));
 
 	btVector3 inertia(0,0,0);
 	if (mass != 0)

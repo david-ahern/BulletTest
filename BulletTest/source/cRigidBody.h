@@ -29,9 +29,10 @@ public:
 
 	void	SetFriction(float friction);
 	void	SetRestitution(float restitution);
-	void	SetPosition(btVector3& position);
-	void	SetVelocity(btVector3& velocity);
-	void	ApplyForce(btVector3& force);
+	void	SetPosition(Vector3 position);
+	void	SetRotation(Vector3 rotation);
+	void	SetVelocity(Vector3 velocity);
+	void	ApplyForce(Vector3 force);
 
 	void Create(char* collisionShapeName, Vector3 position, 
 					Vector3 rotation, float mass);

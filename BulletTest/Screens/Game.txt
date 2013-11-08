@@ -2,8 +2,8 @@
 <end>
 
 <CameraFree>camera
-	<Position>0 10 10
-	<Rotation>45 0 0
+	<Position>20 10 12
+	<Rotation>30 -50 0
 	<MovementSpeed>1
 	<RotationSpeed>1
 <end>
@@ -23,26 +23,8 @@
 	<UpAxis>0 1 0
 <end>
 
-<cSphere>sphereShape
-	<Radius>1
-<end>
-
 <cBox>boxShape
-	<HalfExtents>1 1 1
-<end>
-
-<cCylinder>cylinderShape
-	<HalfExtents>1 1 1
-<end>
-
-<cCapsule>capsuleShape
-	<Radius>1
-	<Height>4
-<end>
-
-<cCone>coneShape
-	<Radius>1
-	<Height>3
+	<HalfExtents>1.5 0.25 0.5
 <end>
 
 
@@ -52,36 +34,257 @@
 	<Mass>0
 <end>
 
-<cRigidBody>sphereBody
-	<CollisionShape>sphereShape
-	<Position>0 10 0
-	<Mass>1
-<end>
 
-<cRigidBody>boxBody
+
+<cRigidBody>wallBody1
 	<CollisionShape>boxShape
-	<Position>2 10 0
-	<Rotation>0 0 20
+	<Position>4.5 0.5 0
+	<Rotation>0 90 0
 	<Mass>1
 <end>
 
-<cRigidBody>cylinderBody
-	<CollisionShape>cylinderShape
-	<Position>3 7 0
-	<Rotation>0 0 20
+<cRigidBody>wallBody2
+	<CollisionShape>boxShape
+	<Position>1.50 0.5 0
+	<Rotation>0 90 0
 	<Mass>1
 <end>
 
-<cRigidBody>capsuleBody
-	<CollisionShape>capsuleShape
-	<Position>0 7 0
+<cRigidBody>wallBody3
+	<CollisionShape>boxShape
+	<Position>-1.50 0.5 0
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody4
+	<CollisionShape>boxShape
+	<Position>-4.5 0.5 0
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+
+
+<cRigidBody>wallBody5
+	<CollisionShape>boxShape
+	<Position>4.5 0.5 -2.5
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody6
+	<CollisionShape>boxShape
+	<Position>1.5 0.5 -2.5
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody7
+	<CollisionShape>boxShape
+	<Position>-1.5 0.5 -2.5
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody8
+	<CollisionShape>boxShape
+	<Position>-4.5 0.5 -2.5
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+
+
+<cRigidBody>wallBody9
+	<CollisionShape>boxShape
+	<Position>5.75 1.5 -1.25
+	<Rotation>90 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody10
+	<CollisionShape>boxShape
+	<Position>3 1.5 -1.25
+	<Rotation>90 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody11
+	<CollisionShape>boxShape
+	<Position>0 1.5 -1.25
+	<Rotation>90 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody12
+	<CollisionShape>boxShape
+	<Position>-3 1.5 -1.25
+	<Rotation>90 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody13
+	<CollisionShape>boxShape
+	<Position>-5.75 1.5 -1.25
+	<Rotation>90 90 0
+	<Mass>1
+<end>
+
+
+
+
+<cRigidBody>wallBody14
+	<CollisionShape>boxShape
+	<Position>4.5 2.5 0
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody15
+	<CollisionShape>boxShape
+	<Position>1.50 2.5 0
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody16
+	<CollisionShape>boxShape
+	<Position>-1.50 2.5 0
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody17
+	<CollisionShape>boxShape
+	<Position>-4.5 2.5 0
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+
+
+<cRigidBody>wallBody18
+	<CollisionShape>boxShape
+	<Position>4.5 2.5 -2.5
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody19
+	<CollisionShape>boxShape
+	<Position>1.5 2.5 -2.5
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody20
+	<CollisionShape>boxShape
+	<Position>-1.5 2.5 -2.5
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody21
+	<CollisionShape>boxShape
+	<Position>-4.5 2.5 -2.5
+	<Rotation>0 90 0
+	<Mass>1
+<end>
+
+
+
+<cRigidBody>wallBody22
+	<CollisionShape>boxShape
+	<Position>5.75 3.5 -1.25
+	<Rotation>90 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody23
+	<CollisionShape>boxShape
+	<Position>3 3.5 -1.25
+	<Rotation>90 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody24
+	<CollisionShape>boxShape
+	<Position>0 3.5 -1.25
+	<Rotation>90 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody25
+	<CollisionShape>boxShape
+	<Position>-3 3.5 -1.25
+	<Rotation>90 90 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody26
+	<CollisionShape>boxShape
+	<Position>-5.75 3.5 -1.25
+	<Rotation>90 90 0
+	<Mass>1
+<end>
+
+
+
+<cRigidBody>wallBody27
+	<CollisionShape>boxShape
+	<Position>4.5 4.25 -0.25
 	<Rotation>0 0 0
 	<Mass>1
 <end>
 
-<cRigidBody>coneBody
-	<CollisionShape>coneShape
-	<Position>3 4 0
+<cRigidBody>wallBody28
+	<CollisionShape>boxShape
+	<Position>1.50 4.25 -0.25
+	<Rotation>0 0 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody29
+	<CollisionShape>boxShape
+	<Position>-1.50 4.25 -0.25
+	<Rotation>0 0 0
+	<Mass>1r
+<end>
+
+<cRigidBody>wallBody30
+	<CollisionShape>boxShape
+	<Position>-4.5 4.25 -0.25
+	<Rotation>0 0 0
+	<Mass>1
+<end>
+
+
+
+<cRigidBody>wallBody31
+	<CollisionShape>boxShape
+	<Position>4.5 4.25 -2.25
+	<Rotation>0 0 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody32
+	<CollisionShape>boxShape
+	<Position>1.5 4.25 -2.25
+	<Rotation>0 0 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody33
+	<CollisionShape>boxShape
+	<Position>-1.5 4.25 -2.25
+	<Rotation>0 0 0
+	<Mass>1
+<end>
+
+<cRigidBody>wallBody34
+	<CollisionShape>boxShape
+	<Position>-4.5 4.25 -2.25
 	<Rotation>0 0 0
 	<Mass>1
 <end>

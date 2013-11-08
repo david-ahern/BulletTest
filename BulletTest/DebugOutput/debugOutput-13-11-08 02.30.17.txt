@@ -1,0 +1,462 @@
+starting debug output at 02.30.17
+	GameEngine::Init
+	OGLRenderer::constructor
+	OGLRenderer::SetDisplayFunc
+	OGLRenderer::SetIdleFunc
+	OGLRenderer::SetKeyboardReadFunc
+	OGLRenderer::SetMouseReadFunc
+	OGLRenderer::SetMouseTrackFunc
+	OGLRenderer::Init
+	Screen::game::base constructor
+	Game::game::constructor
+	Game::game::Init started
+		ObjectManager::constructor
+		FileInput::constructor
+		FileInput::LoadObjects started
+			FileInput::OpenFile
+			FileInput::LoadNextObject started
+				GameObject::gameTimer::base constructor
+				Timer::gameTimer::constructor
+				ObjectManager::AddObject::gameTimer
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::camera::base constructor
+				CameraFree::camera::constructor
+				CameraFree::camera::Create
+				ObjectManager::AddObject::camera
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::light::base constructor
+				Light::light::constructor
+				ObjectManager::AddObject::light
+				Light::light::Create started
+				Light::light::Create ended. time elapsed: 0
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::bulletWorld::base constructor
+				BulletWorld::bulletWorld::constructor
+				BulletWorld::bulletWorld::Create started
+					BulletWorld::bulletWorld::SetGravity
+				BulletWorld::bulletWorld::Create ended. time elapsed: 0
+				ObjectManager::AddObject::bulletWorld
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::floorShape::base constructor
+				iCollisionShape::floorShape::constructor
+				cStaticPlane::floorShape::constructor
+				cStaticPlane::floorShape::Create
+				ObjectManager::AddObject::floorShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::boxShape::base constructor
+				iCollisionShape::boxShape::constructor
+				cBox::boxShape::constructor
+				cBox::boxShape::Create
+				ObjectManager::AddObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::floorBody::base constructor
+				cRigidBody::floorBody::constructor
+				ObjectManager::AddObject::floorBody
+				cRigidBody::floorBody::Create
+				ObjectManager::GetGameObject::floorShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody1::base constructor
+				cRigidBody::wallBody1::constructor
+				ObjectManager::AddObject::wallBody1
+				cRigidBody::wallBody1::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 16
+			FileInput::LoadNextObject started
+				GameObject::wallBody2::base constructor
+				cRigidBody::wallBody2::constructor
+				ObjectManager::AddObject::wallBody2
+				cRigidBody::wallBody2::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody3::base constructor
+				cRigidBody::wallBody3::constructor
+				ObjectManager::AddObject::wallBody3
+				cRigidBody::wallBody3::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody4::base constructor
+				cRigidBody::wallBody4::constructor
+				ObjectManager::AddObject::wallBody4
+				cRigidBody::wallBody4::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody5::base constructor
+				cRigidBody::wallBody5::constructor
+				ObjectManager::AddObject::wallBody5
+				cRigidBody::wallBody5::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody6::base constructor
+				cRigidBody::wallBody6::constructor
+				ObjectManager::AddObject::wallBody6
+				cRigidBody::wallBody6::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody7::base constructor
+				cRigidBody::wallBody7::constructor
+				ObjectManager::AddObject::wallBody7
+				cRigidBody::wallBody7::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody8::base constructor
+				cRigidBody::wallBody8::constructor
+				ObjectManager::AddObject::wallBody8
+				cRigidBody::wallBody8::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody9::base constructor
+				cRigidBody::wallBody9::constructor
+				ObjectManager::AddObject::wallBody9
+				cRigidBody::wallBody9::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody10::base constructor
+				cRigidBody::wallBody10::constructor
+				ObjectManager::AddObject::wallBody10
+				cRigidBody::wallBody10::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody11::base constructor
+				cRigidBody::wallBody11::constructor
+				ObjectManager::AddObject::wallBody11
+				cRigidBody::wallBody11::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody12::base constructor
+				cRigidBody::wallBody12::constructor
+				ObjectManager::AddObject::wallBody12
+				cRigidBody::wallBody12::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody13::base constructor
+				cRigidBody::wallBody13::constructor
+				ObjectManager::AddObject::wallBody13
+				cRigidBody::wallBody13::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody14::base constructor
+				cRigidBody::wallBody14::constructor
+				ObjectManager::AddObject::wallBody14
+				cRigidBody::wallBody14::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody15::base constructor
+				cRigidBody::wallBody15::constructor
+				ObjectManager::AddObject::wallBody15
+				cRigidBody::wallBody15::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody16::base constructor
+				cRigidBody::wallBody16::constructor
+				ObjectManager::AddObject::wallBody16
+				cRigidBody::wallBody16::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody17::base constructor
+				cRigidBody::wallBody17::constructor
+				ObjectManager::AddObject::wallBody17
+				cRigidBody::wallBody17::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody18::base constructor
+				cRigidBody::wallBody18::constructor
+				ObjectManager::AddObject::wallBody18
+				cRigidBody::wallBody18::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody19::base constructor
+				cRigidBody::wallBody19::constructor
+				ObjectManager::AddObject::wallBody19
+				cRigidBody::wallBody19::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody20::base constructor
+				cRigidBody::wallBody20::constructor
+				ObjectManager::AddObject::wallBody20
+				cRigidBody::wallBody20::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody21::base constructor
+				cRigidBody::wallBody21::constructor
+				ObjectManager::AddObject::wallBody21
+				cRigidBody::wallBody21::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody22::base constructor
+				cRigidBody::wallBody22::constructor
+				ObjectManager::AddObject::wallBody22
+				cRigidBody::wallBody22::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody23::base constructor
+				cRigidBody::wallBody23::constructor
+				ObjectManager::AddObject::wallBody23
+				cRigidBody::wallBody23::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody24::base constructor
+				cRigidBody::wallBody24::constructor
+				ObjectManager::AddObject::wallBody24
+				cRigidBody::wallBody24::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody25::base constructor
+				cRigidBody::wallBody25::constructor
+				ObjectManager::AddObject::wallBody25
+				cRigidBody::wallBody25::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody26::base constructor
+				cRigidBody::wallBody26::constructor
+				ObjectManager::AddObject::wallBody26
+				cRigidBody::wallBody26::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody27::base constructor
+				cRigidBody::wallBody27::constructor
+				ObjectManager::AddObject::wallBody27
+				cRigidBody::wallBody27::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody28::base constructor
+				cRigidBody::wallBody28::constructor
+				ObjectManager::AddObject::wallBody28
+				cRigidBody::wallBody28::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody29::base constructor
+				cRigidBody::wallBody29::constructor
+				ObjectManager::AddObject::wallBody29
+				cRigidBody::wallBody29::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody30::base constructor
+				cRigidBody::wallBody30::constructor
+				ObjectManager::AddObject::wallBody30
+				cRigidBody::wallBody30::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody31::base constructor
+				cRigidBody::wallBody31::constructor
+				ObjectManager::AddObject::wallBody31
+				cRigidBody::wallBody31::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody32::base constructor
+				cRigidBody::wallBody32::constructor
+				ObjectManager::AddObject::wallBody32
+				cRigidBody::wallBody32::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody33::base constructor
+				cRigidBody::wallBody33::constructor
+				ObjectManager::AddObject::wallBody33
+				cRigidBody::wallBody33::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+				GameObject::wallBody34::base constructor
+				cRigidBody::wallBody34::constructor
+				ObjectManager::AddObject::wallBody34
+				cRigidBody::wallBody34::Create
+				ObjectManager::GetGameObject::boxShape
+			FileInput::LoadNextObject ended. time elapsed: 0
+			FileInput::LoadNextObject started
+			FileInput::LoadNextObject ended. time elapsed: 0
+		FileInput::LoadObjects ended. time elapsed: 16
+		ObjectManager::InitObjects started
+			GameObject::wallBody34::default Init
+			GameObject::wallBody33::default Init
+			GameObject::wallBody32::default Init
+			GameObject::wallBody31::default Init
+			GameObject::wallBody30::default Init
+			GameObject::wallBody29::default Init
+			GameObject::wallBody28::default Init
+			GameObject::wallBody27::default Init
+			GameObject::wallBody26::default Init
+			GameObject::wallBody25::default Init
+			GameObject::wallBody24::default Init
+			GameObject::wallBody23::default Init
+			GameObject::wallBody22::default Init
+			GameObject::wallBody21::default Init
+			GameObject::wallBody20::default Init
+			GameObject::wallBody19::default Init
+			GameObject::wallBody18::default Init
+			GameObject::wallBody17::default Init
+			GameObject::wallBody16::default Init
+			GameObject::wallBody15::default Init
+			GameObject::wallBody14::default Init
+			GameObject::wallBody13::default Init
+			GameObject::wallBody12::default Init
+			GameObject::wallBody11::default Init
+			GameObject::wallBody10::default Init
+			GameObject::wallBody9::default Init
+			GameObject::wallBody8::default Init
+			GameObject::wallBody7::default Init
+			GameObject::wallBody6::default Init
+			GameObject::wallBody5::default Init
+			GameObject::wallBody4::default Init
+			GameObject::wallBody3::default Init
+			GameObject::wallBody2::default Init
+			GameObject::wallBody1::default Init
+			GameObject::floorBody::default Init
+			GameObject::boxShape::default Init
+			GameObject::floorShape::default Init
+			GameObject::bulletWorld::default Init
+			GameObject::light::default Init
+			GameObject::camera::default Init
+			Timer::gameTimer::Init
+		ObjectManager::InitObjects ended. time elapsed: 0
+	Game::game::Init ended. time elapsed: 16
+	GameEngine::AddScreen
+	GameEngine::SwitchTo::game
+disabling output at 02.30.17
+enabling output at 02.30.19
+	GameEngine::MouseRead
+disabling output at 02.30.19
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseTrack
+disabling output at 02.30.20
+enabling output at 02.30.20
+	GameEngine::MouseRead
+disabling output at 02.30.20
+enabling output at 02.30.23
+	GameEngine::MouseRead
+disabling output at 02.30.23
+enabling output at 02.30.23
+	GameEngine::MouseTrack
+disabling output at 02.30.23
+enabling output at 02.30.23
+	GameEngine::MouseTrack
+disabling output at 02.30.23
+enabling output at 02.30.23
+	GameEngine::MouseTrack
+disabling output at 02.30.23
+enabling output at 02.30.23
+	GameEngine::MouseTrack
+disabling output at 02.30.23
+enabling output at 02.30.23
+	GameEngine::MouseTrack
+disabling output at 02.30.23
+enabling output at 02.30.23
+	GameEngine::MouseTrack
+disabling output at 02.30.23
+enabling output at 02.30.23
+	GameEngine::MouseTrack
+disabling output at 02.30.23
+enabling output at 02.30.23
+	GameEngine::MouseTrack
+disabling output at 02.30.23
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseTrack
+disabling output at 02.30.24
+enabling output at 02.30.24
+	GameEngine::MouseRead
+disabling output at 02.30.24

@@ -40,7 +40,7 @@ const GLfloat light_position[]= { 10.0, 10.0f, 10.0, 1.0f };
 /** Materials settings **/ 
 const GLfloat p1ambient[]= { 1.0f, 0.0f, 0.0f, 0.0f };
 const GLfloat mat_diffuse[]= { 0.5f, 0.5f, 0.5f, 0.0f };
-const GLfloat mat_specular[]= { 0.7f, 0.7f, 0.7f, 0.0f };
+const GLfloat mat_specular[]= { 0.3f, 0.3f, 0.3f, 0.0f };
 const GLfloat mat_shininess[]= { 1.0f };
 
 const float PI = 3.141592654;
