@@ -2,9 +2,11 @@
 #define _GAMEINCLUDES_H_
 
 //Includes
+#include "Vector2.h"
 #include "Vector3.h"
 #include "Vector4.h"
 #include "Matrix44.h"
+#include "cInputHandler.h"
 #include "FileInput.h"
 #include "OGLRenderer.h"
 #include "ObjectManager.h"

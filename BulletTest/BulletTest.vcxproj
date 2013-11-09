@@ -101,6 +101,7 @@
     <ClCompile Include="source\OGLRenderer.cpp" />
     <ClCompile Include="source\Screen.cpp" />
     <ClCompile Include="source\Timer.cpp" />
+    <ClCompile Include="source\Vector2.cpp" />
     <ClCompile Include="source\Vector3.cpp" />
     <ClCompile Include="source\Vector4.cpp" />
     <ClCompile Include="source\CameraThirdPerson.cpp" />
@@ -113,6 +114,7 @@
     <ClCompile Include="source\cStaticPlane.cpp" />
     <ClCompile Include="source\cRigidBody.cpp" />
     <ClCompile Include="source\iCollisionShape.cpp" />
+    <ClCompile Include="source\cInputHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\BulletRigidBody.h">
@@ -133,6 +135,7 @@
     <ClInclude Include="source\Screen.h" />
     <ClInclude Include="source\stdafx.h" />
     <ClInclude Include="source\Timer.h" />
+    <ClInclude Include="source\Vector2.h" />
     <ClInclude Include="source\Vector3.h" />
     <ClInclude Include="source\Vector4.h" />
     <ClInclude Include="source\CameraThirdPerson.h" />
@@ -145,6 +148,7 @@
     <ClInclude Include="source\cStaticPlane.h" />
     <ClInclude Include="source\cRigidBody.h" />
     <ClInclude Include="source\iCollisionShape.h" />
+    <ClInclude Include="source\cInputHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

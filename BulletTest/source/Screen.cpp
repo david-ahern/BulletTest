@@ -16,6 +16,8 @@ Screen::Screen(char* name)
 	mIsActive = false;
 	mIsInputActive = false;
 	mIsVisible = false;
+
+	gInputHandler = GameEngine::GetInstance()->GetInputHandler();
 }
 
 Screen::~Screen()
@@ -38,17 +40,12 @@ void Screen::Render()
 	debugPrint(debugClassName, mScreenName, "default Render");
 }
 
-void Screen::KeyboardRead(unsigned char key, int x, int y)
+void Screen::CheckKeyInput()
 {
-	debugPrint(debugClassName, mScreenName, "default KeyboardRead");
+	debugPrint(debugClassName, mScreenName, "default CheckKeyInput");
 }
 
-void Screen::MouseRead(int button, int state, int x, int y)
+void Screen::CheckMouseInput()
 {
-	debugPrint(debugClassName, mScreenName, "default MouseRead");
-}
-
-void Screen::MouseTrack(int x, int y)
-{
-	debugPrint(debugClassName, mScreenName, "default MouseTrack");
+	debugPrint(debugClassName, mScreenName, "default CheckMouseInput");
 }

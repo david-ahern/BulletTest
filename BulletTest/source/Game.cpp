@@ -44,6 +44,9 @@ void Game::Update()
 
 	debugPrint(debugClassName, mScreenName, "Update", BEGIN);
 
+	CheckKeyInput();
+	CheckMouseInput();
+
 	//update timer
 	mObjectManager->UpdateObjects(TIMER_OBJECT, 0);
 
@@ -75,15 +78,14 @@ void Game::Render()
 	debugPrint(debugClassName, mScreenName, "Render", END);
 }
 
-void Game::KeyboardRead(unsigned char key, int x, int y)
+void Game::CheckKeyInput()
 {
-	if (!mIsInputActive)
+	if (!mIsInputActive && !gInputHandler->Keydown())
 		return;
 
-	debugPrint(debugClassName, mScreenName, "KeyboardRead");
+	debugPrint(debugClassName, mScreenName, "CheckKeyInput");
 
-	//move forward
-	if (key == 'w')
+	if (gInputHandler->IsDown('w'))
 	{
 		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
 		
@@ -92,8 +94,7 @@ void Game::KeyboardRead(unsigned char key, int x, int y)
 
 		camera->ApplyPosition(Vector3(sin(yrotrad), -sin(xrotrad), -cos(yrotrad)));
 	}
-	// move back
-	if (key == 's')
+	if (gInputHandler->IsDown('s'))
 	{
 		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
 		
@@ -102,8 +103,7 @@ void Game::KeyboardRead(unsigned char key, int x, int y)
 
 		camera->ApplyPosition(Vector3(-sin(yrotrad), sin(xrotrad), cos(yrotrad)));
 	}
-	// move right
-	if (key == 'd')
+	if (gInputHandler->IsDown('d'))
 	{
 		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
 
@@ -111,7 +111,7 @@ void Game::KeyboardRead(unsigned char key, int x, int y)
 
 		camera->ApplyPosition(Vector3(cos(yrotrad), 0, sin(yrotrad)));
 	}
-	if (key == 'a')
+	if (gInputHandler->IsDown('a'))
 	{
 		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
 
@@ -119,11 +119,12 @@ void Game::KeyboardRead(unsigned char key, int x, int y)
 
 		camera->ApplyPosition(Vector3(-cos(yrotrad), 0, -sin(yrotrad)));
 	}
-	if (key == 'r')
+	if (gInputHandler->IsDown('r'))
 	{
 		this->Init();
+		gInputHandler->KeyboardUp('r', 0, 0);
 	}
-	if (key == ' ')
+	if (gInputHandler->IsDown(' '))
 	{
 		cSphere* sphere = new cSphere("bulletBody");
 		mObjectManager->AddObject(sphere);
@@ -131,66 +132,27 @@ void Game::KeyboardRead(unsigned char key, int x, int y)
 
 		cRigidBody* bullet = new cRigidBody("bullet");
 		mObjectManager->AddObject(bullet);
-		bullet->Create("bulletBody", Vector3(10, 8, -10),
+		bullet->Create("bulletBody", Vector3(10, 8, 15),
 										Vector3(0,0,0),
 										2);
 
-		bullet->SetVelocity(Vector3(-10, 0, 10));
+		bullet->SetVelocity(Vector3(-10, 0, -20));
 	}
 }
 
-void Game::MouseRead(int button, int state, int x, int y)
+void Game::CheckMouseInput()
 {
-	if (!mIsInputActive)
+	if(!mIsInputActive && gInputHandler->MouseDown() == NO_MOUSE)
 		return;
 
-	debugPrint(debugClassName, mScreenName, "MouseRead");
+	debugPrint(debugClassName, mScreenName, "default CheckMouseInput");
 
-	if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
-    {
-		mMouseClicked = true;
-		mMouseButton = GLUT_LEFT_BUTTON;
-		mMousePosition.x = x;
-		mMousePosition.y = y;
-	}
-	if(button == GLUT_LEFT_BUTTON && state == GLUT_UP)
-    {
-		mMouseClicked = false;
-		mMouseButton = -1;
-    }
-	if(button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
-	{
-		mMouseClicked = true;
-		mMouseButton = GLUT_RIGHT_BUTTON;
-		mMousePosition.x = x;
-		mMousePosition.y = y;
-	}
-	if(button == GLUT_RIGHT_BUTTON && state == GLUT_UP)
-	{
-		mMouseClicked = false;
-		mMouseButton = -1;
-	}
-}
-
-void Game::MouseTrack(int x, int y)
-{
-	if (!mIsInputActive)
-		return;
-	
-	debugPrint(debugClassName, mScreenName, "MouseTrack");
-
-	if ((mMouseClicked) && (mMouseButton == GLUT_LEFT_BUTTON))
+	if (gInputHandler->MouseDown() == LEFT_MOUSE)
 	{
 		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
 
-		camera->ApplyRotation(Vector3((y - mMousePosition.y)/8, (x - mMousePosition.x)/8, 0));
-		mMousePosition.x = x;
-		mMousePosition.y = y;
+		Vector2 mouseTrack = gInputHandler->GetMouseTrack();
+
+		camera->ApplyRotation(Vector3((mouseTrack.y)/8, (mouseTrack.x)/8, 0));
 	}
-	//else if (((Camera*)mObjectManager->GetGameObject("camera"))->mouseMove)
-	//{
-	//	((Camera*)mObjectManager->GetGameObject("camera"))->updatePos(((float)x - ((Camera*)mObjectManager->GetGameObject("camera"))->mouseX)/4,((float)y - ((Camera*)mObjectManager->GetGameObject("camera"))->mouseY)/4);
-	//	((Camera*)mObjectManager->GetGameObject("camera"))->mouseX = x;
-	//	((Camera*)mObjectManager->GetGameObject("camera"))->mouseY = y;
-	//}
 }

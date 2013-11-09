@@ -38,11 +38,18 @@ void OGLRenderer::SetDisplayFunc(void updateFunc())
 	glutDisplayFunc(updateFunc);
 }
 
-void OGLRenderer::SetKeyboardReadFunc(void keyboardReadFunc(unsigned char key, int x, int y))
+void OGLRenderer::SetKeyboardDownFunc(void keyboardDownFunc(unsigned char key, int x, int y))
 {
-	debugPrint(debugClassName, "SetKeyboardReadFunc");
+	debugPrint(debugClassName, "SetKeyboardDownFunc");
 
-	glutKeyboardFunc(keyboardReadFunc);
+	glutKeyboardFunc(keyboardDownFunc);
+}
+
+void OGLRenderer::SetKeyboardUpFunc(void keyboardUpFunc(unsigned char key, int x, int y))
+{
+	debugPrint(debugClassName, "SetKeyboardUpFunc");
+
+	glutKeyboardUpFunc(keyboardUpFunc);
 }
 
 void OGLRenderer::SetMouseReadFunc(void mouseReadFunc(int button, int state, int x, int y))

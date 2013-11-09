@@ -16,7 +16,8 @@ public:
 
 	void		SetIdleFunc(void idleFunc());
 	void		SetDisplayFunc(void renderFunc());
-	void		SetKeyboardReadFunc(void keyboardReadFunc(unsigned char key, int x, int y));
+	void		SetKeyboardDownFunc(void keyboardDownFunc(unsigned char key, int x, int y));
+	void		SetKeyboardUpFunc(void keyboardUpFunc(unsigned char key, int x, int y));
 	void		SetMouseReadFunc(void mouseReadFunc(int button, int state, int x, int y));
 	void		SetMouseTrackFunc(void mouseTrackFunc(int x, int y));
 

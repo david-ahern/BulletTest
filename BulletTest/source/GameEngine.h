@@ -17,6 +17,7 @@ private:
 	Screen*				mCurrentScreen;
 	Screen*				mNextScreen;
 
+	cInputHandler*		mInputHandler;
 
 	GameEngine();
 
@@ -26,30 +27,29 @@ private:
 public:
 	~GameEngine();
 	
-	static		GameEngine* GetInstance();
+	static			GameEngine* GetInstance();
 
-	Screen*		GetCurrentScree() { return mCurrentScreen; }
+	cInputHandler*	GetInputHandler()	{ return mInputHandler; }
 
-	void		AddScreen(Screen* screen);
-	void		RemoveScreen(Screen* screen);
-	void		SwitchTo(char* screenName);
-	Screen*		GetScreen(char* screenName);
+	Screen*			GetCurrentScree()	{ return mCurrentScreen; }
 
-	static void	UpdateCallback();
-	static void RenderCallback();
-	static void KeyboardReadCallback(unsigned char key, int x, int y);
-	static void MouseReadCallback(int button, int state, int x, int y);
-	static void MouseTrackCallback(int x, int y);
+	void			AddScreen(Screen* screen);
+	void			RemoveScreen(Screen* screen);
+	void			SwitchTo(char* screenName);
+	Screen*			GetScreen(char* screenName);
 
-	void		Init(int argc, char** argv);
-	void		Update();
-	void		Render();
+	static void		UpdateCallback();
+	static void		RenderCallback();
+	static void		KeyboardDownCallback(unsigned char key, int x, int y);
+	static void		KeyboardUpCallback(unsigned char key, int x, int y);
+	static void		MouseReadCallback(int button, int state, int x, int y);
+	static void		MouseTrackCallback(int x, int y);
 
-	void		KeyboardRead(unsigned char key, int x, int y);
-	void		MouseRead(int button, int state, int x, int y);
-	void		MouseTrack(int x, int y);
+	void			Init(int argc, char** argv);
+	void			Update();
+	void			Render();
 
-	void		MainLoop();
+	void			MainLoop();
 };
 
 extern GameEngine* GameEngineInstance;

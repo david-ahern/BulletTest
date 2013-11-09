@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <ctime>
+#include <map>
 
 #include "glut.h"
 

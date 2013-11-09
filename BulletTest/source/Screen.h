@@ -17,6 +17,8 @@ protected:
 	FileInput*		mFileInput;
 	ObjectManager*	mObjectManager;
 
+	cInputHandler*	gInputHandler;
+
 public:
 	Screen();
 	Screen(char* screenName);
@@ -34,10 +36,9 @@ public:
 	virtual void	Init();
 	virtual void	Update();
 	virtual void	Render();
-
-	virtual void	KeyboardRead(unsigned char key, int x, int y);
-	virtual void	MouseRead(int button, int state, int x, int y);
-	virtual void	MouseTrack(int x, int y);
+	
+	virtual void	CheckKeyInput();
+	virtual void	CheckMouseInput();
 };
 
 #endif

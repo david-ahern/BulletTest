@@ -34,7 +34,8 @@ void GameEngine::Init(int argc, char** argv)
 	mRenderer->SetDisplayFunc(RenderCallback);
 	mRenderer->SetIdleFunc(UpdateCallback);
 
-	mRenderer->SetKeyboardReadFunc(KeyboardReadCallback);
+	mRenderer->SetKeyboardDownFunc(KeyboardDownCallback);
+	mRenderer->SetKeyboardUpFunc(KeyboardUpCallback);
 	mRenderer->SetMouseReadFunc(MouseReadCallback);
 	mRenderer->SetMouseTrackFunc(MouseTrackCallback);
 	
@@ -42,6 +43,8 @@ void GameEngine::Init(int argc, char** argv)
 
 	mCurrentScreen = 0;
 	mNextScreen = 0;
+
+	mInputHandler->Init();
 }
 
 void GameEngine::AddScreen(Screen* screen)
@@ -119,19 +122,24 @@ void GameEngine::RenderCallback()
 	GameEngine::GetInstance()->Render();
 }
 
-void GameEngine::KeyboardReadCallback(unsigned char key, int x, int y)
+void GameEngine::KeyboardDownCallback(unsigned char key, int x, int y)
 {
-	GameEngine::GetInstance()->KeyboardRead(key, x, y);
+	GameEngine::GetInstance()->mInputHandler->KeyboardDown(key, x, y);
+}
+
+void GameEngine::KeyboardUpCallback(unsigned char key, int x, int y)
+{
+	GameEngine::GetInstance()->mInputHandler->KeyboardUp(key, x, y);
 }
 
 void GameEngine::MouseReadCallback(int button, int state, int x, int y)
 {
-	GameEngine::GetInstance()->MouseRead(button, state, x, y);
+	GameEngine::GetInstance()->mInputHandler->MouseRead(button, state, x, y);
 }
 
 void GameEngine::MouseTrackCallback(int x, int y)
 {
-	GameEngine::GetInstance()->MouseTrack(x, y);
+	GameEngine::GetInstance()->mInputHandler->MouseTrack(x, y);
 }
 
 void GameEngine::Update()
@@ -158,34 +166,6 @@ void GameEngine::Render()
 	mRenderer->FinishRendering();
 
 	debugPrint(debugClassName, "Render", END);
-}
-
-void GameEngine::KeyboardRead(unsigned char key, int x, int y)
-{
-	debugPrint(debugClassName, "KeyboardRead");
-
-	for (std::list<Screen*>::iterator sc = mScreenList.begin(); sc != mScreenList.end(); ++sc)
-		(*sc)->KeyboardRead(key, x, y);
-}
-
-void GameEngine::MouseRead(int button, int state, int x, int y)
-{
-	enableDebugOutput();
-	debugPrint(debugClassName, "MouseRead");
-	disableDebugOutput();
-
-	for (std::list<Screen*>::iterator sc = mScreenList.begin(); sc != mScreenList.end(); ++sc)
-		(*sc)->MouseRead(button, state, x, y);
-}
-
-void GameEngine::MouseTrack(int x, int y)
-{
-	enableDebugOutput();
-	debugPrint(debugClassName, "MouseTrack");
-	disableDebugOutput();
-
-	for (std::list<Screen*>::iterator sc = mScreenList.begin(); sc != mScreenList.end(); ++sc)
-		(*sc)->MouseTrack(x, y);
 }
 
 void GameEngine::MainLoop()

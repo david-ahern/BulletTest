@@ -132,6 +132,12 @@
     <ClCompile Include="source\BulletRigidBody.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\cInputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Vector2.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\BulletWorld.h">
@@ -217,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="source\BulletRigidBody.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cInputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Vector2.h">
+      <Filter>Header Files\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
