@@ -28,7 +28,7 @@
 
 
 #define	SCREEN_WIDTH 1200
-#define SCREEN_HEIGHT 700
+#define SCREEN_HEIGHT 800
 
 static char*	WINDOW_NAME = "Game";
 

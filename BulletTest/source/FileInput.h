@@ -36,7 +36,7 @@ private:
 	void		LoadNextObject();
 	
 	void		LoadTimer();
-	void		LoadCameraFree();
+	void		LoadCamera();
 	void		LoadBulletWorld();
 	void		LoadLight();
 	void		LoadCRigidBody();

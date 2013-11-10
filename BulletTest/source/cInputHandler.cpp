@@ -19,7 +19,6 @@ void cInputHandler::KeyboardDown(unsigned char key, int x, int y)
 	state[key] = true;
 
 	mKeypressed = true;
-	++mNumKeysPressed;
 }
 
 void cInputHandler::KeyboardUp(unsigned char key, int x, int y)
@@ -28,8 +27,7 @@ void cInputHandler::KeyboardUp(unsigned char key, int x, int y)
 
 	state[key] = false;
 
-	--mNumKeysPressed;
-	if (mNumKeysPressed = 0)
+	if (state.size() > 0)
 		mKeypressed = false;
 }
 
@@ -79,51 +77,32 @@ void cInputHandler::MouseTrack(int x, int y)
 
 bool cInputHandler::IsDown(unsigned char key)
 {
+	debugPrint(debugClassName, "IsDown", key);
+
 	if (state[key])
 		return true;
 	else
 		return false;
 }
 
+Vector2 cInputHandler::GetMouseTrack(bool clearTrack)
+{
+	if (!clearTrack)
+		return mMouseTrack;
+
+	Vector2 temp = mMouseTrack;
+
+	mMouseTrack = Vector2(0, 0);
+
+	return temp;
+}
+
 void cInputHandler::Init()
 {
 	debugPrint(debugClassName, "Init");
 
-	Reset();
-}
-
-void cInputHandler::Reset()
-{
-	debugPrint(debugClassName, "Reset");
-
-	state['a'] = false;
-	state['b'] = false;
-	state['c'] = false;
-	state['d'] = false;
-	state['e'] = false;
-	state['f'] = false;
-	state['g'] = false;
-	state['h'] = false;
-	state['i'] = false;
-	state['j'] = false;
-	state['k'] = false;
-	state['l'] = false;
-	state['m'] = false;
-	state['n'] = false;
-	state['o'] = false;
-	state['p'] = false;
-	state['q'] = false;
-	state['r'] = false;
-	state['s'] = false;
-	state['t'] = false;
-	state['u'] = false;
-	state['v'] = false;
-	state['w'] = false;
-	state['x'] = false;
-	state['y'] = false;
-	state['z'] = false;
-	state[' '] = false;
-	
+	mMouseDown = NO_MOUSE;
+	mKeypressed = false;
 
 	mMousePos = Vector2(0, 0);
 	mMouseTrack = Vector2(0, 0);

@@ -12,13 +12,12 @@ class Game : public Screen
 private:
 	static char* debugClassName;
 
-	bool	exitGame;
+	bool		exitGame;
 
-	float	mDeltaTime;
-
-	bool	mMouseClicked;
-	int		mMouseButton;
-	Vector3	mMousePosition;
+	float		mDeltaTime;
+	
+	GameObject* mPlayerObject;
+	Camera*		mCamera;
 
 public:
 	Game();

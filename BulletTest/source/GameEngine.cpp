@@ -44,6 +44,8 @@ void GameEngine::Init(int argc, char** argv)
 	mCurrentScreen = 0;
 	mNextScreen = 0;
 
+	mInputHandler = new cInputHandler();
+
 	mInputHandler->Init();
 }
 
@@ -149,9 +151,9 @@ void GameEngine::Update()
 	for (std::list<Screen*>::iterator sc = mScreenList.begin(); sc != mScreenList.end(); ++sc)
 		(*sc)->Update();
 
-	debugPrint(debugClassName, "Update", END);
-
 	glutPostRedisplay();
+
+	debugPrint(debugClassName, "Update", END);
 }
 
 void GameEngine::Render()

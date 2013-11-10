@@ -219,11 +219,6 @@ GameEngine* GameEngineInstance = GameEngine::GetInstance();
 //}
 
 
-extern void getGameObject()
-{
-
-}
-
 int main(int argc, char **argv)
 {
 	openDebugOutputFile();

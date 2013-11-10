@@ -18,7 +18,6 @@ private:
 
 	std::map< unsigned char, bool > state;
 	bool			mKeypressed;
-	int				mNumKeysPressed;
 
 	int				mMouseDown;
 	Vector2			mMousePos;
@@ -38,10 +37,9 @@ public:
 
 	int			MouseDown()		{ return mMouseDown; }
 	Vector2		GetMousePos()	{ return mMousePos; }
-	Vector2		GetMouseTrack() { return mMouseTrack; }
+	Vector2		GetMouseTrack(bool clearTrack);
 
 	void		Init();
-	void		Reset();
 };
 
 #endif

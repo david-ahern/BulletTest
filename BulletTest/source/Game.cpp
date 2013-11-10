@@ -29,10 +29,13 @@ void Game::Init()
 	mObjectManager = new ObjectManager();
 
 	mFileInput = new FileInput(mObjectManager);
-
 	mFileInput->LoadObjects("Screens\\Game.txt");
 
 	mObjectManager->InitObjects();
+
+	mPlayerObject = mObjectManager->GetGameObject("player");
+
+	mCamera = (Camera*)mObjectManager->GetGameObject("camera");
 
 	debugPrint(debugClassName, mScreenName, "Init", END);
 }
@@ -57,6 +60,8 @@ void Game::Update()
 	else
 		mDeltaTime = 0;
 
+	mObjectManager->UpdateObjects(CAMERA_OBJECT, mDeltaTime);
+
 	//update bullet world
 	mObjectManager->UpdateObjects(BULLETWORLD_OBJECT, mDeltaTime);
 	mObjectManager->UpdateObjects(CRIGIDBODY_OBJECT, mDeltaTime);
@@ -80,44 +85,49 @@ void Game::Render()
 
 void Game::CheckKeyInput()
 {
-	if (!mIsInputActive && !gInputHandler->Keydown())
+	if ((!mIsInputActive) || (!gInputHandler->Keydown()))
 		return;
 
 	debugPrint(debugClassName, mScreenName, "CheckKeyInput");
 
 	if (gInputHandler->IsDown('w'))
-	{
-		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
-		
-		float xrotrad = camera->GetRotation().x * DEG_TO_RAD;
-		float yrotrad = camera->GetRotation().y * DEG_TO_RAD;
+	{		
+		float xrotrad = mCamera->GetRotation().x * DEG_TO_RAD;
+		float yrotrad = mCamera->GetRotation().y * DEG_TO_RAD;
 
-		camera->ApplyPosition(Vector3(sin(yrotrad), -sin(xrotrad), -cos(yrotrad)));
+		if (mCamera->GetCameraMode() != THIRDPERSON_CAMERA)
+			mCamera->ApplyPosition(Vector3(sin(yrotrad), -sin(xrotrad), -cos(yrotrad)));
+		else
+			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(sin(yrotrad) * 100, 0, -cos(yrotrad) * 100));
 	}
 	if (gInputHandler->IsDown('s'))
-	{
-		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
-		
-		float xrotrad = camera->GetRotation().x * DEG_TO_RAD;
-		float yrotrad = camera->GetRotation().y * DEG_TO_RAD;
+	{		
+		float xrotrad = mCamera->GetRotation().x * DEG_TO_RAD;
+		float yrotrad = mCamera->GetRotation().y * DEG_TO_RAD;
 
-		camera->ApplyPosition(Vector3(-sin(yrotrad), sin(xrotrad), cos(yrotrad)));
+		if (mCamera->GetCameraMode() != THIRDPERSON_CAMERA)
+
+			mCamera->ApplyPosition(Vector3(-sin(yrotrad), sin(xrotrad), cos(yrotrad)));
+		else
+			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(-sin(yrotrad) * 100, 0, cos(yrotrad) * 100));
 	}
 	if (gInputHandler->IsDown('d'))
 	{
-		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
+		float yrotrad = mCamera->GetRotation().y * DEG_TO_RAD;
 
-		float yrotrad = camera->GetRotation().y * DEG_TO_RAD;
-
-		camera->ApplyPosition(Vector3(cos(yrotrad), 0, sin(yrotrad)));
+		if (mCamera->GetCameraMode() != THIRDPERSON_CAMERA)
+			mCamera->ApplyPosition(Vector3(cos(yrotrad), 0, sin(yrotrad)));
+		else
+			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(cos(yrotrad) * 100, 0, sin(yrotrad) * 100));
 	}
 	if (gInputHandler->IsDown('a'))
 	{
-		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
+		float yrotrad = mCamera->GetRotation().y * DEG_TO_RAD;
 
-		float yrotrad = camera->GetRotation().y * DEG_TO_RAD;
-
-		camera->ApplyPosition(Vector3(-cos(yrotrad), 0, -sin(yrotrad)));
+		if (mCamera->GetCameraMode() != THIRDPERSON_CAMERA)
+			mCamera->ApplyPosition(Vector3(-cos(yrotrad), 0, -sin(yrotrad)));
+		else
+			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(-cos(yrotrad) * 100, 0, -sin(yrotrad) * 100));
 	}
 	if (gInputHandler->IsDown('r'))
 	{
@@ -126,32 +136,39 @@ void Game::CheckKeyInput()
 	}
 	if (gInputHandler->IsDown(' '))
 	{
+		gInputHandler->KeyboardUp(' ', 0, 0);
+
 		cSphere* sphere = new cSphere("bulletBody");
 		mObjectManager->AddObject(sphere);
 		sphere->Create(1);
 
 		cRigidBody* bullet = new cRigidBody("bullet");
 		mObjectManager->AddObject(bullet);
-		bullet->Create("bulletBody", Vector3(10, 8, 15),
+		bullet->Create("bulletBody", Vector3(10, 5, 15),
 										Vector3(0,0,0),
 										2);
 
 		bullet->SetVelocity(Vector3(-10, 0, -20));
+
+		mPlayerObject = bullet;
+
+		mCamera->SetCameraMode(THIRDPERSON_CAMERA);
+		mCamera->SetTarget(mPlayerObject);
 	}
 }
 
 void Game::CheckMouseInput()
 {
-	if(!mIsInputActive && gInputHandler->MouseDown() == NO_MOUSE)
+	if(!mIsInputActive || gInputHandler->MouseDown() == NO_MOUSE)
 		return;
 
 	debugPrint(debugClassName, mScreenName, "default CheckMouseInput");
 
 	if (gInputHandler->MouseDown() == LEFT_MOUSE)
 	{
-		CameraFree* camera = (CameraFree*)mObjectManager->GetGameObject("camera");
+		Camera* camera = (Camera*)mObjectManager->GetGameObject("camera");
 
-		Vector2 mouseTrack = gInputHandler->GetMouseTrack();
+		Vector2 mouseTrack = gInputHandler->GetMouseTrack(true);
 
 		camera->ApplyRotation(Vector3((mouseTrack.y)/8, (mouseTrack.x)/8, 0));
 	}

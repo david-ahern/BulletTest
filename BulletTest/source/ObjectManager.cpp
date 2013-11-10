@@ -101,28 +101,15 @@ void ObjectManager::RenderObjects()
 	// find and place the camera before rendering the rest of the objects.
 	for (int i = mObjectList.size()-1; i >= 0; --i)
 	{
-		switch(mObjectList.at(i)->GetObjectType())
-		{
-		case CAMERA_OBJECT:
+		if (mObjectList.at(i)->GetObjectType() == CAMERA_OBJECT)
 			mObjectList.at(i)->Render();
-			i = 0;
-			break;
-		case CAMERATHIRDPERSON_OBJECT:
-			mObjectList.at(i)->Render();
-			i = 0;
-		case CAMERAFREE_OBJECT:
-			mObjectList.at(i)->Render();
-			i = 0;
-			break;
-		}
 	}
 
 	// render all objects besides the camera
 	for (int i = mObjectList.size()-1; i >= 0; --i)
 	{
-		if ((mObjectList.at(i)->GetObjectType() != CAMERA_OBJECT) && 
-			(mObjectList.at(i)->GetObjectType() != CAMERATHIRDPERSON_OBJECT))
-		mObjectList.at(i)->Render();
+		if (mObjectList.at(i)->GetObjectType() != CAMERA_OBJECT)
+			mObjectList.at(i)->Render();
 	}
 
 	debugPrint(debugClassName, "RenderObjects", END);

@@ -78,9 +78,9 @@ void FileInput::LoadNextObject()
 	{
 		LoadTimer();
 	}
-	else if(buff == "CameraFree")
+	else if(buff == "Camera")
 	{
-		LoadCameraFree();
+		LoadCamera();
 	}
 	else if(buff == "Light")
 	{
@@ -139,7 +139,7 @@ void FileInput::LoadTimer()
 	getline(mFile, buff, '>');
 }
 
-void FileInput::LoadCameraFree()
+void FileInput::LoadCamera()
 {
 	//create inputs and set to default values
 	Vector3 nPosition = Vector3(0, 0, 0);
@@ -152,7 +152,7 @@ void FileInput::LoadCameraFree()
 	char* objectName = new char[buff.length() + 1];
 	strcpy(objectName, buff.c_str());
 
-	CameraFree* nCameraFree = new CameraFree(objectName);
+	Camera* nCamera = new Camera(objectName);
 
 	while (buff != "end")
 	{
@@ -199,8 +199,8 @@ void FileInput::LoadCameraFree()
 		}
 	}
 
-	nCameraFree->Create(nPosition, nRotation, nMovementSpeed, nRotationSpeed);
-	mObjectManager->AddObject(nCameraFree);
+	nCamera->Create(nPosition, nRotation, nMovementSpeed, nRotationSpeed);
+	mObjectManager->AddObject(nCamera);
 }
 
 void FileInput::LoadBulletWorld()

@@ -1,7 +1,7 @@
 <Timer>gameTimer
 <end>
 
-<CameraFree>camera
+<Camera>camera
 	<Position>20 10 12
 	<Rotation>30 -50 0
 	<MovementSpeed>1
@@ -16,7 +16,7 @@
 <end>
 
 <BulletWorld>bulletWorld
-	<Gravity>0 -20 0
+	<Gravity>0 -10 0
 <end>
 
 <cStaticPlane>floorShape
