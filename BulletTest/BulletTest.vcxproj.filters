@@ -132,6 +132,9 @@
     <ClCompile Include="source\Camera.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="source\cPlayerCube.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\BulletWorld.h">
@@ -216,6 +219,9 @@
       <Filter>Header Files\Others</Filter>
     </ClInclude>
     <ClInclude Include="source\Camera.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cPlayerCube.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

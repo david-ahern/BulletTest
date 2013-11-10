@@ -18,11 +18,11 @@ BulletWorld::~BulletWorld()
 	mBtWorld->~btDynamicsWorld();
 }
 
-void BulletWorld::Create(Vector3 _gravity)
+void BulletWorld::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "Create", BEGIN);
 
-	mGravity = _gravity;
+	mGravity = data.nGravity;
 
 	btDefaultCollisionConfiguration* collisionConfig = new btDefaultCollisionConfiguration();
 	btCollisionDispatcher* dispatcher = new btCollisionDispatcher(collisionConfig);

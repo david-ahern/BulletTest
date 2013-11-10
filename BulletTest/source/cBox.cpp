@@ -18,15 +18,15 @@ cBox::~cBox()
 }
 
 
-void cBox::Create(Vector3 halfExtents)
+void cBox::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "Create");
 
-	mCollisionShape = new btBoxShape(btVector3(halfExtents.x,
-												halfExtents.y,
-												halfExtents.z));
+	mHalfExtents = data.nHalfExtents;
 
-	mHalfExtents = ((btBoxShape*)mCollisionShape)->getHalfExtentsWithMargin();
+	mCollisionShape = new btBoxShape(btVector3(mHalfExtents.x,
+												mHalfExtents.y,
+												mHalfExtents.z));
 }
 
 void cBox::RenderShape()

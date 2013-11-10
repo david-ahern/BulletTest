@@ -18,12 +18,12 @@ cCapsule::~cCapsule()
 }
 
 
-void cCapsule::Create(float radius, float height)
+void cCapsule::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "Create");
 
-	mRadius = radius;
-	mHeight = height;
+	mRadius = data.nRadius;
+	mHeight = data.nHeight;
 
 	mCollisionShape = new btCapsuleShape(mRadius, mHeight);
 }

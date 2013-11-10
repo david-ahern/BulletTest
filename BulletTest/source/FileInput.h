@@ -10,11 +10,37 @@ using namespace std;
 
 class GameObject;
 class ObjectManager;
+class Timer;
+class Camera;
+class Light;
+class BulletWorld;
+class cRigidBody;
+class cSphere;
+class cBox;
+class cCylinder;
+class cCapsule;
+class cCone;
+class cStaticPlane;
+class cPlayerCube;
 
 typedef struct ObjectData
 {
-	int objectType;
-
+	int		objectType;
+	Vector3 nHalfExtents;
+	Vector3 nPosition;
+	Vector3 nRotation;
+	int		nMovementSpeed;
+	int		nRotationSpeed;
+	Vector3 nGravity;
+	Vector4 nAmbient;
+	Vector4 nDiffuse;
+	Vector4 nSpecular;
+	char*	nCollisionShapeName;
+	char*	nRigidBodyName;
+	int		nMass;
+	int		nRadius;
+	int		nHeight;
+	Vector3 nUpAxis;
 }objdata;
 
 class FileInput
@@ -24,10 +50,10 @@ private:
 	static char* defaultFilePath;
 
 	char*		mFileName;
-
 	ifstream	mFile;
-
 	string		buff;
+
+	bool		endLoad;
 
 	ObjectManager* mObjectManager;
 
@@ -35,17 +61,18 @@ private:
 	void		CloseFile();
 	void		LoadNextObject();
 	
-	void		LoadTimer();
-	void		LoadCamera();
-	void		LoadBulletWorld();
-	void		LoadLight();
-	void		LoadCRigidBody();
-	void		LoadCSphere();
-	void		LoadCBox();
-	void		LoadCCylinder();
-	void		LoadCCapsule();
-	void		LoadCCone();
-	void		LoadCStaticPlane();
+	Timer*			nTimer;
+	Camera*			nCamera;
+	BulletWorld*	nBulletWorld;
+	Light*			nLight;
+	cRigidBody*		nCRigidBody;
+	cSphere*		nCSphere;
+	cBox*			nCBox;
+	cCylinder*		nCCylinder;
+	cCapsule*		nCCapsule;
+	cCone*			nCCone;
+	cStaticPlane*	nCStaticPlane;
+	cPlayerCube*	nCPlayerCube;
 
 public:
 	FileInput();

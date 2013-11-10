@@ -19,14 +19,27 @@
 	<Gravity>0 -10 0
 <end>
 
+<cBox>playerBox
+	<HalfExtents>5 5 5
+<end>
+
+<cRigidBody>playerBody
+	<CollisionShape>playerBox
+	<Position>0 5 5
+	<Rotation>0 0 0
+	<Mass>1
+<end>
+
+<cPlayerCube>player
+<end>
+
+
+
+
+
 <cStaticPlane>floorShape
 	<UpAxis>0 1 0
 <end>
-
-<cBox>boxShape
-	<HalfExtents>1.5 0.25 0.5
-<end>
-
 
 <cRigidBody>floorBody
 	<CollisionShape>floorShape
@@ -35,6 +48,12 @@
 <end>
 
 
+
+
+
+<cBox>boxShape
+	<HalfExtents>1.5 0.25 0.5
+<end>
 
 <cRigidBody>wallBody1
 	<CollisionShape>boxShape
@@ -288,3 +307,5 @@
 	<Rotation>0 0 0
 	<Mass>1
 <end>
+
+<EndOfFile>

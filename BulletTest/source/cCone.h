@@ -20,7 +20,7 @@ public:
 	cCone(char* objectName);
 	~cCone();
 
-	void Create(float radius, float height);
+	void Create(ObjectData data);
 	void RenderShape();
 };
 

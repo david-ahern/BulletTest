@@ -22,7 +22,7 @@ public:
 	Light(char* objectName);
 	~Light();
 
-	void	Create( Vector3 position, Vector4 ambient, Vector4 diffuse, Vector4 specular);
+	void	Create(ObjectData data);
 };
 
 #endif

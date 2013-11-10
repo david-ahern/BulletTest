@@ -56,29 +56,32 @@ void cRigidBody::ApplyForce(Vector3 force)
 	mRigidBody->applyCentralForce(btVector3(force.x, force.y, force.z));
 }
 
+void cRigidBody::SetActive(bool active)
+{
+	mRigidBody->setActivationState(active);
+}
 
-void cRigidBody::Create(char* collisionShapeName, Vector3 position, 
-							Vector3 rotation, float mass)
+void cRigidBody::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "Create");
 
 	mBulletWorld = ((BulletWorld*)mObjectManager->GetGameObject(BULLETWORLD_OBJECT))->GetWorld();
 
-	mCollisionShapeObject = (iCollisionShape*)mObjectManager->GetGameObject(collisionShapeName);
+	mCollisionShapeObject = (iCollisionShape*)mObjectManager->GetGameObject(data.nCollisionShapeName);
 
 	mCollisionShape = mCollisionShapeObject->GetCollisionShape();
 
 	btTransform startTransform;
 	startTransform.setIdentity();
-	startTransform.setOrigin(btVector3(position.x, position.y, position.z));
-	startTransform.setRotation(btQuaternion(rotation.x * DEG_TO_RAD, rotation.y * DEG_TO_RAD, rotation.z * DEG_TO_RAD));
+	startTransform.setOrigin(btVector3(data.nPosition.x, data.nPosition.y, data.nPosition.z));
+	startTransform.setRotation(btQuaternion(data.nRotation.x * DEG_TO_RAD, data.nRotation.y * DEG_TO_RAD, data.nRotation.z * DEG_TO_RAD));
 
 	btVector3 inertia(0,0,0);
-	if (mass != 0)
-		mCollisionShape->calculateLocalInertia(mass, inertia);
+	if (data.nMass != 0)
+		mCollisionShape->calculateLocalInertia(data.nMass, inertia);
 
 	btMotionState* motion = new btDefaultMotionState(startTransform);
-	btRigidBody::btRigidBodyConstructionInfo info(mass, motion, mCollisionShape, inertia);
+	btRigidBody::btRigidBodyConstructionInfo info(data.nMass, motion, mCollisionShape, inertia);
 	mRigidBody = new btRigidBody(info);
 
 	mBulletWorld->addRigidBody(mRigidBody);

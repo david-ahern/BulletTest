@@ -19,7 +19,7 @@ public:
 	cCylinder(char* objectName);
 	~cCylinder();
 
-	void Create(Vector3 halfExtents);
+	void Create(ObjectData data);
 	void RenderShape();
 };
 

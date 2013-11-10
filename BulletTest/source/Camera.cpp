@@ -32,14 +32,14 @@ void Camera::ApplyRotation(Vector3 rotation)
 		mRotation.y += 360;
 }
 
-void Camera::Create(Vector3 position, Vector3 rotation, float movementSpeed, float rotationSpeed)
+void Camera::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "Create");
 
-	mPosition = position;
-	mRotation = rotation;
-	mMovementSpeed = movementSpeed;
-	mRotationSpeed = rotationSpeed;
+	mPosition = data.nPosition;
+	mRotation = data.nRotation;
+	mMovementSpeed = data.nMovementSpeed;
+	mRotationSpeed = data.nRotationSpeed;
 
 	zoom = 10;
 

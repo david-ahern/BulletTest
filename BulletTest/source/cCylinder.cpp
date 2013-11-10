@@ -18,11 +18,11 @@ cCylinder::~cCylinder()
 }
 
 
-void cCylinder::Create(Vector3 halfExtents)
+void cCylinder::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "Create");
 
-	mHalfExtents = halfExtents;
+	mHalfExtents = data.nHalfExtents;
 
 	mCollisionShape = new btCylinderShape(btVector3(mHalfExtents.x,
 													mHalfExtents.y,

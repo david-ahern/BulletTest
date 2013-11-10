@@ -19,7 +19,7 @@ public:
 	cBox(char* objectName);
 	~cBox();
 
-	void Create(Vector3 halfExtents);
+	void Create(ObjectData data);
 	void RenderShape();
 };
 

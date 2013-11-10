@@ -228,7 +228,6 @@ int main(int argc, char **argv)
 	Game* game = new Game("game");
 	game->Init();
 	GameEngineInstance->AddScreen(game);
-
 	GameEngineInstance->SwitchTo("game");
 
 	disableDebugOutput();

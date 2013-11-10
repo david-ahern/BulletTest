@@ -27,7 +27,7 @@ void cInputHandler::KeyboardUp(unsigned char key, int x, int y)
 
 	state[key] = false;
 
-	if (state.size() > 0)
+	if (state.size() <= 0)
 		mKeypressed = false;
 }
 

@@ -19,7 +19,7 @@ public:
 	cSphere(char* objectName);
 	~cSphere();
 
-	void Create(float radius);
+	void Create(ObjectData data);
 	void RenderShape();
 };
 

@@ -18,11 +18,11 @@ cSphere::~cSphere()
 }
 
 
-void cSphere::Create(float radius)
+void cSphere::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "Create");
 
-	mRadius = radius;
+	mRadius = data.nRadius;
 
 	mCollisionShape = new btSphereShape(mRadius);
 }

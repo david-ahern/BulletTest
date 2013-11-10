@@ -22,7 +22,7 @@ public:
 	BulletWorld(char* objectName);
 	~BulletWorld();
 
-	void				Create(Vector3 gravity);
+	void				Create(ObjectData data);
 
 	btDynamicsWorld*	GetWorld()		{ return mBtWorld; }
 

@@ -26,6 +26,7 @@
 #include "cCone.h"
 #include "cStaticPlane.h"
 #include "cRigidBody.h"
+#include "cPlayerCube.h"
 //insertNewIncludeHere
 
 //ObjectTypes
@@ -42,6 +43,7 @@
 #define CCONE_OBJECT				10
 #define CSTATICPLANE_OBJECT			11
 #define CRIGIDBODY_OBJECT			12
+#define CPLAYERCUBE_OBJECT 13
 //insertNewObjectTypeHere
 
 #endif

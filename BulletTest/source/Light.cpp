@@ -19,7 +19,7 @@ Light::~Light()
 	debugPrint(debugClassName, mObjectName, "destructor");
 }
 
-void Light::Create(Vector3 _position, Vector4 _ambient, Vector4 _diffuse, Vector4 _specular)
+void Light::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "Create", BEGIN);
 
@@ -54,10 +54,10 @@ void Light::Create(Vector3 _position, Vector4 _ambient, Vector4 _diffuse, Vector
 		return;
 	}
 
-	mPosition = _position;
-	mAmbient = _ambient;
-	mDiffuse = _diffuse;
-	mSpecular = _specular;
+	mPosition = data.nPosition;
+	mAmbient = data.nAmbient;
+	mDiffuse = data.nDiffuse;
+	mSpecular = data.nSpecular;
 
 	const GLfloat GLposition[] = { mPosition.x, mPosition.y, mPosition.z, 1.0 };
 	const GLfloat GLambient[] = { mAmbient.x, mAmbient.y, mAmbient.z, mAmbient.z };
@@ -69,6 +69,8 @@ void Light::Create(Vector3 _position, Vector4 _ambient, Vector4 _diffuse, Vector
 	glLightfv (GL_LIGHT1, GL_DIFFUSE, GLspecular);
 	glLightfv (GL_LIGHT1, GL_POSITION, GLposition);    
 	glEnable (GL_LIGHT1);
+
+	++sNumberOfLights;
 
 	debugPrint(debugClassName, mObjectName, "Create", END);
 }

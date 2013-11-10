@@ -20,7 +20,7 @@ public:
 	cCapsule(char* objectName);
 	~cCapsule();
 
-	void Create(float radius, float height);
+	void Create(ObjectData data);
 	void RenderShape();
 };
 

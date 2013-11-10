@@ -98,7 +98,10 @@ void Game::CheckKeyInput()
 		if (mCamera->GetCameraMode() != THIRDPERSON_CAMERA)
 			mCamera->ApplyPosition(Vector3(sin(yrotrad), -sin(xrotrad), -cos(yrotrad)));
 		else
+		{
+			((cRigidBody*)mPlayerObject)->SetActive(true);
 			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(sin(yrotrad) * 100, 0, -cos(yrotrad) * 100));
+		}
 	}
 	if (gInputHandler->IsDown('s'))
 	{		
@@ -109,7 +112,10 @@ void Game::CheckKeyInput()
 
 			mCamera->ApplyPosition(Vector3(-sin(yrotrad), sin(xrotrad), cos(yrotrad)));
 		else
+		{
+			((cRigidBody*)mPlayerObject)->SetActive(true);
 			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(-sin(yrotrad) * 100, 0, cos(yrotrad) * 100));
+		}
 	}
 	if (gInputHandler->IsDown('d'))
 	{
@@ -118,7 +124,10 @@ void Game::CheckKeyInput()
 		if (mCamera->GetCameraMode() != THIRDPERSON_CAMERA)
 			mCamera->ApplyPosition(Vector3(cos(yrotrad), 0, sin(yrotrad)));
 		else
+		{
+			((cRigidBody*)mPlayerObject)->SetActive(true);
 			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(cos(yrotrad) * 100, 0, sin(yrotrad) * 100));
+		}
 	}
 	if (gInputHandler->IsDown('a'))
 	{
@@ -127,7 +136,10 @@ void Game::CheckKeyInput()
 		if (mCamera->GetCameraMode() != THIRDPERSON_CAMERA)
 			mCamera->ApplyPosition(Vector3(-cos(yrotrad), 0, -sin(yrotrad)));
 		else
+		{
+			((cRigidBody*)mPlayerObject)->SetActive(true);
 			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(-cos(yrotrad) * 100, 0, -sin(yrotrad) * 100));
+		}
 	}
 	if (gInputHandler->IsDown('r'))
 	{
@@ -138,15 +150,21 @@ void Game::CheckKeyInput()
 	{
 		gInputHandler->KeyboardUp(' ', 0, 0);
 
+		ObjectData data;
+		data.nRadius = 1;
+
 		cSphere* sphere = new cSphere("bulletBody");
 		mObjectManager->AddObject(sphere);
-		sphere->Create(1);
+		sphere->Create(data);
+
+		data.nCollisionShapeName = "bulletBody";
+		data.nPosition = Vector3(10, 5, 15);
+		data.nRotation = Vector3(0, 0, 0);
+		data.nMass = 2;
 
 		cRigidBody* bullet = new cRigidBody("bullet");
 		mObjectManager->AddObject(bullet);
-		bullet->Create("bulletBody", Vector3(10, 5, 15),
-										Vector3(0,0,0),
-										2);
+		bullet->Create(data);
 
 		bullet->SetVelocity(Vector3(-10, 0, -20));
 

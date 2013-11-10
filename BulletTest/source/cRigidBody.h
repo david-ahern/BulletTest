@@ -33,11 +33,11 @@ public:
 	void	SetRotation(Vector3 rotation);
 	void	SetVelocity(Vector3 velocity);
 	void	ApplyForce(Vector3 force);
+	void	SetActive(bool active);
 
-	void Create(char* collisionShapeName, Vector3 position, 
-					Vector3 rotation, float mass);
-	void Update(float deltaTime);
-	void Render();
+	void	Create(ObjectData data);
+	void	Update(float deltaTime);
+	void	Render();
 };
 
 #endif

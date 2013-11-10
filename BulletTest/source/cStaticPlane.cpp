@@ -18,11 +18,11 @@ cStaticPlane::~cStaticPlane()
 }
 
 
-void cStaticPlane::Create(Vector3 upAxis)
+void cStaticPlane::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "Create");
 
-	mUpAxis = upAxis;
+	mUpAxis = data.nUpAxis;
 
 	mCollisionShape = new btStaticPlaneShape(btVector3(mUpAxis.x, 
 														mUpAxis.y, 

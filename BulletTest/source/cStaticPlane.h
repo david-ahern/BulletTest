@@ -22,7 +22,7 @@ public:
 
 	btCollisionShape*	GetCollisionShape() { return mCollisionShape; }
 
-	void Create(Vector3 upAxis);
+	void Create(ObjectData data);
 	void RenderShape();
 };
 
