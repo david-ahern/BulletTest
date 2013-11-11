@@ -21,11 +21,17 @@ cPlayerCube::~cPlayerCube()
 void cPlayerCube::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "Create");
+
+	mRigidBody = (cRigidBody*)mObjectManager->GetGameObject(data.nRigidBodyName);
+
+	mPosition = mRigidBody->GetPosition();
 }
 
 void cPlayerCube::Update(float deltaTime)
 {
 	debugPrint(debugClassName, mObjectName, "Update");
+
+	mPosition = mRigidBody->GetPosition();
 }
 
 void cPlayerCube::Render()

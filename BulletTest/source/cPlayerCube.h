@@ -13,7 +13,6 @@ private:
 	static char* debugClassName;
 	
 	cRigidBody*		mRigidBody;
-	cBox*			mCube;
 
 public:
 	cPlayerCube();
