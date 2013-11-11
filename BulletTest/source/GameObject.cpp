@@ -23,7 +23,7 @@ GameObject::~GameObject()
 	debugPrint(debugClassName, mObjectName, "base destructor");
 }
 
-void GameObject::Create()
+void GameObject::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "default Create");
 }

@@ -24,7 +24,7 @@ public:
 
 	btCollisionShape*	GetCollisionShape() { return mCollisionShape; }
 
-	virtual void Create();
+	virtual void Create(ObjectData data);
 	virtual void RenderShape();
 };
 

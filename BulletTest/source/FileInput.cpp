@@ -94,62 +94,62 @@ void FileInput::LoadNextObject()
 	else if(objType == "Timer")
 	{
 		data.objectType = TIMER_OBJECT;
-		nTimer = new Timer(objName);
+		nObject = new Timer(objName);
 	}
 	else if(objType == "Camera")
 	{
 		data.objectType = CAMERA_OBJECT;
-		nCamera = new Camera(objName);
+		nObject = new Camera(objName);
 	}
 	else if(objType == "Light")
 	{
 		data.objectType = LIGHT_OBJECT;
-		nLight = new Light(objName);
+		nObject = new Light(objName);
 	}
 	else if(objType == "BulletWorld")
 	{
 		data.objectType = BULLETWORLD_OBJECT;
-		nBulletWorld = new BulletWorld(objName);
+		nObject = new BulletWorld(objName);
 	}
 	else if(objType == "cRigidBody")
 	{
 		data.objectType = CRIGIDBODY_OBJECT;
-		nCRigidBody = new cRigidBody(objName);
+		nObject = new cRigidBody(objName);
 	}
 	else if(objType == "cSphere")
 	{
 		data.objectType = CSPHERE_OBJECT;
-		nCSphere = new cSphere(objName);
+		nObject = new cSphere(objName);
 	}
 	else if(objType == "cBox")
 	{
 		data.objectType = CBOX_OBJECT;
-		nCBox = new cBox(objName);
+		nObject = new cBox(objName);
 	}
 	else if(objType == "cCylinder")
 	{
 		data.objectType = CCYLINDER_OBJECT;
-		nCCylinder = new cCylinder(objName);
+		nObject = new cCylinder(objName);
 	}
 	else if(objType == "cCapsule")
 	{
 		data.objectType = CCAPSULE_OBJECT;
-		nCCapsule = new cCapsule(objName);
+		nObject = new cCapsule(objName);
 	}
 	else if(objType == "cCone")
 	{
 		data.objectType = CCONE_OBJECT;
-		nCCone = new cCone(objName);
+		nObject = new cCone(objName);
 	}
 	else if(objType == "cStaticPlane")
 	{
 		data.objectType = CSTATICPLANE_OBJECT;
-		nCStaticPlane = new cStaticPlane(objName);
+		nObject = new cStaticPlane(objName);
 	}
 	else if(objType == "cPlayerCube")
 	{
 		data.objectType = CPLAYERCUBE_OBJECT;
-		nCPlayerCube = new cPlayerCube(objName);
+		nObject = new cPlayerCube(objName);
 	}
 
 	// get message
@@ -312,67 +312,8 @@ void FileInput::LoadNextObject()
 		}
 	}
 
-
-	// call create function and add to object manager
-	if(data.objectType == TIMER_OBJECT)
-	{
-		mObjectManager->AddObject(nTimer);
-	}
-	else if(data.objectType == CAMERA_OBJECT)
-	{
-		mObjectManager->AddObject(nCamera);
-		nCamera->Create(data);
-	}
-	else if(data.objectType == LIGHT_OBJECT)
-	{
-		mObjectManager->AddObject(nLight);
-		nLight->Create(data);
-	}
-	else if(data.objectType == BULLETWORLD_OBJECT)
-	{
-		mObjectManager->AddObject(nBulletWorld);
-		nBulletWorld->Create(data);
-	}
-	else if(data.objectType == CRIGIDBODY_OBJECT)
-	{
-		mObjectManager->AddObject(nCRigidBody);
-		nCRigidBody->Create(data);
-	}
-	else if(data.objectType == CSPHERE_OBJECT)
-	{
-		mObjectManager->AddObject(nCSphere);
-		nCSphere->Create(data);
-	}
-	else if(data.objectType == CBOX_OBJECT)
-	{
-		mObjectManager->AddObject(nCBox);
-		nCBox->Create(data);
-	}
-	else if(data.objectType == CCYLINDER_OBJECT)
-	{
-		mObjectManager->AddObject(nCCylinder);
-		nCCylinder->Create(data);
-	}
-	else if(data.objectType == CCAPSULE_OBJECT)
-	{
-		mObjectManager->AddObject(nCCapsule);
-		nCCapsule->Create(data);
-	}
-	else if(data.objectType == CCONE_OBJECT)
-	{
-		mObjectManager->AddObject(nCCone);
-		nCCone->Create(data);
-	}
-	else if(data.objectType == CSTATICPLANE_OBJECT)
-	{
-		mObjectManager->AddObject(nCStaticPlane);
-		nCStaticPlane->Create(data);
-	}
-	else if(data.objectType == CPLAYERCUBE_OBJECT)
-	{
-		mObjectManager->AddObject(nCPlayerCube);
-		nCPlayerCube->Create(data);
-	}
+	mObjectManager->AddObject(nObject);
+	nObject->Create(data);
 
 	debugPrint(debugClassName, "LoadNextObject", END);
 }

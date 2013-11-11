@@ -19,7 +19,7 @@ iCollisionShape::~iCollisionShape()
 	debugPrint(debugClassName, mObjectName, "destructor");
 }
 
-void iCollisionShape::Create()
+void iCollisionShape::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "base Create");
 }

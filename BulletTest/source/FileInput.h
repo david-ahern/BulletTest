@@ -60,19 +60,8 @@ private:
 	bool		OpenFile();
 	void		CloseFile();
 	void		LoadNextObject();
-	
-	Timer*			nTimer;
-	Camera*			nCamera;
-	BulletWorld*	nBulletWorld;
-	Light*			nLight;
-	cRigidBody*		nCRigidBody;
-	cSphere*		nCSphere;
-	cBox*			nCBox;
-	cCylinder*		nCCylinder;
-	cCapsule*		nCCapsule;
-	cCone*			nCCone;
-	cStaticPlane*	nCStaticPlane;
-	cPlayerCube*	nCPlayerCube;
+
+	GameObject*		nObject;
 
 public:
 	FileInput();

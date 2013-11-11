@@ -36,7 +36,7 @@ public:
 
 	void			SetObjectManager(ObjectManager* objManager) { mObjectManager = objManager; }
 
-	virtual void	Create();
+	virtual void	Create(ObjectData data);
 	virtual void	Init();
 	virtual void	Update(float deltaTime);
 	virtual void	Render();
