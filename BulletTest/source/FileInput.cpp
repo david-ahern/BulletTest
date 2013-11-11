@@ -270,8 +270,8 @@ void FileInput::LoadNextObject()
 		else if (buff == "RigidBody")
 		{
 			getline(mFile, buff, '\n');
-			data.nCollisionShapeName = new char[buff.length() + 1];
-			strcpy(data.nCollisionShapeName, buff.c_str());
+			data.nRigidBodyName = new char[buff.length() + 1];
+			strcpy(data.nRigidBodyName, buff.c_str());
 		}
 		else if (buff == "Mass")
 		{

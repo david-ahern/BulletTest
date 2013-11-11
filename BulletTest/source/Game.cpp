@@ -60,13 +60,13 @@ void Game::Update()
 	else
 		mDeltaTime = 0;
 
-	mObjectManager->UpdateObjects(CAMERA_OBJECT, mDeltaTime);
-
 	//update bullet world
 	mObjectManager->UpdateObjects(BULLETWORLD_OBJECT, mDeltaTime);
 	mObjectManager->UpdateObjects(CRIGIDBODY_OBJECT, mDeltaTime);
 
-	mObjectManager->UpdateObjects(ALL_OBJECTS, mDeltaTime);
+	mObjectManager->UpdateObjects(CAMERA_OBJECT, mDeltaTime);
+
+	//mObjectManager->UpdateObjects(ALL_OBJECTS, mDeltaTime);
 
 	debugPrint(debugClassName, mScreenName, "Update", END);
 }

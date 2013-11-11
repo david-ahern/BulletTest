@@ -31,6 +31,7 @@
 <end>
 
 <cPlayerCube>player
+	<RigidBody>playerBody
 <end>
 
 
