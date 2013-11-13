@@ -41,6 +41,7 @@ void FileInput::CloseFile()
 {
 	if(mFile.is_open())
 		mFile.close();
+	delete mFile;
 }
 
 bool FileInput::LoadObjects(char* _fileName)
@@ -73,7 +74,7 @@ void FileInput::LoadNextObject()
 {
 	debugPrint(debugClassName, "LoadNextObject", BEGIN);
 
-	ObjectData data;
+	ObjectData data = GetDefaultDataValues();
 
 	// get objectType from file and store in objType
 	getline(mFile, buff, '<');
@@ -310,10 +311,52 @@ void FileInput::LoadNextObject()
 			getline(mFile, buff, '\n');
 			data.nHalfExtents.z = atof(buff.c_str());
 		}
+		else if (buff == "Friction")
+		{
+			getline(mFile, buff, '\n');
+			data.nFriction = atof(buff.c_str());
+		}
+		else if (buff == "RollingFriction")
+		{
+			getline(mFile, buff, '\n');
+			data.nRollingFriction = atof(buff.c_str());
+		}
+		else if (buff == "Restitution")
+		{
+			getline(mFile, buff, '\n');
+			data.nRestitution = atof(buff.c_str());
+		}
 	}
 
 	mObjectManager->AddObject(nObject);
 	nObject->Create(data);
 
 	debugPrint(debugClassName, "LoadNextObject", END);
+}
+
+ObjectData GetDefaultDataValues()
+{
+	ObjectData d;
+
+	d.objectType			= NO_OBJECT_TYPE;
+	d.nCollisionShapeName	= "null";
+	d.nRigidBodyName		= "null";
+	d.nPosition				= Vector3(0, 0, 0);
+	d.nRotation				= Vector3(0, 0, 0);
+	d.nMass					= 1;
+	d.nFriction				= 0.7;
+	d.nRollingFriction		= 0.7;
+	d.nRestitution			= 0.7;
+	d.nRadius				= 1;
+	d.nHeight				= 1;
+	d.nHalfExtents			= Vector3(1, 1, 1);
+	d.nMovementSpeed		= 1;
+	d.nRotationSpeed		= 1;
+	d.nGravity				= Vector3(0, 10, 0);
+	d.nAmbient				= Vector4(0, 0, 0, 0);
+	d.nDiffuse				= Vector4(0, 0, 0, 0);
+	d.nSpecular				= Vector4(0, 0, 0, 0);
+	d.nUpAxis				= Vector3(0, 1, 0);
+
+	return d;
 }

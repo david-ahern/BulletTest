@@ -28,6 +28,9 @@
 	<Position>0 5 5
 	<Rotation>0 0 0
 	<Mass>10
+	<Friction>0.7
+	<RollingFriction>0.7
+	<Restitution>0.9
 <end>
 
 <cPlayer>player

@@ -24,6 +24,8 @@ public:
 	Game(char* screenName);
 	~Game();
 
+	void	ResetGame();
+
 	void	Init();
 	void	Update();
 	void	Render();

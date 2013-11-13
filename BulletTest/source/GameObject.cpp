@@ -21,6 +21,8 @@ GameObject::GameObject(char* name, int ObjectType)
 GameObject::~GameObject()
 {
 	debugPrint(debugClassName, mObjectName, "base destructor");
+
+	delete mObjectName;
 }
 
 void GameObject::Create(ObjectData data)

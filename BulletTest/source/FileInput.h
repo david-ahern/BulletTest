@@ -26,20 +26,23 @@ class cPlayerCube;
 typedef struct ObjectData
 {
 	int		objectType;
-	Vector3 nHalfExtents;
+	char*	nCollisionShapeName;
+	char*	nRigidBodyName;
 	Vector3 nPosition;
 	Vector3 nRotation;
-	int		nMovementSpeed;
-	int		nRotationSpeed;
+	float	nMass;
+	float	nFriction;
+	float	nRollingFriction;
+	float	nRestitution;
+	float	nRadius;
+	float	nHeight;
+	Vector3 nHalfExtents;
+	float	nMovementSpeed;
+	float	nRotationSpeed;
 	Vector3 nGravity;
 	Vector4 nAmbient;
 	Vector4 nDiffuse;
 	Vector4 nSpecular;
-	char*	nCollisionShapeName;
-	char*	nRigidBodyName;
-	int		nMass;
-	int		nRadius;
-	int		nHeight;
 	Vector3 nUpAxis;
 }objdata;
 
@@ -61,6 +64,8 @@ private:
 	void		CloseFile();
 	void		LoadNextObject();
 
+	
+
 	GameObject*		nObject;
 
 public:
@@ -70,5 +75,7 @@ public:
 
 	bool		LoadObjects(char* fileName);
 };
+
+extern ObjectData GetDefaultDataValues();
 
 #endif

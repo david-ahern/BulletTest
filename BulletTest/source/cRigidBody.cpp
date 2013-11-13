@@ -15,6 +15,7 @@ cRigidBody::cRigidBody(char* name) : GameObject(name, CRIGIDBODY_OBJECT)
 cRigidBody::~cRigidBody()
 {
 	debugPrint(debugClassName, mObjectName, "destructor");
+	delete mRigidBody;
 }
 
 void cRigidBody::SetFriction(float friction)
@@ -86,10 +87,10 @@ void cRigidBody::Create(ObjectData data)
 
 	mBulletWorld->addRigidBody(mRigidBody);
 
-	mRigidBody->setFriction(0.7);
-	mRigidBody->setRollingFriction(0.7);
+	mRigidBody->setFriction(data.nFriction);
+	mRigidBody->setRollingFriction(data.nRollingFriction);
 
-	mRigidBody->setRestitution(0.7);
+	mRigidBody->setRestitution(data.nRestitution);
 }
 
 void cRigidBody::Update(float deltaTime)

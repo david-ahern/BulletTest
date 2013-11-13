@@ -15,6 +15,8 @@ Camera::Camera(char* name) : GameObject(name, CAMERA_OBJECT)
 Camera::~Camera()
 {
 	debugPrint(debugClassName, mObjectName, "destructor");
+
+	delete mTarget;
 }
 
 void Camera::ApplyRotation(Vector3 rotation)

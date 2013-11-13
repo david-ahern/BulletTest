@@ -17,6 +17,9 @@ iCollisionShape::iCollisionShape(char* name, int objectType) : GameObject(name, 
 iCollisionShape::~iCollisionShape()
 {
 	debugPrint(debugClassName, mObjectName, "destructor");
+
+	delete quad;
+	delete mCollisionShape;
 }
 
 void iCollisionShape::Create(ObjectData data)

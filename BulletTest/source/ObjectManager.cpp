@@ -13,6 +13,10 @@ ObjectManager::ObjectManager()
 ObjectManager::~ObjectManager()
 {
 	debugPrint(debugClassName, "destructor");
+	for (int i = mObjectList.size()-1; i > 0; --i)
+	{
+		delete mObjectList.at(i);
+	}
 }
 
 // push new object onto list and set the objects manager to this.
@@ -27,7 +31,7 @@ void ObjectManager::AddObject(GameObject* object)
 bool ObjectManager::RemoveObject(GameObject* object)
 {
 	debugPrint(debugClassName, "RemoveObject", object->GetObjectName());
-	for (int i = mObjectList.size(); i > 0; --i)
+	for (int i = mObjectList.size()-1; i > 0; --i)
 	{
 		if (object == mObjectList.at(i))
 		{

@@ -15,6 +15,7 @@ cPlayer::cPlayer(char* name) : GameObject(name, CPLAYER_OBJECT)
 cPlayer::~cPlayer()
 {
 	debugPrint(debugClassName, mObjectName, "destructor");
+	delete mRigidBody;
 }
 
 

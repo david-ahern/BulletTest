@@ -22,6 +22,13 @@ Game::~Game()
 	delete mObjectManager;
 }
 
+
+void Game::ResetGame()
+{
+	delete mFileInput;
+	delete mObjectManager;
+}
+
 void Game::Init()
 {
 	debugPrint(debugClassName, mScreenName, "Init", BEGIN);
@@ -151,14 +158,15 @@ void Game::CheckKeyInput()
 	}
 	if (gInputHandler->IsDown('r'))
 	{
-		this->Init();
 		gInputHandler->KeyboardUp('r', 0, 0);
+		ResetGame();
+		Init();
 	}
 	if (gInputHandler->IsDown(' '))
 	{
 		gInputHandler->KeyboardUp(' ', 0, 0);
 
-		ObjectData data;
+		ObjectData data = GetDefaultDataValues();
 		data.nRadius = 1;
 
 		cSphere* sphere = new cSphere("bulletBody");
@@ -168,7 +176,7 @@ void Game::CheckKeyInput()
 		data.nCollisionShapeName = "bulletBody";
 		data.nPosition = Vector3(10, 5, 15);
 		data.nRotation = Vector3(0, 0, 0);
-		data.nMass = 2;
+		data.nMass = 20;
 
 		cRigidBody* bullet = new cRigidBody("bullet");
 		mObjectManager->AddObject(bullet);
