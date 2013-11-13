@@ -1,24 +1,24 @@
 #include "stdafx.h"
 
-char* cPlayerCube::debugClassName = "cPlayerCube";
+char* cPlayer::debugClassName = "cPlayer";
 
-cPlayerCube::cPlayerCube()
+cPlayer::cPlayer()
 {
 	debugPrint(debugClassName, "empty constructor");
 }
 
-cPlayerCube::cPlayerCube(char* name) : GameObject(name, CPLAYERCUBE_OBJECT)
+cPlayer::cPlayer(char* name) : GameObject(name, CPLAYER_OBJECT)
 {
 	debugPrint(debugClassName, mObjectName, "constructor");
 }
 
-cPlayerCube::~cPlayerCube()
+cPlayer::~cPlayer()
 {
 	debugPrint(debugClassName, mObjectName, "destructor");
 }
 
 
-void cPlayerCube::Create(ObjectData data)
+void cPlayer::Create(ObjectData data)
 {
 	debugPrint(debugClassName, mObjectName, "Create");
 
@@ -27,14 +27,14 @@ void cPlayerCube::Create(ObjectData data)
 	mPosition = mRigidBody->GetPosition();
 }
 
-void cPlayerCube::Update(float deltaTime)
+void cPlayer::Update(float deltaTime)
 {
 	debugPrint(debugClassName, mObjectName, "Update");
 
 	mPosition = mRigidBody->GetPosition();
 }
 
-void cPlayerCube::Render()
+void cPlayer::Render()
 {
 	debugPrint(debugClassName, mObjectName, "Render");
 }

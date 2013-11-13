@@ -146,10 +146,10 @@ void FileInput::LoadNextObject()
 		data.objectType = CSTATICPLANE_OBJECT;
 		nObject = new cStaticPlane(objName);
 	}
-	else if(objType == "cPlayerCube")
+	else if(objType == "cPlayer")
 	{
-		data.objectType = CPLAYERCUBE_OBJECT;
-		nObject = new cPlayerCube(objName);
+		data.objectType = CPLAYER_OBJECT;
+		nObject = new cPlayer(objName);
 	}
 
 	// get message

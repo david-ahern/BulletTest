@@ -27,6 +27,8 @@ public:
 	cRigidBody(char* objectName);
 	~cRigidBody();
 
+	btRigidBody*	GetRigidBody() { return mRigidBody; }
+
 	void	SetFriction(float friction);
 	void	SetRestitution(float restitution);
 	void	SetPosition(Vector3 position);
@@ -34,6 +36,7 @@ public:
 	void	SetVelocity(Vector3 velocity);
 	void	ApplyForce(Vector3 force);
 	void	SetActive(bool active);
+	void	SetGravity(Vector3 gravity);
 
 	void	Create(ObjectData data);
 	void	Update(float deltaTime);

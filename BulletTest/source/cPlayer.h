@@ -1,5 +1,5 @@
-#ifndef _CPLAYERCUBE_H_
-#define _CPLAYERCUBE_H_
+#ifndef _CPLAYER_H_
+#define _CPLAYER_H_
 
 // Created by: David
 // Cube controlled by player,
@@ -7,7 +7,7 @@
 #include "stdafx.h"
 
 
-class cPlayerCube : public GameObject
+class cPlayer : public GameObject
 {
 private:
 	static char* debugClassName;
@@ -15,10 +15,11 @@ private:
 	cRigidBody*		mRigidBody;
 
 public:
-	cPlayerCube();
-	cPlayerCube(char* objectName);
-	~cPlayerCube();
+	cPlayer();
+	cPlayer(char* objectName);
+	~cPlayer();
 
+	cRigidBody*		GetRigidBody()	{ return mRigidBody; }
 
 	void Create(ObjectData data);
 	void Update(float deltaTime);

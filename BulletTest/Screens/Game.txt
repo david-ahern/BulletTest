@@ -20,17 +20,17 @@
 <end>
 
 <cBox>playerBox
-	<HalfExtents>5 5 5
+	<HalfExtents>2 2 2
 <end>
 
 <cRigidBody>playerBody
 	<CollisionShape>playerBox
 	<Position>0 5 5
 	<Rotation>0 0 0
-	<Mass>1
+	<Mass>10
 <end>
 
-<cPlayerCube>player
+<cPlayer>player
 	<RigidBody>playerBody
 <end>
 

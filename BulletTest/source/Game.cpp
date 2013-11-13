@@ -33,9 +33,15 @@ void Game::Init()
 
 	mObjectManager->InitObjects();
 
+	mCamera = (Camera*)mObjectManager->GetGameObject("camera");
+
 	mPlayerObject = mObjectManager->GetGameObject("player");
 
-	mCamera = (Camera*)mObjectManager->GetGameObject("camera");
+	if(mPlayerObject)
+	{
+		mCamera->SetTarget(mPlayerObject);
+		mCamera->SetCameraMode(THIRDPERSON_CAMERA);
+	}
 
 	debugPrint(debugClassName, mScreenName, "Init", END);
 }
@@ -63,6 +69,8 @@ void Game::Update()
 	//update bullet world
 	mObjectManager->UpdateObjects(BULLETWORLD_OBJECT, mDeltaTime);
 	mObjectManager->UpdateObjects(CRIGIDBODY_OBJECT, mDeltaTime);
+
+	mObjectManager->UpdateObjects(CPLAYER_OBJECT, mDeltaTime);
 
 	mObjectManager->UpdateObjects(CAMERA_OBJECT, mDeltaTime);
 
@@ -99,8 +107,8 @@ void Game::CheckKeyInput()
 			mCamera->ApplyPosition(Vector3(sin(yrotrad), -sin(xrotrad), -cos(yrotrad)));
 		else
 		{
-			((cRigidBody*)mPlayerObject)->SetActive(true);
-			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(sin(yrotrad) * 100, 0, -cos(yrotrad) * 100));
+			((cPlayer*)mPlayerObject)->GetRigidBody()->SetActive(true);
+			((cPlayer*)mPlayerObject)->GetRigidBody()->ApplyForce(Vector3(sin(yrotrad) * 100, 0, -cos(yrotrad) * 100));
 		}
 	}
 	if (gInputHandler->IsDown('s'))
@@ -113,8 +121,8 @@ void Game::CheckKeyInput()
 			mCamera->ApplyPosition(Vector3(-sin(yrotrad), sin(xrotrad), cos(yrotrad)));
 		else
 		{
-			((cRigidBody*)mPlayerObject)->SetActive(true);
-			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(-sin(yrotrad) * 100, 0, cos(yrotrad) * 100));
+			((cPlayer*)mPlayerObject)->GetRigidBody()->SetActive(true);
+			((cPlayer*)mPlayerObject)->GetRigidBody()->ApplyForce(Vector3(-sin(yrotrad) * 100, 0, cos(yrotrad) * 100));
 		}
 	}
 	if (gInputHandler->IsDown('d'))
@@ -125,8 +133,8 @@ void Game::CheckKeyInput()
 			mCamera->ApplyPosition(Vector3(cos(yrotrad), 0, sin(yrotrad)));
 		else
 		{
-			((cRigidBody*)mPlayerObject)->SetActive(true);
-			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(cos(yrotrad) * 100, 0, sin(yrotrad) * 100));
+			((cPlayer*)mPlayerObject)->GetRigidBody()->SetActive(true);
+			((cPlayer*)mPlayerObject)->GetRigidBody()->ApplyForce(Vector3(cos(yrotrad) * 100, 0, sin(yrotrad) * 100));
 		}
 	}
 	if (gInputHandler->IsDown('a'))
@@ -137,8 +145,8 @@ void Game::CheckKeyInput()
 			mCamera->ApplyPosition(Vector3(-cos(yrotrad), 0, -sin(yrotrad)));
 		else
 		{
-			((cRigidBody*)mPlayerObject)->SetActive(true);
-			((cRigidBody*)mPlayerObject)->ApplyForce(Vector3(-cos(yrotrad) * 100, 0, -sin(yrotrad) * 100));
+			((cPlayer*)mPlayerObject)->GetRigidBody()->SetActive(true);
+			((cPlayer*)mPlayerObject)->GetRigidBody()->ApplyForce(Vector3(-cos(yrotrad) * 100, 0, -sin(yrotrad) * 100));
 		}
 	}
 	if (gInputHandler->IsDown('r'))
@@ -167,11 +175,14 @@ void Game::CheckKeyInput()
 		bullet->Create(data);
 
 		bullet->SetVelocity(Vector3(-10, 0, -20));
-
-		mPlayerObject = bullet;
-
-		mCamera->SetCameraMode(THIRDPERSON_CAMERA);
-		mCamera->SetTarget(mPlayerObject);
+	}
+	if(gInputHandler->IsDown('c'))
+	{
+		if (mCamera->GetCameraMode() == THIRDPERSON_CAMERA)
+		{
+			((cPlayer*)mPlayerObject)->GetRigidBody()->SetActive(true);
+			((cPlayer*)mPlayerObject)->GetRigidBody()->ApplyForce(Vector3(0, 100, 0));
+		}
 	}
 }
 

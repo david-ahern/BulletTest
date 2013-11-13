@@ -132,7 +132,7 @@
     <ClCompile Include="source\Camera.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="source\cPlayerCube.cpp">
+    <ClCompile Include="source\cPlayer.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -221,7 +221,7 @@
     <ClInclude Include="source\Camera.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="source\cPlayerCube.h">
+    <ClInclude Include="source\cPlayer.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
