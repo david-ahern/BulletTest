@@ -114,8 +114,7 @@ void Game::CheckKeyInput()
 			mCamera->ApplyPosition(Vector3(sin(yrotrad), -sin(xrotrad), -cos(yrotrad)));
 		else
 		{
-			((cPlayer*)mPlayerObject)->GetRigidBody()->SetActive(true);
-			((cPlayer*)mPlayerObject)->GetRigidBody()->ApplyForce(Vector3(sin(yrotrad) * 100, 0, -cos(yrotrad) * 100));
+			((cPlayer*)mPlayerObject)->EnableMovement(MOVE_FORWARD);
 		}
 	}
 	if (gInputHandler->IsDown('s'))
@@ -128,8 +127,7 @@ void Game::CheckKeyInput()
 			mCamera->ApplyPosition(Vector3(-sin(yrotrad), sin(xrotrad), cos(yrotrad)));
 		else
 		{
-			((cPlayer*)mPlayerObject)->GetRigidBody()->SetActive(true);
-			((cPlayer*)mPlayerObject)->GetRigidBody()->ApplyForce(Vector3(-sin(yrotrad) * 100, 0, cos(yrotrad) * 100));
+			((cPlayer*)mPlayerObject)->EnableMovement(MOVE_BACKWARD);
 		}
 	}
 	if (gInputHandler->IsDown('d'))
@@ -140,8 +138,7 @@ void Game::CheckKeyInput()
 			mCamera->ApplyPosition(Vector3(cos(yrotrad), 0, sin(yrotrad)));
 		else
 		{
-			((cPlayer*)mPlayerObject)->GetRigidBody()->SetActive(true);
-			((cPlayer*)mPlayerObject)->GetRigidBody()->ApplyForce(Vector3(cos(yrotrad) * 100, 0, sin(yrotrad) * 100));
+			((cPlayer*)mPlayerObject)->EnableMovement(MOVE_RIGHT);
 		}
 	}
 	if (gInputHandler->IsDown('a'))
@@ -152,8 +149,7 @@ void Game::CheckKeyInput()
 			mCamera->ApplyPosition(Vector3(-cos(yrotrad), 0, -sin(yrotrad)));
 		else
 		{
-			((cPlayer*)mPlayerObject)->GetRigidBody()->SetActive(true);
-			((cPlayer*)mPlayerObject)->GetRigidBody()->ApplyForce(Vector3(-cos(yrotrad) * 100, 0, -sin(yrotrad) * 100));
+			((cPlayer*)mPlayerObject)->EnableMovement(MOVE_LEFT);
 		}
 	}
 	if (gInputHandler->IsDown('r'))
