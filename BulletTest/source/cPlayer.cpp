@@ -32,10 +32,10 @@ void cPlayer::Create(ObjectData data)
 	mPrevMovementTime = mMovementTimer->GetTime();
 	mMovementForce = 100;
 
-	mMovementDirection[MOVE_FORWARD] = false;
-	mMovementDirection[MOVE_BACKWARD] = false;
-	mMovementDirection[MOVE_LEFT] = false;
-	mMovementDirection[MOVE_RIGHT] = false;
+	mMovementDirections[MOVE_FORWARD] = false;
+	mMovementDirections[MOVE_BACKWARD] = false;
+	mMovementDirections[MOVE_LEFT] = false;
+	mMovementDirections[MOVE_RIGHT] = false;
 }
 
 void cPlayer::Update(float deltaTime)
@@ -47,24 +47,24 @@ void cPlayer::Update(float deltaTime)
 
 	float curTime = mMovementTimer->GetTime();
 
-	if(curTime - mPrevMovementTime > mMovementStep)
+	if(1)
 	{
-		if(mMovementDirection[MOVE_FORWARD])
+		if()
 		{
 			mRigidBody->SetActive(true);
 			mRigidBody->ApplyForce(Vector3(sin(yrotrad) * mMovementForce, 0, -cos(yrotrad) * mMovementForce));
 		}
-		if(mMovementDirection[MOVE_BACKWARD])
+		if(mMovementDirections[MOVE_BACKWARD])
 		{
 			mRigidBody->SetActive(true);
 			mRigidBody->ApplyForce(Vector3(-sin(yrotrad) * mMovementForce, 0, cos(yrotrad) * mMovementForce));
 		}
-		if(mMovementDirection[MOVE_LEFT])
+		if(mMovementDirections[MOVE_LEFT])
 		{
 			mRigidBody->SetActive(true);
 			mRigidBody->ApplyForce(Vector3(cos(yrotrad) * mMovementForce, 0, sin(yrotrad) * mMovementForce));
 		}
-		if(mMovementDirection[MOVE_RIGHT])
+		if(mMovementDirections[MOVE_RIGHT])
 		{
 			mRigidBody->SetActive(true);
 			mRigidBody->ApplyForce(Vector3(-cos(yrotrad) * mMovementForce, 0, -sin(yrotrad) * mMovementForce));

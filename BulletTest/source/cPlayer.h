@@ -26,7 +26,7 @@ private:
 	bool			mSpinDirection[2];
 
 	Timer*			mMovementTimer;
-	float			mPrevMovement;
+	float			mPrevMovementTime;
 	float			mMovementSpeed;
 	float			mMovementForce;
 public:
@@ -36,8 +36,8 @@ public:
 
 	cRigidBody*		GetRigidBody()				{ return mRigidBody; }
 
-	void			EnableMovement(int code)	{ mMovementDirection[code] = true; }
-	void			DisableMovement(int code)	{ mMovementDirection[code] = false; }
+	void			EnableMovement(int code)	{ mMovementDirections[code] = true; }
+	void			DisableMovement(int code)	{ mMovementDirections[code] = false; }
 	void			EnableSpin(int code)		{ mSpinDirection[code] = true; }
 	void			DisableSpin(int code)		{ mSpinDirection[code] = false; }
 

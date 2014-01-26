@@ -224,5 +224,8 @@
     <ClInclude Include="source\cPlayer.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Controls.h">
+      <Filter>Header Files\Includes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
