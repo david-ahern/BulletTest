@@ -4,23 +4,31 @@ char* cCapsule::debugClassName = "cCapsule";
 
 cCapsule::cCapsule()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "empty constructor");
+#endif
 }
 
 cCapsule::cCapsule(char* name) : iCollisionShape(name, CCAPSULE_OBJECT)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "constructor");
+#endif
 }
 
 cCapsule::~cCapsule()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "destructor");
+#endif
 }
 
 
 void cCapsule::Create(ObjectData data)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Create");
+#endif
 
 	mRadius = data.nRadius;
 	mHeight = data.nHeight;
@@ -30,7 +38,9 @@ void cCapsule::Create(ObjectData data)
 
 void cCapsule::RenderShape()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Render");
+#endif
 
 	glPushMatrix();
 		glRotatef(90,1,0,0);

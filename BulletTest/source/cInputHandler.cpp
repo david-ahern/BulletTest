@@ -4,17 +4,23 @@ char* cInputHandler::debugClassName = "cInputHandler";
 
 cInputHandler::cInputHandler()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "constructor");
+#endif
 }
 
 cInputHandler::~cInputHandler()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "destructor");
+#endif
 }
 
 void cInputHandler::KeyboardDown(unsigned char key, int x, int y)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "KeyboardDown");
+#endif
 
 	state[key] = true;
 
@@ -23,7 +29,9 @@ void cInputHandler::KeyboardDown(unsigned char key, int x, int y)
 
 void cInputHandler::KeyboardUp(unsigned char key, int x, int y)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "KeyboardUp");
+#endif
 
 	state[key] = false;
 
@@ -33,7 +41,9 @@ void cInputHandler::KeyboardUp(unsigned char key, int x, int y)
 
 void cInputHandler::MouseRead(int button, int state, int x, int y)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "MouseRead");
+#endif
 
 	if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
@@ -66,7 +76,9 @@ void cInputHandler::MouseRead(int button, int state, int x, int y)
 
 void cInputHandler::MouseTrack(int x, int y)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "MouseTrack");
+#endif
 
 	Vector2 temp = Vector2(x, y);
 
@@ -77,7 +89,9 @@ void cInputHandler::MouseTrack(int x, int y)
 
 bool cInputHandler::IsDown(unsigned char key)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "IsDown", key);
+#endif
 
 	if (state[key])
 		return true;
@@ -87,6 +101,10 @@ bool cInputHandler::IsDown(unsigned char key)
 
 Vector2 cInputHandler::GetMouseTrack(bool clearTrack)
 {
+#if defined(DEBUG_OUTPUT)
+	debugPrint(debugClassName, "GetMouseTrack");
+#endif
+
 	if (!clearTrack)
 		return mMouseTrack;
 
@@ -99,7 +117,9 @@ Vector2 cInputHandler::GetMouseTrack(bool clearTrack)
 
 void cInputHandler::Init()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "Init");
+#endif
 
 	mMouseDown = NO_MOUSE;
 	mKeypressed = false;

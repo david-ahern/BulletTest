@@ -45,6 +45,7 @@
 #define CSTATICPLANE_OBJECT			11
 #define CRIGIDBODY_OBJECT			12
 #define CPLAYER_OBJECT 13
+#define EXAMPLE_OBJECT 14
 //insertNewObjectTypeHere
 
 #endif

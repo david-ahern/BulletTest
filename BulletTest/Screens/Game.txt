@@ -20,7 +20,7 @@
 <end>
 
 <cBox>playerBox
-	<HalfExtents>2 2 2
+	<HalfExtents>1 1 1
 <end>
 
 <cRigidBody>playerBody

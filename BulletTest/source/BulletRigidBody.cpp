@@ -4,24 +4,32 @@ char* BulletRigidBody::debugClassName = "BulletRigidBody";
 
 BulletRigidBody::BulletRigidBody()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "empty constructor");
+#endif
 }
 
 BulletRigidBody::BulletRigidBody(char* name) : GameObject(name, BULLETRIGIDBODY_OBJECT)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "constructor");
+#endif
 }
 
 BulletRigidBody::~BulletRigidBody()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "destructor");
+#endif
 
 	mBody->~btRigidBody();
 }
 
 void BulletRigidBody::Create(char* collisionShapeName, Vector3 position, Vector3 rotation, float mass)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Create", BEGIN);
+#endif
 
 	mBtWorld = ((BulletWorld*)mObjectManager->GetGameObject(BULLETWORLD_OBJECT))->GetWorld();
 
@@ -47,12 +55,16 @@ void BulletRigidBody::Create(char* collisionShapeName, Vector3 position, Vector3
 
 	mBody->setRestitution(0.7);
 
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Create", END);
+#endif
 }
 
 void BulletRigidBody::Update(float deltaTime)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Update", BEGIN);
+#endif
 
 	btTransform trans;
 	mBody->getMotionState()->getWorldTransform(trans);
@@ -65,12 +77,16 @@ void BulletRigidBody::Update(float deltaTime)
 
 	btQuaternion rot = mBody->getOrientation();
 
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Update", END);
+#endif
 }
 
 void BulletRigidBody::Render()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Render", BEGIN);
+#endif
 
 	GLfloat c[] = { 1, 1, 1, 0 };
 	glMaterialfv (GL_FRONT, GL_AMBIENT, c);
@@ -152,12 +168,16 @@ void BulletRigidBody::Render()
 		}
 	glPopMatrix();
 
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Render", END);
+#endif
 }
 
 void BulletRigidBody::SetFriction(float friction)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "SetFriction");
+#endif
 
 	mBody->setFriction(friction);
 	mBody->setRollingFriction(friction);
@@ -165,14 +185,18 @@ void BulletRigidBody::SetFriction(float friction)
 
 void BulletRigidBody::SetRestitution(float restitution)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "SetRestitution");
+#endif
 
 	mBody->setRestitution(restitution);
 }
 
 void BulletRigidBody::SetPosition(btVector3& position)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "SetPosition");
+#endif
 
 	btTransform positionTransform;
 	positionTransform.setIdentity();
@@ -183,14 +207,18 @@ void BulletRigidBody::SetPosition(btVector3& position)
 
 void BulletRigidBody::SetVelocity(btVector3& velocity)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "SetVelocity");
+#endif
 
 	mBody->setLinearVelocity(velocity);
 }
 
 void BulletRigidBody::ApplyForce(btVector3& force)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "ApplyForce");
+#endif
 
 	mBody->applyCentralForce(force);
 }

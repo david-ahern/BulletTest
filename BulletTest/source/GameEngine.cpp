@@ -6,17 +6,24 @@ GameEngine* GameEngine::mInstance = 0;
 
 GameEngine::GameEngine()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "constructor");
+#endif
 }
 
 GameEngine::~GameEngine()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "destructor");
+#endif
 }
 
 GameEngine* GameEngine::GetInstance()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "GetInstance");
+#endif
+
 	if(!mInstance)
 		mInstance = new GameEngine;
 
@@ -25,7 +32,9 @@ GameEngine* GameEngine::GetInstance()
 
 void GameEngine::Init(int argc, char** argv)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "Init");
+#endif
 
 	mScreenList.clear();
 
@@ -51,21 +60,27 @@ void GameEngine::Init(int argc, char** argv)
 
 void GameEngine::AddScreen(Screen* screen)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "AddScreen");
+#endif
 
 	mScreenList.push_back(screen);
 }
 
 void GameEngine::RemoveScreen(Screen* screen)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "RemoveScreen");
+#endif
 
 	mScreenList.remove(screen);
 }
 
 void GameEngine::SwitchTo(char* newScreen)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "SwitchTo", newScreen);
+#endif
 
 	for (std::list<Screen*>::iterator sc = mScreenList.begin(); sc != mScreenList.end(); ++sc)
 	{
@@ -75,7 +90,9 @@ void GameEngine::SwitchTo(char* newScreen)
 
 	if (mNextScreen == 0)
 	{
+#if defined(DEBUG_OUTPUT)
 		debugPrint("screen not found");
+#endif
 		return;
 	}
 	if (mCurrentScreen == 0)
@@ -104,7 +121,9 @@ void GameEngine::SwitchTo(char* newScreen)
 
 Screen* GameEngine::GetScreen(char* name)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "GetScreen", name);
+#endif
 
 	for (std::list<Screen*>::iterator sc = mScreenList.begin(); sc != mScreenList.end(); ++sc)
 	{
@@ -146,19 +165,25 @@ void GameEngine::MouseTrackCallback(int x, int y)
 
 void GameEngine::Update()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "Update", BEGIN);
+#endif
 
 	for (std::list<Screen*>::iterator sc = mScreenList.begin(); sc != mScreenList.end(); ++sc)
 		(*sc)->Update();
 
 	glutPostRedisplay();
 
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "Update", END);
+#endif
 }
 
 void GameEngine::Render()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "Render", BEGIN);
+#endif
 
 	mRenderer->PrepareRendering();
 
@@ -167,11 +192,16 @@ void GameEngine::Render()
 
 	mRenderer->FinishRendering();
 
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "Render", END);
+#endif
 }
 
 void GameEngine::MainLoop()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "MainLoop");
+#endif
+
 	glutMainLoop();
 }

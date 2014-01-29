@@ -35,6 +35,7 @@ public:
 	~cPlayer();
 
 	cRigidBody*		GetRigidBody()				{ return mRigidBody; }
+	float			GetMovementForce()			{ return mMovementForce; }
 
 	void			EnableMovement(int code)	{ mMovementDirections[code] = true; }
 	void			DisableMovement(int code)	{ mMovementDirections[code] = false; }

@@ -26,6 +26,9 @@
 
 #include "DebugOutput.h"
 
+// define this to allow for the debug output to run, comment out to disable output
+#define DEBUG_OUTPUT
+
 
 #define	SCREEN_WIDTH 1200
 #define SCREEN_HEIGHT 800

@@ -6,5 +6,7 @@ static char MOVE_BACKWARD_CONTROL = 's';
 static char MOVE_LEFT_CONTROL = 'a';
 static char MOVE_RIGHT_CONTROL = 'd';
 static char RESET_CONTROL = 'r';
+static char JUMP_CONTROL = ' ';
+static char CHANGE_CAMERA_CONTROL = 'c';
 
 #endif

@@ -221,7 +221,9 @@ GameEngine* GameEngineInstance = GameEngine::GetInstance();
 
 int main(int argc, char **argv)
 {
+#if defined(DEBUG_OUTPUT)
 	openDebugOutputFile();
+#endif
 
 	GameEngineInstance->Init(argc, argv);
 
@@ -234,5 +236,7 @@ int main(int argc, char **argv)
 
 	GameEngineInstance->MainLoop();
 
+#if defined(DEBUG_OUTPUT)
 	closeDebugOutputFile();
+#endif
 }

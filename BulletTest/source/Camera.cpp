@@ -4,23 +4,33 @@ char* Camera::debugClassName = "Camera";
 
 Camera::Camera()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "empty constructor");
+#endif
 }
 
 Camera::Camera(char* name) : GameObject(name, CAMERA_OBJECT)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "constructor");
+#endif
 }
 
 Camera::~Camera()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "destructor");
+#endif
 
 	delete mTarget;
 }
 
 void Camera::ApplyRotation(Vector3 rotation)
 {
+#if defined(DEBUG_OUTPUT)
+	debugPrint(debugClassName, mObjectName, "ApplyRotation");
+#endif
+
 	mRotation += rotation;
 
 	if (mRotation.x > 180)
@@ -36,7 +46,9 @@ void Camera::ApplyRotation(Vector3 rotation)
 
 void Camera::Create(ObjectData data)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Create");
+#endif
 
 	mPosition = data.nPosition;
 	mRotation = data.nRotation;
@@ -53,7 +65,9 @@ void Camera::Update(float deltaTime)
 	if (mCameraMode == FREE_CAMERA || mCameraMode == FIRSTPERSON_CAMERA)
 		return;
 
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Update");
+#endif
 
 	mPosition = mTarget->GetPosition();
 
@@ -61,7 +75,9 @@ void Camera::Update(float deltaTime)
 
 void Camera::Render()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Render");
+#endif
 
 	if (mCameraMode == THIRDPERSON_CAMERA)
 		glTranslatef(0, 0, -zoom);

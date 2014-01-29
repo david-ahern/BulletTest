@@ -7,12 +7,16 @@ char* FileInput::defaultFilePath = "Screens\\";
 
 FileInput::FileInput()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "empty constructor");
+#endif
 }
 
 FileInput::FileInput(ObjectManager* objManager)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "constructor");
+#endif
 
 	mObjectManager = objManager;
 
@@ -21,14 +25,19 @@ FileInput::FileInput(ObjectManager* objManager)
 
 FileInput::~FileInput()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "destructor");
+#endif
 
 	delete mFile;
 }
 
 bool FileInput::OpenFile()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "OpenFile");
+#endif
+
 	mFile.open(mFileName);
 
 	if(mFile.is_open())
@@ -39,6 +48,10 @@ bool FileInput::OpenFile()
 
 void FileInput::CloseFile()
 {
+#if defined(DEBUG_OUTPUT)
+	debugPrint(debugClassName, "CloseFile");
+#endif
+
 	if(mFile.is_open())
 		mFile.close();
 	delete mFile;
@@ -46,7 +59,9 @@ void FileInput::CloseFile()
 
 bool FileInput::LoadObjects(char* _fileName)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "LoadObjects", BEGIN);
+#endif
 
 	mFileName = _fileName;
 
@@ -61,18 +76,24 @@ bool FileInput::LoadObjects(char* _fileName)
 	}
 	else
 	{
+#if defined(DEBUG_OUTPUT)
 		debugPrint("Error loading file", mFileName);
+#endif
 	}
 	CloseFile();
 
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "LoadObjects", END);
+#endif
 
 	return 1;
 }
 
 void FileInput::LoadNextObject()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "LoadNextObject", BEGIN);
+#endif
 
 	ObjectData data = GetDefaultDataValues();
 
@@ -331,7 +352,9 @@ void FileInput::LoadNextObject()
 	mObjectManager->AddObject(nObject);
 	nObject->Create(data);
 
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "LoadNextObject", END);
+#endif
 }
 
 ObjectData GetDefaultDataValues()

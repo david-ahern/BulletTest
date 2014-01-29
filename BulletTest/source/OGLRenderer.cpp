@@ -4,12 +4,16 @@ char* OGLRenderer::debugClassName = "OGLRenderer";
 
 OGLRenderer::OGLRenderer()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "empty constructor");
+#endif
 }
 
 OGLRenderer::OGLRenderer(int argc, char **argv)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "constructor");
+#endif
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
@@ -21,54 +25,71 @@ OGLRenderer::OGLRenderer(int argc, char **argv)
 
 OGLRenderer::~OGLRenderer()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "descructor");
+#endif
 }
 
 void OGLRenderer::SetIdleFunc(void idleFunc())
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "SetIdleFunc");
+#endif
 
 	glutIdleFunc(idleFunc);
 }
 
 void OGLRenderer::SetDisplayFunc(void updateFunc())
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "SetDisplayFunc");
+#endif
 
 	glutDisplayFunc(updateFunc);
 }
 
 void OGLRenderer::SetKeyboardDownFunc(void keyboardDownFunc(unsigned char key, int x, int y))
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "SetKeyboardDownFunc");
+#endif
 
 	glutKeyboardFunc(keyboardDownFunc);
 }
 
 void OGLRenderer::SetKeyboardUpFunc(void keyboardUpFunc(unsigned char key, int x, int y))
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "SetKeyboardUpFunc");
+#endif
 
 	glutKeyboardUpFunc(keyboardUpFunc);
 }
 
 void OGLRenderer::SetMouseReadFunc(void mouseReadFunc(int button, int state, int x, int y))
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "SetMouseReadFunc");
+#endif
 
 	glutMouseFunc(mouseReadFunc);
 }
 
 void OGLRenderer::SetMouseTrackFunc(void mouseTrackFunc(int x, int y))
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "SetMouseTrackFunc");
+#endif
 
 	glutMotionFunc(mouseTrackFunc);
 }
 
 void OGLRenderer::Init()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "Init");
+#endif
+
 	glViewport(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -107,7 +128,9 @@ void OGLRenderer::Init()
 
 void OGLRenderer::PrepareRendering()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "PrepareRendering");
+#endif
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(60,(GLfloat)SCREEN_WIDTH/(GLfloat)SCREEN_HEIGHT,0.1f,1000);
@@ -128,7 +151,9 @@ void OGLRenderer::PrepareRendering()
 
 void OGLRenderer::FinishRendering()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "FinishRendering");
+#endif
 
 	glPopMatrix();
 
@@ -137,7 +162,9 @@ void OGLRenderer::FinishRendering()
 
 void OGLRenderer::Reshape(int w, int h)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "Reshape");
+#endif
 
 	glViewport(0,0,w,h);
 	glMatrixMode(GL_PROJECTION);

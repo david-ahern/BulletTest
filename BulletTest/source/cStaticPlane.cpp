@@ -4,23 +4,31 @@ char* cStaticPlane::debugClassName = "cStaticPlane";
 
 cStaticPlane::cStaticPlane()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "empty constructor");
+#endif
 }
 
 cStaticPlane::cStaticPlane(char* name) : iCollisionShape(name, CSTATICPLANE_OBJECT)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "constructor");
+#endif
 }
 
 cStaticPlane::~cStaticPlane()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "destructor");
+#endif
 }
 
 
 void cStaticPlane::Create(ObjectData data)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Create");
+#endif
 
 	mUpAxis = data.nUpAxis;
 
@@ -32,7 +40,9 @@ void cStaticPlane::Create(ObjectData data)
 
 void cStaticPlane::RenderShape()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Render");
+#endif
 
 	glBegin(GL_QUADS);
 		glVertex3f(-1000,0,1000);

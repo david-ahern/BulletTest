@@ -6,22 +6,30 @@ int Light::sNumberOfLights = 0;
 
 Light::Light()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, "empty constructor");
+#endif
 }
 
 Light::Light(char* name) : GameObject(name, LIGHT_OBJECT)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "constructor");
+#endif
 }
 
 Light::~Light()
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "destructor");
+#endif
 }
 
 void Light::Create(ObjectData data)
 {
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Create", BEGIN);
+#endif
 
 	switch(sNumberOfLights)
 	{
@@ -50,7 +58,9 @@ void Light::Create(ObjectData data)
 		mLightNum = GL_LIGHT7;
 		break;
 	default:
+#if defined(DEBUG_OUTPUT)
 		debugPrint(debugClassName, mObjectName, "Create", END);
+#endif
 		return;
 	}
 
@@ -72,5 +82,7 @@ void Light::Create(ObjectData data)
 
 	++sNumberOfLights;
 
+#if defined(DEBUG_OUTPUT)
 	debugPrint(debugClassName, mObjectName, "Create", END);
+#endif
 }
